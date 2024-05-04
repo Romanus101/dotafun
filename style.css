@@ -1,0 +1,527 @@
+input{
+    border-radius: 5px;
+   } 
+body{
+    margin: 0;
+     background-color: dimgray;
+    
+}
+.bstrip{
+    width:99.4%;
+    height:20%;
+    background-color: black;
+    color: white;
+    opacity: 90%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    margin-top:0;
+    position: sticky;
+}
+.bstrip h1{
+    width:94%;
+    height:8%;
+    background-color: black;
+    color: white;
+    opacity: 90%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+#languageswitch{   
+    width:4%;
+    height:8%;
+    background-color: black;
+    color: white;
+    opacity: 90%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    cursor: pointer;
+}
+.bstrip h2{
+    background-color: black;
+    color: white;
+    opacity: 90%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+#center{
+          margin-top: 5%;
+      }
+      .leftbox{
+          margin-left: 10%;
+          display: inline-grid;
+          
+      }
+      .rightbox{
+          margin-left: 50%;
+          display: inline-grid;
+      }
+      #rand{
+          padding-top: 0;
+          vertical-align: top;
+          height: 30px;
+          width: 15%;
+          background-color: black;
+          color:white;
+          opacity: 90%;
+          border: 2px solid slategray;
+          cursor: pointer;
+      }
+      #classic{
+          vertical-align: top;
+          height: 30px;
+          width: 15%;
+          background-color: black;
+          color:white;
+          opacity: 90%;
+          border: 2px solid slategray;
+          cursor: pointer;
+          position: sticky;
+      }
+      #whl{
+          vertical-align: top;
+          height: 30px;
+          width: 15%;
+          background-color: black;
+          color:white;
+          opacity: 90%;
+          border: 2px solid slategray;
+          cursor: pointer;
+      }
+    #chl{
+          vertical-align: top;
+          height: 30px;
+          width: 15%;
+          background-color: black;
+          color:white;
+          opacity: 90%;
+          border: 2px solid slategray;
+          cursor: pointer;
+      }
+    #whatelse{
+        vertical-align: top;
+          height: 30px;
+          width: 7%;
+          background-color: black;
+          color:white;
+          opacity: 90%;
+          border: 2px solid slategray;
+          cursor: pointer;
+        }
+      #roul{
+          vertical-align: top;
+          height: 30px;
+          width: 16%;
+          background-color: black;
+          color:white;
+          opacity: 90%;
+          border: 2px solid slategray;
+          cursor: pointer;
+      }
+      #frand{
+          vertical-align: top;
+          height: 30px;
+          width: 17%;
+          background-color: black;
+          color:white;
+          opacity: 90%;
+          border: 2px solid slategray;
+          cursor: pointer;
+      }
+      #last{
+          visibility: hidden;
+          text-align: center;
+          margin-top: 10%;
+          height: 30px;
+
+      }
+      .leftlast{
+          display: inline-grid;
+      }
+      .rightlast{
+          display: inline-grid;
+      }
+      #fight{
+          background-color: #1C1C1C;
+          cursor: pointer;
+          color:white;
+          border: 2px solid black;
+          border-radius: 5px;
+      }
+    #challenges{
+          color:red;
+          text-align: center;
+          display: inline-block;
+          margin-left: 40%;    
+          visibility: hidden;
+          display: none; 
+    }
+#script1{
+    display: none;
+    visibility: hidden;
+    left:40%;
+    position: absolute;
+}
+.scripttext{
+    text-align: center;
+    background-color: #1C1C1C;
+    color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 10px;
+}
+#download1{
+          margin-top: 0;
+          height: 30px;
+          background-color: #1C1C1C;
+          color:white;
+          opacity: 90%;
+          text-align: center;
+          cursor: pointer; 
+          margin-left: 35%;
+}
+    #chex{
+    color: black;
+    padding-top:15%;
+    font-size:50px;
+    font-weight: bold;
+    }
+    #chex2{
+    padding-top:15%;
+    color: black;
+    font-size:20px;
+    font-weight:500;
+    padding:2%;
+    }
+    .window_for_challenges{
+    width:400px;
+    height:450px;
+    border: 3px solid black;
+    background-color: lightgray; 
+    }
+    
+    #answer{
+    width:200px;
+    height: 30px;
+    margin: 1px;
+    background-color: #1C1C1C;
+    border-radius: 10px;
+    color: white;
+    }
+      #roulette{
+          visibility: hidden;
+         }
+         
+         #wheelluck{
+             position: absolute;
+             margin-top: -15%;
+             visibility: hidden;
+             display: grid;
+             place-items: center;
+             overflow: hidden;
+             left:30%;
+         }
+    
+         
+#firstl, #secondl, #thirdl, #fourl, #fivel, #firstr, #secondr, #thirdr, #fourr, #fiver,#lastfl,#lastsl,#lastfr,#lastsr{
+    width:200px;
+    height: 30px;
+    margin: 1px;
+    background-color: #1C1C1C;
+    border-radius: 10px;
+}
+         
+         /* РУЛЕТКА КАК В КСГО */
+        
+         .start {
+	position: absolute;
+	top: calc(50% + 100px);
+	left: 50%;
+	background: black;
+	transform: translate(-50%, -50%);
+	width: 100px;
+	height: 25px;
+	border: 2px solid dimgray;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+	transition: 0.3s ease;
+	user-select: none;
+	cursor: pointer;
+	filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.start:hover {
+	opacity: 75%;
+}
+
+.shadow {
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
+	border: 2px solid white;
+	width: 400px;
+	height: 100px;
+	box-shadow: inset 0px 0px 20px 0px black;
+}
+
+.random {
+	position: absolute;
+	overflow: hidden;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
+	width: 400px;
+	height: 100px;
+	background: #161D31;
+}
+
+.cards {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 2000px;
+	height: 100%;
+	transition: 5s ease;
+}
+
+.cards > div {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 5px;
+	margin-left: 5px;
+	width: 100px;
+	height: 90px;
+	color: #6A6A6A;
+	background: white;
+	border-radius: 10px;
+}
+
+.result {
+	position: absolute;
+	z-index: 10;
+	left: 50%;
+	top: 0;
+	transform: translateX(-50%);
+	border: 10px solid transparent;
+	border-top: 20px solid #425DD8;
+	filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+        
+         
+         
+         
+         /* КОЛЕСО УДАЧИ */
+         
+         .deal-wheel {
+             box-sizing: border-box;
+  /* задаём переменные блока */
+  /* размеры колеса */
+  --size: clamp(200px, 60vmin, 600px);
+  /* настройки яркости и заливки фона секторов */
+  --lg-hs: 0 3%;
+  --lg-stop: 50%;
+  --lg: linear-gradient(
+      hsl(var(--lg-hs) 0%) 0 var(--lg-stop),
+      hsl(var(--lg-hs) 20%) var(--lg-stop) 100%
+    );
+  /* добавляем позиционирование относительно других элементов */
+  position: relative;
+  /* подключаем сетку */
+  display: grid;
+  grid-gap: calc(var(--size) / 20);
+  /* выравниваем содержимое блока по центру */
+  align-items: center;
+  /* задаём имена областей внутри сетки */
+  grid-template-areas:
+    "spinner"
+    "trigger";
+  /* устанавливаем размер шрифта */
+  font-size: calc(var(--size) / 21);
+}
+
+/* всё, что относится ко внутренним элементам главного блока, будет находиться в области сетки с названием spinner */
+.deal-wheel > * {
+    box-sizing: border-box;
+  grid-area: spinner;
+}
+
+/* сам блок и кнопка будут находиться в области сетки с названием trigger и будут выровнены по центру */
+.deal-wheel .btn-spin {
+    box-sizing: border-box;
+  grid-area: trigger;
+  justify-self: center;
+}
+
+/* сектор колеса */
+.spinner {
+    box-sizing: border-box;
+  /* добавляем относительное позиционирование */
+  position: relative;
+  /* подключаем сетку */
+  display: grid;
+  /* выравниваем всё по центру */
+  align-items: center;
+  /* добавляем элемент в сетку */
+  grid-template-areas: "spinner";
+  /* устанавливаем размеры */
+  width: var(--size);
+  height: var(--size);
+  /* поворачиваем элемент  */
+  transform: rotate(calc(var(--rotate, 25) * 1deg));
+  /* рисуем круглую обводку, а всё, что не поместится, — будет скрыто за кругом */
+  border-radius: 50%;
+}
+
+/* всё, что внутри этого блока, будет находиться в области сетки с названием spinner */
+.spinner * {
+    box-sizing: border-box;
+  grid-area: spinner;
+}
+
+/* текст на секторах */
+.prize {
+    box-sizing: border-box;
+  /* включаем «гибкую» вёрстку */
+  display: flex;
+  align-items: center;
+  /* задаём отступы от краёв блока */
+  padding: 0 calc(var(--size) / 6) 0 calc(var(--size) / 20) ; 
+  /* устанавливаем размеры */
+  width: 50%;
+  height: 50%;
+  /* устанавливаем координаты, относительно которых будем вращать текст */
+  transform-origin: center right;
+  /* поворачиваем текст */
+  transform: rotate(var(--rotate));
+  /* запрещаем пользователю выделять мышкой текст на секторах */
+  user-select: none;
+}
+
+/* язычок */
+.ticker {
+    box-sizing: border-box;
+  /* добавляем относительное позиционирование */
+  position: relative;
+  /* устанавливаем размеры */
+  left: calc(var(--size) / -15);
+  width: calc(var(--size) / 10);
+  height: calc(var(--size) / 20);
+  /* фон язычка */
+  background: var(--lg);
+  /* делаем так, чтобы язычок был выше колеса */
+  z-index: 1;
+  /* форма язычка */
+  clip-path: polygon(20% 0, 100% 50%, 20% 100%, 0% 50%);
+  /* устанавливаем точку, относительно которой будет вращаться язычок при движении колеса */
+  transform-origin: center left;
+}
+
+/* кнопка запуска колеса */
+.btn-spin {
+    box-sizing: border-box;
+  color: white;
+  background: black;
+  border: none;
+  /* берём размер шрифта такой же, как в колесе */
+  font-size: inherit;
+  /* добавляем отступы от текста внутри кнопки */
+  padding: 0.9rem 2rem 1rem;
+  /* скругляем углы */
+  border-radius: 0.5rem;
+  /* меняем внешний вид курсора над кнопкой на руку*/
+  cursor: pointer;
+}
+
+/* если кнопка нажата и неактивна */
+.btn-spin:disabled {
+    box-sizing: border-box;
+  /* меняем внешний вид курсора */
+  cursor: progress;
+  /* делаем кнопку полупрозрачной */
+  opacity: 0.25;
+}
+
+/* анимация вращения */
+.is-spinning .spinner {
+    box-sizing: border-box;
+  transition: transform 8s cubic-bezier(0.1, -0.01, 0, 1);
+}
+
+/* анимация движения язычка */
+.is-spinning .ticker {
+    box-sizing: border-box;
+          animation: tick 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+/* эффект, когда колесо задевает язычок при вращении */
+@keyframes tick {
+  40% {
+    /* чуть поворачиваем язычок наверх в середине анимации */
+    transform: rotate(-12deg);
+  }
+}
+
+/* анимируем выпавший сектор */
+.prize.selected .text {
+  /* делаем текст белым */
+  color:white;
+  /* настраиваем длительность анимации  */
+  animation: selected 800ms ease;
+}
+
+/* настраиваем анимацию текста на выпавшем секторе по кадрам */
+@keyframes selected {
+  /* что происходит на 25% от начала анимации */
+  25% {
+    /* увеличиваем текст в 1,25 раза */
+    transform: scale(1.25);
+    /* добавляем тексту тень */
+    text-shadow: 1vmin 1vmin 0 hsla(0 0% 0% / 0.1);
+  }
+  40% {
+    transform: scale(0.92);
+    text-shadow: 0 0 0 hsla(0 0% 0% / 0.2);
+  }
+  60% {
+    transform: scale(1.02);
+    text-shadow: 0.5vmin 0.5vmin 0 hsla(0 0% 0% / 0.1);
+  }
+  75% {
+    transform: scale(0.98);
+  }
+  85% {
+    transform: scale(1);
+  }
+}
+#helpbutton{
+    border-radius: 100px;
+    border: 1px solid black;
+    background-color: black;
+    color:white;
+    height: 70px;
+    width:70px;
+    text-align: center;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    font-family:sans-serif;
+}   

@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html>
+ <head>   
+     <title>Dota Fun</title>
+     <link rel="stylesheet" href="style.css">
+     <link rel="icon" href="https://steamuserimages-a.akamaihd.net/ugc/1776131096817091231/DBAC0893AA158D401C679EED0E62C29B605E15D9/?imw=512&amp;imh=512&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true">
+  </head>
+<body> 
+    <header class="bstrip"><h1>DOTAFUN</h1><div id ="languageswitch"><h2>
+        
+     
+        
+        
+        
+        </h2></div></header>
+    <button id="classic">Classic(defolt)</button><button id="rand">Boss fight</button><button id="frand">Random</button><button id="roul">Roulette</button><button id="whl">Wheel of luck</button><button id="chl">Challenges</button><button id="whatelse">Other</button>
+    <div id="center">
+     <div class="leftbox">
+      <button id="firstl"><input list="Datalist1l" id="inp1" placeholder="Hero"><datalist id="Datalist1l"></datalist></button>
+      <button id="secondl"><input  list="Datalist2l" id="inp2" placeholder="Hero"><datalist id="Datalist2l"></datalist></button>
+      <button id="thirdl"><input list="Datalist3l"  id="inp3" placeholder="Hero"><datalist id="Datalist3l"></datalist></button>
+      <button id="fourl"><input list="Datalist4l"  id="inp4" placeholder="Hero"><datalist id="Datalist4l"></datalist></button>
+      <button id="fivel"><input list="Datalist5l"  id="inp5" placeholder="Hero"><datalist id="Datalist5l"></datalist></button>
+     </div>
+     <div class="rightbox">
+      <button id ="firstr"><input list="Datalist1r"  id="inp6" placeholder="Hero"><datalist id="Datalist1r"></datalist></button>
+      <button id="secondr"><input list="Datalist2r"  id="inp7" placeholder="Hero"><datalist id="Datalist2r"></datalist></button>
+      <button id="thirdr"><input list="Datalist3r"  id="inp8" placeholder="Hero"><datalist id="Datalist3r"></datalist></button>
+      <button id="fourr"><input list="Datalist4r"  id="inp9" placeholder="Hero"><datalist id="Datalist4r"></datalist></button>
+      <button id="fiver"><input list="Datalist5r"  id="inp10" placeholder="Hero"><datalist id="Datalist5r"></datalist></button>
+     </div>
+    </div>
+    
+    <!-- Челленджы -->
+    <div id = "challenges">
+        <div class="window_for_challenges">
+        <div id = chex></div><br><div id = chex2></div><br>
+        </div>
+    <button id = "answer">GET CHALLENGE</button>
+        
+        </div>
+    
+    <div id="last">
+    <div class="leftlast">
+        <button id= "lastfl"><input placeholder="Hero"></button>
+        <button id= "lastsl"><input placeholder="Hero"></button>
+    </div>
+        <button id="fight">FIGHT</button>
+    <div class="rightlast">
+        <button id= "lastfr"><input placeholder="Hero"></button>
+        <button id= "lastsr"><input placeholder="Hero"></button>
+    </div>
+    </div>  
+    <!-- СКАЧИВАНИЕ -->
+    
+   <div id="script1"><div class="scripttext">Скрипт рандомного нажатия клавиш</div>
+       <button id="download1"><a href="E:\Всякое\Доки и тд\сайт дота\Randbuttons\x64\Release\RandButtons.exe" target = "_blank">Download</a></button></div>
+    
+    
+    <!-- БЛОК С РУЛЕТКОЙ -->
+    <div id="roulette">
+    <div class="shadow"></div>
+	<div class="random">
+		<div class="result"></div>
+		<div class="cards">
+            <div id="re1"></div>
+			<div id="re2"></div>
+			<div id="re3"></div>
+			<div id="re4"></div>
+			<div id="re5"></div>
+			<div id="re6"></div>
+			<div id="re7"></div>
+			<div id="re8"></div>
+			<div id="re9"></div>
+			<div id="re10"></div>
+           
+        </div>
+	</div>
+	<button class="start" onclick="start()">START</button>
+</div>
+    
+    <!-- БЛОК С КОЛЕСОМ УДАЧИ -->
+    
+    <div id = "wheelluck">
+    <div class="deal-wheel">
+  <!-- блок с призами -->
+  <ul class="spinner"></ul>
+  <!-- язычок барабана -->
+  <div class="ticker"></div>
+  <!-- кнопка -->
+  <button class="btn-spin">Start</button>
+        </div>
+</div>
+    
+   <!--ПОМОЩЬ -->
+    <div id="helpbutton"><h1>?</h1></div>
+        <script>
+       
+           // ДОБАВЛЕНИЕ ТЕКСТА В РУЛЕТКУ КСГО
+           
+          firstl.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            secondl.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            thirdl.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            fourl.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            fivel.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+             firstr.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            secondr.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            thirdr.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            fourr.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            fiver.addEventListener("mouseout", function(){
+            re1.innerHTML = inp1.value;  
+            re2.innerHTML = inp2.value;
+            re3.innerHTML = inp3.value;
+            re4.innerHTML = inp4.value;
+            re5.innerHTML = inp5.value;
+            re6.innerHTML = inp6.value;
+            re7.innerHTML = inp7.value;
+            re8.innerHTML = inp8.value;
+            re9.innerHTML = inp9.value;
+            re10.innerHTML = inp10.value;
+            });
+            
+            
+            //РУЛЕТКА ИЗ КС ГО
+            
+             var cards_block = document.querySelector('.cards');
+var cards = document.querySelectorAll('.cards > div');
+
+function start() {
+  var random = Math.floor(Math.random() * 9.5); // От 0 до 8
+  cards_block.style.left = -random * 100 + 'px';
+  setTimeout(function() {
+   random++;
+    cards[random].style.background = 'green';
+    cards[random].style.color = 'white';
+    
+  }, 5000)
+}
+            
+            //КОЛЕСО УДАЧИ
+            // надписи и цвета на секторах
+const prizes = [
+  {
+    text: "",
+    color: "hsl(197 30% 43%)",
+  },
+  { 
+    text: "",
+    color: "hsl(173 58% 39%)",
+  },
+  { 
+    text: "",
+    color: "hsl(43 74% 66%)",
+  },
+  {
+    text: "",
+    color: "hsl(27 87% 67%)",
+  },
+  {
+    text: "",
+    color: "hsl(12 76% 61%)",
+  },
+  {
+    text: "",
+    color: "hsl(350 60% 52%)",
+  },
+  {
+    text: "",
+    color: "hsl(91 43% 54%)",
+  },
+  {
+    text: "",
+    color: "hsl(140 36% 74%)",
+  },
+  {
+    text: "",
+    color: "hsl(47 30% 43%)",
+  },
+  {
+    text: "",
+    color: "hsl(137 30% 43%)",
+  }
+];
+            
+// создаём переменные для быстрого доступа ко всем объектам на странице — блоку в целом, колесу, кнопке и язычку
+            
+const wheel = document.querySelector(".deal-wheel");
+const spinner = wheel.querySelector(".spinner");
+const trigger = wheel.querySelector(".btn-spin");
+const ticker = wheel.querySelector(".ticker");
+// на сколько секторов нарезаем круг
+const prizeSlice = 360 / prizes.length; 
+// на какое расстояние смещаем сектора друг относительно друга
+const prizeOffset = Math.floor(180 / prizes.length);
+// прописываем CSS-классы, которые будем добавлять и убирать из стилей
+const spinClass = "is-spinning";
+const selectedClass = "selected";
+// получаем все значения параметров стилей у секторов
+const spinnerStyles = window.getComputedStyle(spinner);
+
+// переменная для анимации
+let tickerAnim;
+// угол вращения
+let rotation = 0;
+// текущий сектор
+let currentSlice = 0;
+// переменная для текстовых подписей
+let prizeNodes;
+
+          // расставляем текст по секторам
+const createPrizeNodes = () => {
+  // обрабатываем каждую подпись
+  prizes.forEach(({ text, color, reaction }, i) => {
+    // каждой из них назначаем свой угол поворота
+    const rotation = ((prizeSlice * i) * -1) - prizeOffset;
+    // добавляем код с размещением текста на страницу в конец блока spinner
+    spinner.insertAdjacentHTML(
+      "beforeend",
+      // текст при этом уже оформлен нужными стилями
+      `<li class="prize" data-reaction=${reaction} style="--rotate: ${rotation}deg">
+        <span class="text">${text}</span>
+      </li>`
+    );
+  });
+};
+
+// рисуем разноцветные секторы
+const createConicGradient = () => {
+  // устанавливаем нужное значение стиля у элемента spinner
+  spinner.setAttribute(
+    "style",
+    `background: conic-gradient(
+      from -90deg,
+      ${prizes
+        // получаем цвет текущего сектора
+        .map(({ color }, i) => `${color} 0 ${(100 / prizes.length) * (prizes.length - i)}%`)
+        .reverse()
+      }
+    );`
+  );
+};
+
+// создаём функцию, которая нарисует колесо в сборе
+const setupWheel = () => {
+  // сначала секторы
+  createConicGradient();
+  // потом текст
+  createPrizeNodes();
+  // а потом мы получим список всех призов на странице, чтобы работать с ними как с объектами
+  prizeNodes = wheel.querySelectorAll(".prize");
+};
+
+// определяем количество оборотов, которое сделает наше колесо
+const spinertia = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+  
+
+// функция запуска вращения с плавной остановкой
+const runTickerAnimation = () => {
+  // взяли код анимации отсюда: https://css-tricks.com/get-value-of-css-rotation-through-javascript/
+  const values = spinnerStyles.transform.split("(")[1].split(")")[0].split(",");
+  const a = values[0];
+  const b = values[1];  
+  let rad = Math.atan2(b, a);
+  
+  if (rad < 0) rad += (2 * Math.PI);
+  
+  const angle = Math.round(rad * (180 / Math.PI));
+  const slice = Math.floor(angle / prizeSlice);
+
+  // анимация язычка, когда его задевает колесо при вращении
+  // если появился новый сектор
+  if (currentSlice !== slice) {
+    // убираем анимацию язычка
+    ticker.style.animation = "none";
+    // и через 10 миллисекунд отменяем это, чтобы он вернулся в первоначальное положение
+    setTimeout(() => ticker.style.animation = null, 10);
+    // после того, как язычок прошёл сектор - делаем его текущим 
+    currentSlice = slice;
+  }
+  // запускаем анимацию
+  tickerAnim = requestAnimationFrame(runTickerAnimation);
+};
+
+// функция выбора призового сектора
+const selectPrize = () => {
+  const selected = Math.floor(rotation / prizeSlice);
+  prizeNodes[selected].classList.add(selectedClass);
+};
+
+// отслеживаем нажатие на кнопку
+trigger.addEventListener("click", () => {
+  // делаем её недоступной для нажатия
+  trigger.disabled = true;
+  // задаём начальное вращение колеса
+  rotation = Math.floor(Math.random() * 360 + spinertia(2000, 5000));
+  // убираем прошлый приз
+  prizeNodes.forEach((prize) => prize.classList.remove(selectedClass));
+  // добавляем колесу класс is-spinning, с помощью которого реализуем нужную отрисовку
+  wheel.classList.add(spinClass);
+  // через CSS говорим секторам, как им повернуться
+  spinner.style.setProperty("--rotate", rotation);
+  // возвращаем язычок в горизонтальную позицию
+  ticker.style.animation = "none";
+  // запускаем анимацию вращение
+  runTickerAnimation();
+});
+
+// отслеживаем, когда закончилась анимация вращения колеса
+spinner.addEventListener("transitionend", () => {
+  // останавливаем отрисовку вращения
+  cancelAnimationFrame(tickerAnim);
+  // получаем текущее значение поворота колеса
+  rotation %= 360;
+  // выбираем приз
+  selectPrize();
+  // убираем класс, который отвечает за вращение
+  wheel.classList.remove(spinClass);
+  // отправляем в CSS новое положение поворота колеса
+  spinner.style.setProperty("--rotate", rotation);
+  // делаем кнопку снова активной
+  trigger.disabled = false;
+});
+setupWheel();
+            
+// ТЕКСТ В КОЛЕСЕ + ОТРИСОВКА
+    
+  firstl.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });
+            secondl.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });         
+            thirdl.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });           
+            fourl.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });           
+            fivel.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });             
+            firstr.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });            
+            secondr.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });           
+            thirdr.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });          
+            fourr.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });         
+            fiver.addEventListener("mouseout", function(){
+          prizes[0].text = inp1.value;
+          prizes[1].text = inp2.value;
+          prizes[2].text = inp3.value;
+          prizes[3].text = inp4.value;
+          prizes[4].text = inp5.value;
+          prizes[5].text = inp6.value;
+          prizes[6].text = inp7.value;
+          prizes[7].text = inp8.value;
+          prizes[8].text = inp9.value;
+          prizes[9].text = inp10.value;
+          setupWheel();
+  });   
+           
+            
+              
+           
+            //ФУНКЦИЯ РАНДОМА
+            
+        function getRandomInt(max) {
+                return Math.round(Math.random() * max);
+        }
+            
+            //ПЕРЕКЛЮЧЕНИЕ РЕЖИМОВ
+            
+        var mode = 0;
+        classic.addEventListener("click", function(mode){
+            mode = 0;
+            document.getElementById("last").style.visibility = "hidden";
+            document.getElementById("roulette").style.visibility = "hidden";
+            document.getElementById("challenges").style.visibility = "hidden";
+            document.getElementById("wheelluck").style.visibility = "hidden";
+            document.getElementById("center").style.visibility = "visible";
+            document.getElementById("challenges").style.display = "none"; 
+            document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
+            document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        });  
+        rand.addEventListener("click", function(){
+            mode = 1;
+            document.getElementById("last").style.visibility = "visible";
+            document.getElementById("roulette").style.visibility = "hidden";
+            document.getElementById("challenges").style.visibility = "hidden";
+            document.getElementById("wheelluck").style.visibility = "hidden";
+            document.getElementById("center").style.visibility = "visible";
+            document.getElementById("challenges").style.display = "none";
+            document.getElementById("script1").style.display = "none"; 
+            document.getElementById("script1").style.display = "hidden";
+            document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
+            document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        });
+        frand.addEventListener("click", function(){
+            mode = 2;
+            document.getElementById("last").style.visibility = "hidden";
+            document.getElementById("roulette").style.visibility = "hidden";
+            document.getElementById("challenges").style.visibility = "hidden";
+            document.getElementById("wheelluck").style.visibility = "hidden";
+            document.getElementById("center").style.visibility = "visible";
+            document.getElementById("challenges").style.display = "none";
+            document.getElementById("script1").style.display = "none"; 
+            document.getElementById("script1").style.display = "hidden";
+            document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
+            document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        });      
+        roul.addEventListener("click", function(){
+            mode = 3;
+            document.getElementById("roulette").style.visibility = "visible";
+            document.getElementById("last").style.visibility = "hidden";
+            document.getElementById("challenges").style.visibility = "hidden";
+            document.getElementById("wheelluck").style.visibility = "hidden";
+            document.getElementById("center").style.visibility = "visible";
+            document.getElementById("challenges").style.display = "none";
+            document.getElementById("script1").style.display = "none"; 
+            document.getElementById("script1").style.display = "hidden";
+            document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
+            document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        }); 
+        whl.addEventListener("click", function(){
+            mode = 4;
+            document.getElementById("roulette").style.visibility = "hidden";
+            document.getElementById("challenges").style.visibility = "hidden";
+            document.getElementById("last").style.visibility = "hidden";
+            document.getElementById("wheelluck").style.visibility = "visible";
+            document.getElementById("center").style.visibility = "visible";
+            document.getElementById("challenges").style.display = "none";
+            document.getElementById("script1").style.display = "none"; 
+            document.getElementById("script1").style.display = "hidden";
+            document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
+            document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+           
+        }); 
+        chl.addEventListener("click", function(){
+              mode = 5;
+            document.getElementById("roulette").style.visibility = "hidden";
+            document.getElementById("last").style.visibility = "hidden";
+            document.getElementById("wheelluck").style.visibility = "hidden";
+            document.getElementById("challenges").style.visibility = "visible";
+            document.getElementById("center").style.visibility = "hidden";
+            document.getElementById("challenges").style.display = "inline-block"; 
+            document.getElementById("script1").style.display = "hidden";
+            document.getElementById("script1").style.display = "none"; 
+            document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
+            document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+            })
+        whatelse.addEventListener("click", function(){
+              mode = 6;
+            document.getElementById("roulette").style.visibility = "hidden";
+            document.getElementById("last").style.visibility = "hidden";
+            document.getElementById("wheelluck").style.visibility = "hidden";
+            document.getElementById("challenges").style.visibility = "hidden";
+            document.getElementById("center").style.visibility = "hidden";
+            document.getElementById("challenges").style.display = "none";
+            document.getElementById("script1").style.display = "inline-block";
+            document.getElementById("script1").style.visibility = "visible";
+            document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
+            document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
+            document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+            })    
+        
+            //РЕЖИМ КЛАССИКИ + БОСС ФАЙТ + РАНДОМ С ЗАПРЕТАМИ
+           
+            
+         firstl.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("firstl").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("firstl").style.background = "green";
+            } else {
+                document.getElementById("firstl").style.background = "red";
+            }
+        }})
+         secondl.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("secondl").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("secondl").style.background = "green";
+            } else {
+                document.getElementById("secondl").style.background = "red";
+            }
+        }})
+         thirdl.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("thirdl").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("thirdl").style.background = "green";
+            } else {
+                document.getElementById("thirdl").style.background = "red";
+            }
+        }})
+         fourl.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("fourl").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("fourl").style.background = "green";
+            } else {
+                document.getElementById("fourl").style.background = "red";
+            }
+        }})
+         fivel.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("fivel").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("fivel").style.background = "green";
+            } else {
+                document.getElementById("fivel").style.background = "red";
+            }
+        }})
+            
+            
+       firstr.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("firstr").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("firstr").style.background = "green";
+            } else {
+                document.getElementById("firstr").style.background = "red";
+            }
+        }})
+       secondr.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("secondr").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("secondr").style.background = "green";
+            } else {
+                document.getElementById("secondr").style.background = "red";
+            }
+        }})
+       thirdr.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("thirdr").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("thirdr").style.background = "green";
+            } else {
+                document.getElementById("thirdr").style.background = "red";
+            }
+        }})
+       fourr.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("fourr").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("fourr").style.background = "green";
+            } else {
+                document.getElementById("fourr").style.background = "red";
+            }
+        }})
+       fiver.addEventListener("dblclick", function(){
+            if((mode==1)||(mode==0)){
+            document.getElementById("fiver").style.background = "red";
+        }else{
+            if (getRandomInt(2)==1){
+              document.getElementById("fiver").style.background = "green";
+            } else {
+                document.getElementById("fiver").style.background = "red";
+            }
+        }})
+            
+            
+            //БОСС ФАЙТ ФИНАЛЬНЫЙ БОЙ
+            
+            
+        fight.addEventListener("click", function(){
+            let winl = getRandomInt(2);
+            if(winl==0){
+             document.getElementById("lastfl").style.background = "green"; 
+             document.getElementById("lastsl").style.background = "red"; 
+            } else {
+             document.getElementById("lastfl").style.background = "red"; 
+             document.getElementById("lastsl").style.background = "green";   
+            }
+            let winr = getRandomInt(2);
+            if(winr==0){
+             document.getElementById("lastfr").style.background = "green"; 
+             document.getElementById("lastsr").style.background = "red"; 
+            } else {
+             document.getElementById("lastfr").style.background = "red"; 
+             document.getElementById("lastsr").style.background = "green";   
+            }
+        })    
+            
+            
+            //ЧЕЛЛЕНДЖЫ
+            
+            let answers={
+                1:{
+                name: "Pos6",
+                description: "Лесник"
+                },
+                2:{
+                name: "Снайпер",
+                description: "Не использовать скиллы"
+                },
+                3:{
+                name: "Нограунд",
+                description: "Выбор персонажа рандомно"
+                },
+                4:{
+                name: "Вслепую",
+                description: "Игра без добавленной сборки"
+                },
+                5:{
+                name: "Бомж",
+                description: "Не покупать ничего в игре"
+                },
+                6:{
+                name: "Веномансер",
+                description: "Играть только с вещами которые дают яд"
+                },
+                7:{
+                name: "Фармила",
+                description: "Покупаешь вещи только для тимы или мидасы"
+                },
+                8:{
+                name: "Мусульман",
+                description: "Не убивать крипов"
+                },
+                9:{
+                name: "Самый сильный",
+                description: "Покупаешь вещи только на силу"
+                },
+                10:{
+                name: "Самый ловкий",
+                description: "Покупаешь вещи только на ловкость"
+                },
+                10:{
+                name: "Самый умный",
+                description: "Покупаешь вещи только на интеллект"
+                },
+                11:{
+                name: "И в рот и в жопу",
+                description: "Покупаешь вещи только которые дают и силу и ловкость и интерект сразу"
+                },
+                12:{
+                name: "Геюга",
+                description: "Без вещей на реген(всех показателей), реген только через базу"
+                },
+                13:{
+                name: "Любитель фруктов",
+                description: "Покупка вещей только после того как соберёшь 300 танго"
+                },
+                14:{
+                name: "Древовед",
+                description: "Только ветки в инвенторе"
+                },
+                15:{
+                name: "Афк",
+                description: "Игра только через подконтрольных крипов"
+                },
+                16:{
+                name: "Шин чон чун",
+                description: "Сменить язык на китайский"
+                },
+                17:{
+                name: "Дрочер",
+                description: "Всегда ходишь только с другим игроком(1000)"
+                },
+                18:{
+                name: "Фотограф",
+                description: "Не участвовать в тимфайтах"
+                },
+                19:{
+                name: "ZXC GHOUL",
+                description: "Ставить паузу и писать в чат после каждой смерти/кила"
+                },
+                20:{
+                name: "Знающий",
+                description: "Выписывать чат на каждое неправильное(или нет) действие тимы"
+                },
+                21:{
+                name: "Камбек года",
+                description: "Нафидить 3 смерти в начале катки и выиграть"
+                },
+                22:{
+                name: "Бессмертный",
+                description: "Собрать мега сыр"
+                },
+                23:{
+                name: "Где кнопка R?",
+                description: "Сыграть без ульты"
+                },
+                24:{
+                name: "Съехал от мамы",
+                description: "Не подходить к базе дальше т3(тп считается)"
+                },
+                25:{
+                name: "Домашний",
+                description: "Не заходить дальше т2"
+                },
+                26:{
+                name: "Хусик с нулевой",
+                description: "Убить рошана в соло 3 раза"
+                },
+                27:{
+                name: "Файтер",
+                description: "Не дефать и не ломать вышки"
+                },
+                28:{
+                name: "Как двигать карту?",
+                description: "Двигать карту только через карту"
+                },
+                29:{
+                name: "Нумпад плеер",
+                description: "Перебиндить использование предметов на нумпад"
+                },
+                30:{
+                name: "Тп отменён",
+                description: "Перемещаться по линиям только через тп"
+                },
+                31: { 
+                name: "А мне и не надо", 
+                description: "Не делать ластхиты" 
+                },
+                32: { 
+                name: "Самовывоз", 
+                description: "Не использовать курьера" 
+                }
+                
+            }
+           answer.addEventListener("click", ()=>{
+              let n = getRandomInt(32);
+                chex.innerHTML = answers[n].name;
+                chex2.innerHTML = answers[n].description;
+            }) 
+            
+            //JSON
+          const  heroes = [
+              {
+            "name": "antimage",
+            "id": 1,
+            "localized_name": "Anti-Mage"
+        },
+        {
+            "name": "axe",
+            "id": 2,
+            "localized_name": "Axe"
+        },
+        {
+            "name": "bane",
+            "id": 3,
+            "localized_name": "Bane"
+        },
+        {
+            "name": "bloodseeker",
+            "id": 4,
+            "localized_name": "Bloodseeker"
+        },
+        {
+            "name": "crystal_maiden",
+            "id": 5,
+            "localized_name": "Crystal Maiden"
+        },
+        {
+            "name": "drow_ranger",
+            "id": 6,
+            "localized_name": "Drow Ranger"
+        },
+        {
+            "name": "earthshaker",
+            "id": 7,
+            "localized_name": "Earthshaker"
+        },
+        {
+            "name": "juggernaut",
+            "id": 8,
+            "localized_name": "Juggernaut"
+        },
+        {
+            "name": "mirana",
+            "id": 9,
+            "localized_name": "Mirana"
+        },
+        {
+            "name": "nevermore",
+            "id": 11,
+            "localized_name": "Shadow Fiend"
+        },
+        {
+            "name": "morphling",
+            "id": 10,
+            "localized_name": "Morphling"
+        },
+        {
+            "name": "phantom_lancer",
+            "id": 12,
+            "localized_name": "Phantom Lancer"
+        },
+        {
+            "name": "puck",
+            "id": 13,
+            "localized_name": "Puck"
+        },
+        {
+            "name": "pudge",
+            "id": 14,
+            "localized_name": "Pudge"
+        },
+        {
+            "name": "razor",
+            "id": 15,
+            "localized_name": "Razor"
+        },
+        {
+            "name": "sand_king",
+            "id": 16,
+            "localized_name": "Sand King"
+        },
+        {
+            "name": "storm_spirit",
+            "id": 17,
+            "localized_name": "Storm Spirit"
+        },
+        {
+            "name": "sven",
+            "id": 18,
+            "localized_name": "Sven"
+        },
+        {
+            "name": "tiny",
+            "id": 19,
+            "localized_name": "Tiny"
+        },
+        {
+            "name": "vengefulspirit",
+            "id": 20,
+            "localized_name": "Vengeful Spirit"
+        },
+        {
+            "name": "windrunner",
+            "id": 21,
+            "localized_name": "Windranger"
+        },
+        {
+            "name": "zuus",
+            "id": 22,
+            "localized_name": "Zeus"
+        },
+        {
+            "name": "kunkka",
+            "id": 23,
+            "localized_name": "Kunkka"
+        },
+        {
+            "name": "lina",
+            "id": 25,
+            "localized_name": "Lina"
+        },
+        {
+            "name": "lich",
+            "id": 31,
+            "localized_name": "Lich"
+        },
+        {
+            "name": "lion",
+            "id": 26,
+            "localized_name": "Lion"
+        },
+        {
+            "name": "shadow_shaman",
+            "id": 27,
+            "localized_name": "Shadow Shaman"
+        },
+        {
+            "name": "slardar",
+            "id": 28,
+            "localized_name": "Slardar"
+        },
+        {
+            "name": "tidehunter",
+            "id": 29,
+            "localized_name": "Tidehunter"
+        },
+        {
+            "name": "witch_doctor",
+            "id": 30,
+            "localized_name": "Witch Doctor"
+        },
+        {
+            "name": "riki",
+            "id": 32,
+            "localized_name": "Riki"
+        },
+        {
+            "name": "enigma",
+            "id": 33,
+            "localized_name": "Enigma"
+        },
+        {
+            "name": "tinker",
+            "id": 34,
+            "localized_name": "Tinker"
+        },
+        {
+            "name": "sniper",
+            "id": 35,
+            "localized_name": "Sniper"
+        },
+        {
+            "name": "necrolyte",
+            "id": 36,
+            "localized_name": "Necrophos"
+        },
+        {
+            "name": "warlock",
+            "id": 37,
+            "localized_name": "Warlock"
+        },
+        {
+            "name": "beastmaster",
+            "id": 38,
+            "localized_name": "Beastmaster"
+        },
+        {
+            "name": "queenofpain",
+            "id": 39,
+            "localized_name": "Queen of Pain"
+        },
+        {
+            "name": "venomancer",
+            "id": 40,
+            "localized_name": "Venomancer"
+        },
+        {
+            "name": "faceless_void",
+            "id": 41,
+            "localized_name": "Faceless Void"
+        },
+        {
+            "name": "skeleton_king",
+            "id": 42,
+            "localized_name": "Skeleton King"
+        },
+        {
+            "name": "death_prophet",
+            "id": 43,
+            "localized_name": "Death Prophet"
+        },
+        {
+            "name": "phantom_assassin",
+            "id": 44,
+            "localized_name": "Phantom Assassin"
+        },
+        {
+            "name": "pugna",
+            "id": 45,
+            "localized_name": "Pugna"
+        },
+        {
+            "name": "templar_assassin",
+            "id": 46,
+            "localized_name": "Templar Assassin"
+        },
+        {
+            "name": "viper",
+            "id": 47,
+            "localized_name": "Viper"
+        },
+        {
+            "name": "luna",
+            "id": 48,
+            "localized_name": "Luna"
+        },
+        {
+            "name": "dragon_knight",
+            "id": 49,
+            "localized_name": "Dragon Knight"
+        },
+        {
+            "name": "dazzle",
+            "id": 50,
+            "localized_name": "Dazzle"
+        },
+        {
+            "name": "rattletrap",
+            "id": 51,
+            "localized_name": "Clockwerk"
+        },
+        {
+            "name": "leshrac",
+            "id": 52,
+            "localized_name": "Leshrac"
+        },
+        {
+            "name": "furion",
+            "id": 53,
+            "localized_name": "Nature's Prophet"
+        },
+        {
+            "name": "life_stealer",
+            "id": 54,
+            "localized_name": "Lifestealer"
+        },
+        {
+            "name": "dark_seer",
+            "id": 55,
+            "localized_name": "Dark Seer"
+        },
+        {
+            "name": "clinkz",
+            "id": 56,
+            "localized_name": "Clinkz"
+        },
+        {
+            "name": "omniknight",
+            "id": 57,
+            "localized_name": "Omniknight"
+        },
+        {
+            "name": "enchantress",
+            "id": 58,
+            "localized_name": "Enchantress"
+        },
+        {
+            "name": "huskar",
+            "id": 59,
+            "localized_name": "Huskar"
+        },
+        {
+            "name": "night_stalker",
+            "id": 60,
+            "localized_name": "Night Stalker"
+        },
+        {
+            "name": "broodmother",
+            "id": 61,
+            "localized_name": "Broodmother"
+        },
+        {
+            "name": "bounty_hunter",
+            "id": 62,
+            "localized_name": "Bounty Hunter"
+        },
+        {
+            "name": "weaver",
+            "id": 63,
+            "localized_name": "Weaver"
+        },
+        {
+            "name": "jakiro",
+            "id": 64,
+            "localized_name": "Jakiro"
+        },
+        {
+            "name": "batrider",
+            "id": 65,
+            "localized_name": "Batrider"
+        },
+        {
+            "name": "chen",
+            "id": 66,
+            "localized_name": "Chen"
+        },
+        {
+            "name": "spectre",
+            "id": 67,
+            "localized_name": "Spectre"
+        },
+        {
+            "name": "doom_bringer",
+            "id": 69,
+            "localized_name": "Doom"
+        },
+        {
+            "name": "ancient_apparition",
+            "id": 68,
+            "localized_name": "Ancient Apparition"
+        },
+        {
+            "name": "ursa",
+            "id": 70,
+            "localized_name": "Ursa"
+        },
+        {
+            "name": "spirit_breaker",
+            "id": 71,
+            "localized_name": "Spirit Breaker"
+        },
+        {
+            "name": "gyrocopter",
+            "id": 72,
+            "localized_name": "Gyrocopter"
+        },
+        {
+            "name": "alchemist",
+            "id": 73,
+            "localized_name": "Alchemist"
+        },
+        {
+            "name": "invoker",
+            "id": 74,
+            "localized_name": "Invoker"
+        },
+        {
+            "name": "silencer",
+            "id": 75,
+            "localized_name": "Silencer"
+        },
+        {
+            "name": "obsidian_destroyer",
+            "id": 76,
+            "localized_name": "Outworld Devourer"
+        },
+        {
+            "name": "lycan",
+            "id": 77,
+            "localized_name": "Lycanthrope"
+        },
+        {
+            "name": "brewmaster",
+            "id": 78,
+            "localized_name": "Brewmaster"
+        },
+        {
+            "name": "shadow_demon",
+            "id": 79,
+            "localized_name": "Shadow Demon"
+        },
+        {
+            "name": "lone_druid",
+            "id": 80,
+            "localized_name": "Lone Druid"
+        },
+        {
+            "name": "chaos_knight",
+            "id": 81,
+            "localized_name": "Chaos Knight"
+        },
+        {
+            "name": "meepo",
+            "id": 82,
+            "localized_name": "Meepo"
+        },
+        {
+            "name": "treant",
+            "id": 83,
+            "localized_name": "Treant Protector"
+        },
+        {
+            "name": "ogre_magi",
+            "id": 84,
+            "localized_name": "Ogre Magi"
+        },
+        {
+            "name": "undying",
+            "id": 85,
+            "localized_name": "Undying"
+        },
+        {
+            "name": "rubick",
+            "id": 86,
+            "localized_name": "Rubick"
+        },
+        {
+            "name": "disruptor",
+            "id": 87,
+            "localized_name": "Disruptor"
+        },
+        {
+            "name": "nyx_assassin",
+            "id": 88,
+            "localized_name": "Nyx Assassin"
+        },
+        {
+            "name": "naga_siren",
+            "id": 89,
+            "localized_name": "Naga Siren"
+        },
+        {
+            "name": "keeper_of_the_light",
+            "id": 90,
+            "localized_name": "Keeper of the Light"
+        },
+        {
+            "name": "wisp",
+            "id": 91,
+            "localized_name": "Wisp"
+        },
+        {
+            "name": "visage",
+            "id": 92,
+            "localized_name": "Visage"
+        },
+        {
+            "name": "slark",
+            "id": 93,
+            "localized_name": "Slark"
+        },
+        {
+            "name": "medusa",
+            "id": 94,
+            "localized_name": "Medusa"
+        },
+        {
+            "name": "troll_warlord",
+            "id": 95,
+            "localized_name": "Troll Warlord"
+        },
+        {
+            "name": "centaur",
+            "id": 96,
+            "localized_name": "Centaur Warrunner"
+        },
+        {
+            "name": "magnataur",
+            "id": 97,
+            "localized_name": "Magnus"
+        },
+        {
+            "name": "shredder",
+            "id": 98,
+            "localized_name": "Timbersaw"
+        },
+        {
+            "name": "bristleback",
+            "id": 99,
+            "localized_name": "Bristleback"
+        },
+        {
+            "name": "tusk",
+            "id": 100,
+            "localized_name": "Tusk"
+        },
+        {
+            "name": "skywrath_mage",
+            "id": 101,
+            "localized_name": "Skywrath Mage"
+        },
+        {
+            "name": "abaddon",
+            "id": 102,
+            "localized_name": "Abaddon"
+        },
+        {
+            "name": "elder_titan",
+            "id": 103,
+            "localized_name": "Elder Titan"
+        },
+        {
+            "name": "legion_commander",
+            "id": 104,
+            "localized_name": "Legion Commander"
+        },
+        {
+            "name": "ember_spirit",
+            "id": 106,
+            "localized_name": "Ember Spirit"
+        },
+        {
+            "name": "earth_spirit",
+            "id": 107,
+            "localized_name": "Earth Spirit"
+        },
+        {
+            "name": "abyssal_underlord",
+            "id": 108,
+            "localized_name": "Abyssal Underlord"
+        },
+        {
+            "name": "terrorblade",
+            "id": 109,
+            "localized_name": "Terrorblade"
+        },
+        {
+            "name": "phoenix",
+            "id": 110,
+            "localized_name": "Phoenix"
+        },
+        {
+            "name": "techies",
+            "id": 105,
+            "localized_name": "Techies"
+        },
+        {
+            "name": "oracle",
+            "id": 111,
+            "localized_name": "Oracle"
+        },
+        {
+            "name": "winter_wyvern",
+            "id": 112,
+            "localized_name": "Winter Wyvern"
+        },
+        {
+            "name": "arc_warden",
+            "id": 113,
+            "localized_name": "Arc Warden"
+        },
+        {
+            "name": "grimstroke",
+            "id": 121,
+            "localized_name": "Grimstroke"
+        },
+        {
+            "name": "hoodwink",
+            "id": 123,
+            "localized_name": "Hoodwink"
+        },
+        {
+            "name": "mars",
+            "id": 129,
+            "localized_name": "Mars"
+        },
+        {
+            "name": "monkey_king",
+            "id": 114,
+            "localized_name": "Monkey King"
+        },
+        {
+            "name": "dark_willow",
+            "id": 119,
+            "localized_name": "Dark Willow"
+        },
+        {
+            "name": "pangolier",
+            "id": 120,
+            "localized_name": "Pangolier"
+        },
+        {
+            "name": "snapfire",
+            "id": 128,
+            "localized_name": "Snapfire"
+        },
+        {
+            "name": "void_spirit",
+            "id": 126,
+            "localized_name": "Void Spirit"
+        }
+              
+          ];
+            // Массив с вариантами для подсказок
+          const suggestions = heroes.map(hero => hero.localized_name);
+         
+            
+            
+//ПОДСКАЗКИ
+
+
+
+const createAutocomplete = (inputElement, datalistElement) => {
+  inputElement.addEventListener('input', function() {
+    datalistElement.innerHTML = '';
+    const value = this.value;
+    
+    suggestions.forEach(suggestion => {
+      if (suggestion.startsWith(value)) {
+        const optionElement = document.createElement('option');
+        optionElement.value = suggestion;
+        datalistElement.appendChild(optionElement);
+      }
+    });
+  });
+};
+
+const applyAutocompleteToInput = (inputId, datalistId) => {
+  const inputElement = document.getElementById(inputId);
+  const datalistElement = document.getElementById(datalistId);
+  
+  createAutocomplete(inputElement, datalistElement);
+};
+
+applyAutocompleteToInput('inp1', 'Datalist1l');
+applyAutocompleteToInput('inp2', 'Datalist2l');
+applyAutocompleteToInput('inp3', 'Datalist3l');
+applyAutocompleteToInput('inp4', 'Datalist4l');
+applyAutocompleteToInput('inp5', 'Datalist5l');
+applyAutocompleteToInput('inp6', 'Datalist1r');
+applyAutocompleteToInput('inp7', 'Datalist2r');
+applyAutocompleteToInput('inp8', 'Datalist3r');
+applyAutocompleteToInput('inp9', 'Datalist4r');
+applyAutocompleteToInput('inp10', 'Datalist5r');
+            
+            //кнопка помощи
+            
+            helpbutton.addEventListener('click',()=>{
+                switch(mode){
+                    case 0:
+                        alert("This is the standard mode. Write heroes' names in the left and right columns, then ban heroes by double-clicking on the button.");
+                        break;
+                    case 1:
+                        alert("It's a bossfight mode, ban heroes until there are two left, then type them into the fight window and click the button. ");
+                        break;
+                    case 2:
+                        alert("It's a randomized mode. Write heroes in the left and right columns, then dubclick the button. Green is victory. Red - ban.");
+                        break;
+                    case 3:
+                        alert("It's roulette mode, fill in the characters and twist");
+                        break;
+                    case 4:
+                        alert("It's wheel mode, fill in the characters and spin it");
+                        break;
+                    case 5:
+                        alert("It's challenge mode. Press the button and see what you get.")
+                        break;
+                    case 6:
+                        alert("Various scripts and other.")
+                        break;
+                    default:
+                        alert("This is the standard mode. Write heroes' names in the left and right columns, then ban heroes by double-clicking on the button.");
+                        
+                        break;
+                }
+            })
+            
+            //ВЫБОР ЯЗЫКА
+            
+
+            
+    </script>
+           
+           
+    </body>
+
+
+</html>
