@@ -525,3 +525,7 @@ body{
     bottom: 50px;
     font-family:sans-serif;
 }   
+
+a:link{
+    color:white;
+}
