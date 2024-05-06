@@ -17,6 +17,8 @@ body{
     padding: 5px;
     margin-top:0;
     position: sticky;
+    position: relative;
+    z-index: 2;
 }
 .bstrip h1{
     width:94%;
@@ -114,6 +116,8 @@ body{
           opacity: 90%;
           border: 2px solid slategray;
           cursor: pointer;
+          position: absolute;
+        z-index: 1;
         }
       #roul{
           vertical-align: top;
@@ -214,6 +218,7 @@ body{
     background-color: #1C1C1C;
     border-radius: 10px;
     color: white;
+    cursor: pointer;
     }
       #roulette{
           visibility: hidden;
@@ -512,6 +517,7 @@ body{
     transform: scale(1);
   }
 }
+/* КНОПКА ПОМОЩИ */
 #helpbutton{
     border-radius: 100px;
     border: 1px solid black;
@@ -525,7 +531,106 @@ body{
     bottom: 50px;
     font-family:sans-serif;
 }   
-
+/* ССЫЛКИ */
 a:link{
     color:white;
+}
+/* СМЕНА ЯЗЫКА */
+.select-menu {
+width:100%;
+}
+.select-menu .select-btn {
+  display: flex;
+  background: none;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 8px;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+.select-menu .options {
+  position: absolute;
+  z-index: 2;
+  width: 45px;
+  overflow-y: auto;
+  max-height: 295px;
+  margin-top: 10px;
+  border-radius: 8px;
+  padding-left: 0;
+  background: none;
+  animation-name: fadeInDown;
+  -webkit-animation-name: fadeInDown;
+  animation-duration: 0.35s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.35s;
+  -webkit-animation-fill-mode: both;
+}
+.select-menu .options .option {
+  display: flex;
+  height: 55px;
+  cursor: pointer;
+  padding: 0;  
+  align-items: center;
+  background: none;
+  z-index: 2;
+}
+.select-menu .options .option:hover {
+  background: black;
+}
+.select-menu .options .option i {
+  margin-right: 12px;
+}
+.select-menu .options .option .option-text {
+  color: white;
+}
+
+.select-btn i {
+  transition: 0.3s;
+}
+
+.select-menu.active .select-btn i {
+  transform: rotate(-180deg);
+}
+.select-menu.active .options {
+  display: block;
+  opacity: 0;
+  z-index: 10;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInDown {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+  }
+}
+.languagespan{
+    background-color: black;
+    color: white;
+    opacity: 1;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+    left:0;
+    display: inline-block;
+    border: 1px solid black
 }

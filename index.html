@@ -6,13 +6,23 @@
      <link rel="icon" href="https://steamuserimages-a.akamaihd.net/ugc/1776131096817091231/DBAC0893AA158D401C679EED0E62C29B605E15D9/?imw=512&amp;imh=512&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true">
   </head>
 <body> 
-    <header class="bstrip"><h1>DOTAFUN</h1><div id ="languageswitch"><h2> EN
+    <header class="bstrip"><h1>DOTAFUN</h1><div id ="languageswitch">
 
- 
+<div class="select-menu">
+  <div class="select-btn">
+    <h2 class="languagespan"><span class="sBtn-text">EN</span></h2>
+  </div>
+
+  <ul class="options">
+    <li class="option">
+     <h2> <span class="option-text" id="choosed">RU</span></h2>
+    </li>
+  </ul>
+</div>
 
         
         
-        </h2></div></header>
+        </div></header>
     <button id="classic">Classic(defolt)</button><button id="rand">Boss fight</button><button id="frand">Random</button><button id="roul">Roulette</button><button id="whl">Wheel of luck</button><button id="chl">Challenges</button><button id="whatelse">Other</button>
     <div id="center">
      <div class="leftbox">
@@ -42,20 +52,19 @@
     
     <div id="last">
     <div class="leftlast">
-        <button id= "lastfl"><input placeholder="Hero"></button>
-        <button id= "lastsl"><input placeholder="Hero"></button>
+        <button id= "lastfl"><input id ="inpfight" placeholder="Hero"></button>
+        <button id= "lastsl"><input  id ="inpfight1"  placeholder="Hero"></button>
     </div>
         <button id="fight">FIGHT</button>
     <div class="rightlast">
-        <button id= "lastfr"><input placeholder="Hero"></button>
-        <button id= "lastsr"><input placeholder="Hero"></button>
+        <button id= "lastfr"><input id ="inpfight2"  placeholder="Hero"></button>
+        <button id= "lastsr"><input  id ="inpfight3" placeholder="Hero"></button>
     </div>
     </div>  
     <!-- СКАЧИВАНИЕ -->
     
-   <div id="script1"><div class="scripttext">Скрипт рандомного нажатия клавиш</div>
+   <div id="script1"><div class="scripttext" id ="scriptchl">Random keystroke script</div>
        <button id="download1"><a class="links" href="E:\Всякое\Доки и тд\сайт дота\Randbuttons\x64\Release\RandButtons.exe" target = "_blank">Download</a></button></div>
-    
     
     <!-- БЛОК С РУЛЕТКОЙ -->
     <div id="roulette">
@@ -76,7 +85,7 @@
            
         </div>
 	</div>
-	<button class="start" onclick="start()">START</button>
+	<button class="start" onclick="start()" id="roulchl">START</button>
 </div>
     
     <!-- БЛОК С КОЛЕСОМ УДАЧИ -->
@@ -88,17 +97,23 @@
   <!-- язычок барабана -->
   <div class="ticker"></div>
   <!-- кнопка -->
-  <button class="btn-spin">Start</button>
+  <button class="btn-spin" id ="whlchl">Start</button>
         </div>
 </div>
     
    <!--ПОМОЩЬ -->
     <div id="helpbutton"><h1>?</h1></div>
         <script>
-       
+            //ПЕРЕМЕННЫЕ ДЛЯ СМЕНЫ ЯЗЫКА
+  const optionMenu = document.querySelector(".select-menu"),
+  selectBtn = optionMenu.querySelector(".select-btn"),
+  options = optionMenu.querySelectorAll(".option"),
+  sBtn_text = optionMenu.querySelector(".sBtn-text");
+  option_text = optionMenu.querySelector(".option-text");
+    
            // ДОБАВЛЕНИЕ ТЕКСТА В РУЛЕТКУ КСГО
            
-          firstl.addEventListener("mouseout", function(){
+            firstl.addEventListener("mouseout", function(){
             re1.innerHTML = inp1.value;  
             re2.innerHTML = inp2.value;
             re3.innerHTML = inp3.value;
@@ -158,7 +173,7 @@
             re9.innerHTML = inp9.value;
             re10.innerHTML = inp10.value;
             });
-             firstr.addEventListener("mouseout", function(){
+            firstr.addEventListener("mouseout", function(){
             re1.innerHTML = inp1.value;  
             re2.innerHTML = inp2.value;
             re3.innerHTML = inp3.value;
@@ -222,7 +237,7 @@
             
             //РУЛЕТКА ИЗ КС ГО
             
-             var cards_block = document.querySelector('.cards');
+var cards_block = document.querySelector('.cards');
 var cards = document.querySelectorAll('.cards > div');
 
 function start() {
@@ -848,8 +863,142 @@ setupWheel();
             
             
             //ЧЕЛЛЕНДЖЫ
-            
-            let answers={
+            let answersEN={
+                1:{
+                name: "Pos6",
+                description: "Forester. Stay and farm in the woods"
+                },
+                2:{
+                name: "Sniper",
+                description: "Don't use active skills"
+                },
+                3:{
+                name: "Noground",
+                description: "Character selection randomly by button"
+                },
+                4:{
+                name: "Blind",
+                description: "The game without the added build"
+                },
+                5:{
+                name: "Homeless",
+                description: "Don't buy anything in the game"
+                },
+                6:{
+                name: "Venomancer",
+                description: "Only play with things that give poison."
+                },
+                7:{
+                name: "Farmy guy",
+                description: "Buying stuff only for the team or the midas"
+                },
+                8:{
+                name: "Muslim",
+                description: "Don't kill creeps"
+                },
+                9:{
+                name: "The strongest",
+                description: "You only buy things that give you strength"
+                },
+                10:{
+                name: "The most agile",
+                description: "You only buy things for agility"
+                },
+                10:{
+                name: "The smartest",
+                description: "You only buy things with intelligence"
+                },
+                11:{
+                name: "Good everywhere.",
+                description: "You only buy things that give you strength, agility and intelligence at once."
+                },
+                12:{
+                name: "Dark Gay",
+                description: "No regen items (all stats), regen only through the base"
+                },
+                13:{
+                name: "Fruit lover",
+                description: "Buying things only after you've collected 300 tangos."
+                },
+                14:{
+                name: "Wood scientist",
+                description: "Only sticks in the inventory"
+                },
+                15:{
+                name: "AFK",
+                description: "Play only through controlled creeps"
+                },
+                16:{
+                name: "Chin Chon Chung",
+                description: "Change the language to Chinese"
+                },
+                17:{
+                name: "Jerk",
+                description: "Always go only with another player(1000)"
+                },
+                18:{
+                name: "Photographer",
+                description: "Don't get involved in teamfights"
+                },
+                19:{
+                name: "ZXC GHOUL",
+                description: "Pause and write in chat after every death/kill"
+                },
+                20:{
+                name: "Knowledgeable",
+                description: "Write out a chat for every wrong(or not) action of the team"
+                },
+                21:{
+                name: "Comeback of year",
+                description: "Specially die three times at the beginning of the game and win."
+                },
+                22:{
+                name: "Immortal",
+                description: "Collect the mega cheese"
+                },
+                23:{
+                name: "Where's the R button?",
+                description: "Playing without the ultimate"
+                },
+                24:{
+                name: "Moved out of my mom's house",
+                description: "Do not approach the base further than t3(tp counts)"
+                },
+                25:{
+                name: "Homemade",
+                description: "Go no further than t2"
+                },
+                26:{
+                name: "Hooskar player",
+                description: "Kill roshan solo 3 times"
+                },
+                27:{
+                name: "Fighter",
+                description: "Don't defeat or break the towers."
+                },
+                28:{
+                name: "How do you move the map?",
+                description: "Move the map only through the map"
+                },
+                29:{
+                name: "Numpad player",
+                description: "Rebind item usage to the numpad"
+                },
+                30:{
+                name: "My tp is canceled",
+                description: "Move on the lines only through tp"
+                },
+                31: { 
+                name: "I don't have to", 
+                description: "Don't do lasthits" 
+                },
+                32: { 
+                name: "Self-delivery", 
+                description: "Don't use a courier" 
+                }
+                
+            };
+            let answersRU={
                 1:{
                 name: "Pos6",
                 description: "Лесник"
@@ -896,7 +1045,7 @@ setupWheel();
                 },
                 11:{
                 name: "И в рот и в жопу",
-                description: "Покупаешь вещи только которые дают и силу и ловкость и интерект сразу"
+                description: "Покупаешь вещи только которые дают и силу и ловкость и интелект сразу"
                 },
                 12:{
                 name: "Геюга",
@@ -986,8 +1135,13 @@ setupWheel();
             }
            answer.addEventListener("click", ()=>{
               let n = getRandomInt(32);
-                chex.innerHTML = answers[n].name;
-                chex2.innerHTML = answers[n].description;
+               if((sBtn_text.innerHTML=="EN")||(sBtn_text.innerHTML=="<h2> EN</h2>")){
+                chex.innerHTML = answersEN[n].name;
+                chex2.innerHTML = answersEN[n].description;
+                   }else{
+                chex.innerHTML = answersRU[n].name;
+                chex2.innerHTML = answersRU[n].description;     
+                   }
             }) 
             
             //JSON
@@ -1639,6 +1793,7 @@ applyAutocompleteToInput('inp10', 'Datalist5r');
             //кнопка помощи
             
             helpbutton.addEventListener('click',()=>{
+                if((sBtn_text.innerHTML=="EN")||(sBtn_text.innerHTML=="<h2> EN</h2>")){
                 switch(mode){
                     case 0:
                         alert("This is the standard mode. Write heroes' names in the left and right columns, then ban heroes by double-clicking on the button.");
@@ -1665,18 +1820,123 @@ applyAutocompleteToInput('inp10', 'Datalist5r');
                         alert("This is the standard mode. Write heroes' names in the left and right columns, then ban heroes by double-clicking on the button.");
                         
                         break;
+                }; }else
+                {
+                 switch(mode){
+                    case 0:
+                        alert("Это стандартный режим. Напишите имена героев в левой и правой колонках, а затем запретите героев, дважды щелкнув по ним.");
+                        break;
+                    case 1:
+                        alert("Это режим боя с боссом, запрещайте героев, пока не останется двое, затем введите их в окно боя и нажмите кнопку.");
+                        break;
+                    case 2:
+                        alert("Это рандомный режим. Напишите героев в левой и правой колонках, а затем нажмите кнопку. Зеленый - победа. Красный - запрет.");
+                        break;
+                    case 3:
+                        alert("Это режим рулетки, заполняйте героев и крутите");
+                        break;
+                    case 4:
+                        alert("Это режим колеса, заполняйте героев и вращайте его.");
+                        break;
+                    case 5:
+                        alert("Это режим челленджей. Нажимайте на кнопку и смотрите, что вам выпадет.")
+                        break;
+                    case 6:
+                        alert("Различные скрипты и прочее.")
+                        break;
+                    default:
+                        alert("Это стандартный режим. Напишите имена героев в левой и правой колонках, а затем запретите героев, дважды щелкнув по ним.");
+                        
+                        break;
+                };   
                 }
             })
             
             //ВЫБОР ЯЗЫКА
             
-         languageswitch.addEventListener('click', () =>{
-             alert("Function in development");
-         })
+        
             
+  selectBtn.addEventListener("click", () =>
+  optionMenu.classList.toggle("active")
+);
+
+options.forEach((option) => {
+  option.addEventListener("click", () => {
+    let selectedOption = option.querySelector(".option-text").innerText;
+    sBtn_text.innerText = selectedOption;   
+    optionMenu.classList.remove("active");
+      if(option_text.innerHTML == "RU"){option_text.innerHTML = "EN"}else{option_text.innerHTML = "RU"};
+      if(sBtn_text.innerHTML=="RU"){
+          classic.innerHTML = "Классический(По умолчанию)";
+          rand.innerHTML = "Сражение";
+          frand.innerHTML = "Рандом с выбором";
+          roul.innerHTML = "Рулетка";
+          whl.innerHTML = "Колесо удачи";
+          chl.innerHTML = "Челленджы";
+          whatelse.innerHTML ="Другое";
+          fight.innerHTML = "БОЙ";
+          answer.innerHTML = "Получить челлендж";
+          download1.innerHTML = "Скачать";
+          scriptchl.innerHTML = "Скрипт рандомного нажатия клавиш";
+          roulchl.innerHTML = "Старт";
+          whlchl.innerHTML = "Старт";
+          document.getElementById('inp1').placeholder = 'Введите имя героя';
+          document.getElementById('inp2').placeholder = 'Введите имя героя';
+          document.getElementById('inp3').placeholder = 'Введите имя героя';
+          document.getElementById('inp4').placeholder = 'Введите имя героя';
+          document.getElementById('inp5').placeholder = 'Введите имя героя';
+          document.getElementById('inp6').placeholder = 'Введите имя героя';
+          document.getElementById('inp7').placeholder = 'Введите имя героя';
+          document.getElementById('inp8').placeholder = 'Введите имя героя';
+          document.getElementById('inp9').placeholder = 'Введите имя героя';
+          document.getElementById('inp10').placeholder = 'Введите имя героя';
+          document.getElementById('inpfight').placeholder = 'Введите имя героя';
+          document.getElementById('inpfight1').placeholder = 'Введите имя героя';
+          document.getElementById('inpfight2').placeholder = 'Введите имя героя';
+          document.getElementById('inpfight3').placeholder = 'Введите имя героя';
+          
+
+              
+          
+          
+      };
+      if((sBtn_text.innerHTML=="EN")||(sBtn_text.innerHTML=="<h2> EN</h2>")){
+          classic.innerHTML = "Classic(defolt)";
+          rand.innerHTML = "Boss fight";
+          frand.innerHTML = "Random";
+          roul.innerHTML = "Roulette";
+          whl.innerHTML = "Wheel of luck";
+          chl.innerHTML = "Challenges";
+          whatelse.innerHTML ="Other";
+          fight.innerHTML = "FIGHT";
+          answer.innerHTML = "GET CHALLENGE";
+          download1.innerHTML = "Download";
+          scriptchl.innerHTML = "Random keystroke script";
+          roulchl.innerHTML = "Start";
+          whlchl.innerHTML = "Start";
+          document.getElementById('inp1').placeholder = 'Hero';
+          document.getElementById('inp2').placeholder = 'Hero';
+          document.getElementById('inp3').placeholder = 'Hero';
+          document.getElementById('inp4').placeholder = 'Hero';
+          document.getElementById('inp5').placeholder = 'Hero';
+          document.getElementById('inp6').placeholder = 'Hero';
+          document.getElementById('inp7').placeholder = 'Hero';
+          document.getElementById('inp8').placeholder = 'Hero';
+          document.getElementById('inp9').placeholder = 'Hero';
+          document.getElementById('inp10').placeholder = 'Hero';
+          document.getElementById('inpfight').placeholder = 'Hero';
+          document.getElementById('inpfight1').placeholder = 'Hero';
+          document.getElementById('inpfight2').placeholder = 'Hero';
+          document.getElementById('inpfight3').placeholder = 'Hero';
+          
+      }
+  });
+});
+            
+        
     </script>
-           
-           
+  
+         
     </body>
 
 
