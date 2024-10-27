@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
- <head>   
+ <head> 
+      
      <title>Dota Fun</title>
      <link rel="stylesheet" href="style.css">
      <link rel="icon" href="https://steamuserimages-a.akamaihd.net/ugc/1776131096817091231/DBAC0893AA158D401C679EED0E62C29B605E15D9/?imw=512&amp;imh=512&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true">
@@ -26,7 +27,7 @@
     <button id="classic">Classic(defolt)</button><button id="rand">Boss fight</button><button id="frand">Random</button><button id="roul">Roulette</button><button id="whl">Wheel of luck</button><button id="chl">Challenges</button><button id="whatelse">Other</button>
     <div id="center">
      <div class="leftbox">
-      <button id="firstl"><input list="Datalist1l" id="inp1" placeholder="Hero"><datalist id="Datalist1l"></datalist></button>
+      <button id="firstl"><input list="Datalist1l" id="inp1" placeholder="Hero" onkeyup='saveValue(this);'><datalist id="Datalist1l"></datalist></button>
       <button id="secondl"><input  list="Datalist2l" id="inp2" placeholder="Hero"><datalist id="Datalist2l"></datalist></button>
       <button id="thirdl"><input list="Datalist3l"  id="inp3" placeholder="Hero"><datalist id="Datalist3l"></datalist></button>
       <button id="fourl"><input list="Datalist4l"  id="inp4" placeholder="Hero"><datalist id="Datalist4l"></datalist></button>
@@ -65,6 +66,8 @@
     
    <div id="script1"><div class="scripttext" id ="scriptchl">Random keystroke script</div>
        <button id="download1"><a class="links" href="E:\Всякое\Доки и тд\сайт дота\Randbuttons\x64\Release\RandButtons.exe" target = "_blank">Download</a></button></div>
+       <div id="script2"><div class="scriptmessages" id ="scriptmsg">Random alert script</div>
+       <button id="download2"><a class="links" href="E:\Всякое\Доки и тд\Сайты\сайт дота\Messages\Messages\x64\Debug\Messages.exe" target = "_blank">Download</a></button></div>
     
     <!-- БЛОК С РУЛЕТКОЙ -->
     <div id="roulette">
@@ -103,6 +106,9 @@
     
    <!--ПОМОЩЬ -->
     <div id="helpbutton"><h1>?</h1></div>
+    <!--КУКИ-->
+    <script src="https://unpkg.com/cookiejs/dist/cookie.min.js"></script>
+    <script type="text/javascript" src="./cookiework.js"></script>
         <script>
             //ПЕРЕМЕННЫЕ ДЛЯ СМЕНЫ ЯЗЫКА
   const optionMenu = document.querySelector(".select-menu"),
@@ -603,6 +609,10 @@ setupWheel();
             document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
             document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
             document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+            document.getElementById("script1").style.display = "none"; 
+            document.getElementById("script1").style.display = "hidden";
+            document.getElementById("script2").style.display = "none"; 
+            document.getElementById("script2").style.display = "hidden";
         });  
         rand.addEventListener("click", function(){
             mode = 1;
@@ -614,6 +624,8 @@ setupWheel();
             document.getElementById("challenges").style.display = "none";
             document.getElementById("script1").style.display = "none"; 
             document.getElementById("script1").style.display = "hidden";
+            document.getElementById("script2").style.display = "none"; 
+            document.getElementById("script2").style.display = "hidden";
             document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
             document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
             document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -635,6 +647,8 @@ setupWheel();
             document.getElementById("challenges").style.display = "none";
             document.getElementById("script1").style.display = "none"; 
             document.getElementById("script1").style.display = "hidden";
+            document.getElementById("script2").style.display = "none"; 
+            document.getElementById("script2").style.display = "hidden";
             document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
             document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
             document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -656,6 +670,8 @@ setupWheel();
             document.getElementById("challenges").style.display = "none";
             document.getElementById("script1").style.display = "none"; 
             document.getElementById("script1").style.display = "hidden";
+            document.getElementById("script2").style.display = "none"; 
+            document.getElementById("script2").style.display = "hidden";
             document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
             document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
             document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -677,6 +693,8 @@ setupWheel();
             document.getElementById("challenges").style.display = "none";
             document.getElementById("script1").style.display = "none"; 
             document.getElementById("script1").style.display = "hidden";
+            document.getElementById("script2").style.display = "none"; 
+            document.getElementById("script2").style.display = "hidden";
             document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
             document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
             document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -699,6 +717,8 @@ setupWheel();
             document.getElementById("challenges").style.display = "inline-block"; 
             document.getElementById("script1").style.display = "hidden";
             document.getElementById("script1").style.display = "none"; 
+            document.getElementById("script2").style.display = "none"; 
+            document.getElementById("script2").style.display = "hidden";
             document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
             document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
             document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -720,6 +740,8 @@ setupWheel();
             document.getElementById("challenges").style.display = "none";
             document.getElementById("script1").style.display = "inline-block";
             document.getElementById("script1").style.visibility = "visible";
+            document.getElementById("script2").style.display = "inline-block";
+            document.getElementById("script2").style.visibility = "visible";
             document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
             document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
             document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -1878,6 +1900,7 @@ options.forEach((option) => {
           answer.innerHTML = "Получить челлендж";
           download1.innerHTML = "Скачать";
           scriptchl.innerHTML = "Скрипт рандомного нажатия клавиш";
+          scriptmsg.innerHTML = "Скрипт рандомных предупреждений";
           roulchl.innerHTML = "Старт";
           whlchl.innerHTML = "Старт";
           document.getElementById('inp1').placeholder = 'Введите имя героя';
@@ -1912,6 +1935,7 @@ options.forEach((option) => {
           answer.innerHTML = "GET CHALLENGE";
           download1.innerHTML = "Download";
           scriptchl.innerHTML = "Random keystroke script";
+          scriptmsg.innerHTML = "Random alert script";
           roulchl.innerHTML = "Start";
           whlchl.innerHTML = "Start";
           document.getElementById('inp1').placeholder = 'Hero';
@@ -1933,7 +1957,6 @@ options.forEach((option) => {
   });
 });
             
-        
     </script>
   
          

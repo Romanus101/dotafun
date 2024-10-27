@@ -170,7 +170,13 @@ body{
 #script1{
     display: none;
     visibility: hidden;
-    left:40%;
+    left:50%;
+    position: absolute;
+}
+#script2{
+    display: none;
+    visibility: hidden;
+    left:30%;
     position: absolute;
 }
 .scripttext{
@@ -181,7 +187,25 @@ body{
     border-radius: 3px;
     padding: 10px;
 }
+.scriptmessages{
+    text-align: center;
+    background-color: #1C1C1C;
+    color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 10px;
+}
 #download1{
+          margin-top: 0;
+          height: 30px;
+          background-color: #1C1C1C;
+          color:white;
+          opacity: 90%;
+          text-align: center;
+          cursor: pointer; 
+          margin-left: 35%;
+}
+#download2{
           margin-top: 0;
           height: 30px;
           background-color: #1C1C1C;
