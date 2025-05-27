@@ -3,7 +3,8 @@ input{
    } 
 body{
     margin: 0;
-     background-color: dimgray;
+    background: linear-gradient(135deg, #3D3D3D 0%, #101010 100%);
+    min-height: 100vh;
     
 }
 .bstrip{
@@ -21,6 +22,7 @@ body{
     z-index: 2;
 }
 .bstrip h1{
+    font-family: 'Inter', sans-serif;
     width:94%;
     height:8%;
     background-color: black;
