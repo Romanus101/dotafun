@@ -554,6 +554,7 @@ body{
     right: 50px;
     bottom: 50px;
     font-family:sans-serif;
+    cursor: pointer;
 }   
 /* ССЫЛКИ */
 a:link{
