@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="eng">
   <head>
     <title>Dota Fun</title>
     <link rel="stylesheet" href="style.css" />
@@ -88,7 +88,10 @@
       </div>
     </div>
     <!-- СКАЧИВАНИЕ -->
-
+    <div id ="downloadall">
+    <div id="random_number">
+        <input placeholder="Min" id="minrandnumber"> <div id="resultrandnumber">?#1@$</div> <input placeholder="Max" id="maxrandnumber"> <button id="randnumberbutton">Check</button>
+    </div>
     <div id="script1">
       <div class="scripttext" id="scriptchl">Random keystroke script</div>
       <button id="download1">
@@ -101,7 +104,7 @@
         <a class="links" href="Messages\Messages\x64\Debug\Messages.exe" target="_blank">Download</a>
       </button>
     </div>
-
+    </div>
     <!-- БЛОК С РУЛЕТКОЙ -->
     <div id="roulette">
       <div class="shadow"></div>
@@ -642,10 +645,8 @@ const setupWheel = () => {
         document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
         document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
         document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
-        document.getElementById("script1").style.display = "none";
-        document.getElementById("script1").style.display = "hidden";
-        document.getElementById("script2").style.display = "none";
-        document.getElementById("script2").style.display = "hidden";
+        document.getElementById("downloadall").style.display = "none";
+        document.getElementById("downloadall").style.visibility = "hidden";
       });
       rand.addEventListener("click", function () {
         mode = 1;
@@ -655,10 +656,8 @@ const setupWheel = () => {
         document.getElementById("wheelluck").style.visibility = "hidden";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
-        document.getElementById("script1").style.display = "none";
-        document.getElementById("script1").style.display = "hidden";
-        document.getElementById("script2").style.display = "none";
-        document.getElementById("script2").style.display = "hidden";
+        document.getElementById("downloadall").style.display = "none";
+        document.getElementById("downloadall").style.visibility = "hidden";
         document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
         document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
         document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -678,10 +677,8 @@ const setupWheel = () => {
         document.getElementById("wheelluck").style.visibility = "hidden";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
-        document.getElementById("script1").style.display = "none";
-        document.getElementById("script1").style.display = "hidden";
-        document.getElementById("script2").style.display = "none";
-        document.getElementById("script2").style.display = "hidden";
+        document.getElementById("downloadall").style.display = "none";
+        document.getElementById("downloadall").style.visibility = "hidden";
         document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
         document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
         document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -701,10 +698,8 @@ const setupWheel = () => {
         document.getElementById("wheelluck").style.visibility = "hidden";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
-        document.getElementById("script1").style.display = "none";
-        document.getElementById("script1").style.display = "hidden";
-        document.getElementById("script2").style.display = "none";
-        document.getElementById("script2").style.display = "hidden";
+        document.getElementById("downloadall").style.display = "none";
+        document.getElementById("downloadall").style.visibility = "hidden";
         document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
         document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
         document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -724,10 +719,8 @@ const setupWheel = () => {
         document.getElementById("wheelluck").style.visibility = "visible";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
-        document.getElementById("script1").style.display = "none";
-        document.getElementById("script1").style.display = "hidden";
-        document.getElementById("script2").style.display = "none";
-        document.getElementById("script2").style.display = "hidden";
+        document.getElementById("downloadall").style.display = "none";
+        document.getElementById("downloadall").style.visibility = "hidden";
         document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
         document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
         document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -747,10 +740,8 @@ const setupWheel = () => {
         document.getElementById("challenges").style.visibility = "visible";
         document.getElementById("center").style.visibility = "hidden";
         document.getElementById("challenges").style.display = "inline-block";
-        document.getElementById("script1").style.display = "hidden";
-        document.getElementById("script1").style.display = "none";
-        document.getElementById("script2").style.display = "none";
-        document.getElementById("script2").style.display = "hidden";
+        document.getElementById("downloadall").style.display = "none";
+        document.getElementById("downloadall").style.visibility = "hidden";
         document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
         document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
         document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -770,10 +761,8 @@ const setupWheel = () => {
         document.getElementById("challenges").style.visibility = "hidden";
         document.getElementById("center").style.visibility = "hidden";
         document.getElementById("challenges").style.display = "none";
-        document.getElementById("script1").style.display = "inline-block";
-        document.getElementById("script1").style.visibility = "visible";
-        document.getElementById("script2").style.display = "inline-block";
-        document.getElementById("script2").style.visibility = "visible";
+        document.getElementById("downloadall").style.display = "inline-block";
+        document.getElementById("downloadall").style.visibility = "visible";
         document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
         document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
         document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
@@ -1348,7 +1337,7 @@ const setupWheel = () => {
       });
 
       //JSON
-      const heroes = [
+      const heroesEn = [
         {
           name: "antimage",
           id: 1,
@@ -1948,10 +1937,41 @@ const setupWheel = () => {
           name: "void_spirit",
           id: 126,
           localized_name: "Void Spirit"
+        },
+        {
+          name: "kez",
+          id: 130,
+          localized_name: "Kez"
+        },
+        {
+          name: "marci",
+          id: 131,
+          localized_name: "Marci"
+        },
+        {
+          name: "downbreaker",
+          id: 132,
+          localized_name: "Downbreaker"
+        },
+        {
+          name: "ringmaster",
+          id: 133,
+          localized_name: "Ringmaster"
+        },
+        {
+          name: "muerta",
+          id: 134,
+          localized_name: "Muerta"
+        },
+        {
+          name: "primal_beast",
+          id: 135,
+          localized_name: "Primal Beast"
         }
       ];
+      
       // Массив с вариантами для подсказок
-      const suggestions = heroes.map((hero) => hero.localized_name);
+      const suggestions = heroesEn.map((hero) => hero.localized_name);
 
       //ПОДСКАЗКИ
 
@@ -1988,6 +2008,25 @@ const setupWheel = () => {
       applyAutocompleteToInput("inp9", "Datalist4r");
       applyAutocompleteToInput("inp10", "Datalist5r");
 
+      const minInput = document.getElementById("minrandnumber");
+      const maxInput = document.getElementById("maxrandnumber");
+      const result = document.getElementById("resultrandnumber");
+      const randBtn = document.getElementById("randnumberbutton");
+      
+      randnumberbutton.addEventListener("click", function(){
+         const min = parseInt(minInput.value, 10);
+         const max = parseInt(maxInput.value, 10);
+         if (isNaN(min) || isNaN(max) || min > max) {
+           if (sBtn_text.innerHTML == "EN" || sBtn_text.innerHTML == "<h2> EN</h2>"){
+        result.textContent = "Please enter valid numbers";
+             }else{
+               result.textContent = "Введите корректные числа";
+             }
+        return;
+    }
+        const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        result.textContent = randomNum;
+      });
       //кнопка помощи
 
       helpbutton.addEventListener("click", () => {
@@ -2110,6 +2149,9 @@ const setupWheel = () => {
             document.getElementById("inpfight1").placeholder = "Введите имя героя";
             document.getElementById("inpfight2").placeholder = "Введите имя героя";
             document.getElementById("inpfight3").placeholder = "Введите имя героя";
+            document.getElementById("minrandnumber").placeholder = "Мин.";
+            document.getElementById("maxrandnumber").placeholder = "Макс."; 
+            randnumberbutton.innerHTML = "Готово";
           }
           if (sBtn_text.innerHTML == "EN" || sBtn_text.innerHTML == "<h2> EN</h2>") {
             classic.innerHTML = "Classic(defolt)";
@@ -2141,6 +2183,9 @@ const setupWheel = () => {
             document.getElementById("inpfight1").placeholder = "Hero";
             document.getElementById("inpfight2").placeholder = "Hero";
             document.getElementById("inpfight3").placeholder = "Hero";
+            document.getElementById("minrandnumber").placeholder = "Min";
+            document.getElementById("maxrandnumber").placeholder = "Max";
+            randnumberbutton.innerHTML = "Check";
           }
         });
       });

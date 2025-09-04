@@ -169,16 +169,51 @@ body{
           visibility: hidden;
           display: none; 
     }
-#script1{
+#random_number{
+    height: auto;
+    width: auto;
+    position: absolute;
+    vertical-align: middle;
+    text-align: center;
+    margin-left:10%; 
+    
+}
+#resultrandnumber{
+    display: inline-block;
+    text-align: center;
+    background-color: #1C1C1C;
+    color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 10px;
+}
+#downloadall{
+    text-align: center;
+    vertical-align: middle;
     display: none;
     visibility: hidden;
-    left:50%;
+    
+}
+#randnumberbutton{
+    margin-top: 0;
+    height: 30px;
+    background-color: #1C1C1C;
+    color:white;
+    opacity: 90%;
+    text-align: center;
+    cursor: pointer; 
+    position: absolute;
+    margin-left: 5px;
+    
+}
+#script1{
+  
+    left:70%;
     position: absolute;
 }
 #script2{
-    display: none;
-    visibility: hidden;
-    left:30%;
+
+    left:50%;
     position: absolute;
 }
 .scripttext{
