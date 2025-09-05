@@ -435,7 +435,25 @@ body{
   grid-area: trigger;
   justify-self: center;
 }
+/*
+#wheelcolorchange{
+    
 
+    margin-top: 500px;
+    box-sizing: border-box;
+  color: white;
+  background: black;
+  border: none;
+ 
+  font-size: inherit;
+
+  padding: 0.9rem 2rem 1rem;
+
+  border-radius: 0.5rem;
+
+  cursor: pointer;
+}
+*/
 /* сектор колеса */
 .spinner {
     box-sizing: border-box;

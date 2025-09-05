@@ -135,7 +135,7 @@
         <!-- язычок барабана -->
         <div class="ticker"></div>
         <!-- кнопка -->
-        <button class="btn-spin" id="whlchl">Start</button>
+        <button class="btn-spin" id="whlchl">Start</button> <!--<button id="wheelcolorchange">Change color</button>-->
       </div>
     </div>
 
@@ -335,7 +335,8 @@
           color: "hsl(137 30% 43%)"
         }
       ];
-
+      
+        
       // создаём переменные для быстрого доступа ко всем объектам на странице — блоку в целом, колесу, кнопке и язычку
 
       const wheel = document.querySelector(".deal-wheel");
@@ -392,7 +393,7 @@
     );`
         );
       };
-
+        
       // создаём функцию, которая нарисует колесо в сборе
 const setupWheel = () => {
   // сначала секторы (это обновляет фон, так что это нормально)
@@ -484,7 +485,25 @@ const setupWheel = () => {
         trigger.disabled = false;
       });
       setupWheel();
+      /*
+      //смена цветов в рулетке
+wheelcolorchange.addEventListener("click", function(){
+        prizes[0].color = "hsl(0,100%,27.3%)";
+        prizes[1].color = "hsl(0,0%,0%)";
+        prizes[2].color = "hsl(0,100%,27.3%)";
+        prizes[3].color = "hsl(0,0%,0%)";
+        prizes[4].color = "hsl(0,100%,27.3%)";
+        prizes[5].color = "hsl(0,0%,0%)";
+        prizes[6].color = "hsl(0,100%,27.3%)";
+        prizes[7].color = "hsl(0,0%,0%)";
+        prizes[8].color = "hsl(120,100%,25.1%)";
+        prizes[9].color = "hsl(0,0%,0%)";
+      
+      document.getElementById("wheelluck").style.color = "white";
 
+        setupWheel();
+      });
+      */
       // ТЕКСТ В КОЛЕСЕ + ОТРИСОВКА
 
       firstl.addEventListener("input", function () {
@@ -1976,19 +1995,19 @@ const setupWheel = () => {
       //ПОДСКАЗКИ
 
       const createAutocomplete = (inputElement, datalistElement) => {
-        inputElement.addEventListener("input", function () {
-          datalistElement.innerHTML = "";
-          const value = this.value;
+  inputElement.addEventListener("input", function () {
+    datalistElement.innerHTML = "";
+    const value = this.value.toLowerCase(); // приводим введённое к нижнему регистру
 
-          suggestions.forEach((suggestion) => {
-            if (suggestion.startsWith(value)) {
-              const optionElement = document.createElement("option");
-              optionElement.value = suggestion;
-              datalistElement.appendChild(optionElement);
-            }
-          });
-        });
-      };
+    suggestions.forEach((suggestion) => {
+      if (suggestion.toLowerCase().startsWith(value)) { // приводим и вариант из списка
+        const optionElement = document.createElement("option");
+        optionElement.value = suggestion;
+        datalistElement.appendChild(optionElement);
+      }
+    });
+  });
+};
 
       const applyAutocompleteToInput = (inputId, datalistId) => {
         const inputElement = document.getElementById(inputId);
@@ -2008,11 +2027,13 @@ const setupWheel = () => {
       applyAutocompleteToInput("inp9", "Datalist4r");
       applyAutocompleteToInput("inp10", "Datalist5r");
 
+          //рандомное число в другое
+      
       const minInput = document.getElementById("minrandnumber");
       const maxInput = document.getElementById("maxrandnumber");
       const result = document.getElementById("resultrandnumber");
       const randBtn = document.getElementById("randnumberbutton");
-      
+  
       randnumberbutton.addEventListener("click", function(){
          const min = parseInt(minInput.value, 10);
          const max = parseInt(maxInput.value, 10);
