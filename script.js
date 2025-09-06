@@ -23,28 +23,7 @@
 
       // ДОБАВЛЕНИЕ ТЕКСТА В РУЛЕТКУ КСГО
 
-function updateResults() {
-  const inputs = [
-    inp1, inp2, inp3, inp4, inp5,
-    inp6, inp7, inp8, inp9, inp10
-  ];
-  const results = [
-    re1, re2, re3, re4, re5,
-    re6, re7, re8, re9, re10
-  ];
 
-  inputs.forEach((inp, i) => {
-    results[i].innerHTML = inp.value;
-  });
-}
-
-// Вешаем обработчик на сами input-элементы
-[
-  inp1, inp2, inp3, inp4, inp5,
-  inp6, inp7, inp8, inp9, inp10
-].forEach(input => {
-  input.addEventListener("input", updateResults);
-});
 let isRolling = false;
 let animationStart = null;
 let duration = 5000; // общая длительность
