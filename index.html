@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="eng">
+<html lang="en">
   <head>
     <title>Dota Fun</title>
     <link rel="stylesheet" href="style.css" />
@@ -155,126 +155,20 @@
 
       // ДОБАВЛЕНИЕ ТЕКСТА В РУЛЕТКУ КСГО
 
-      firstl.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      secondl.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      thirdl.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      fourl.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      fivel.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      firstr.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      secondr.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      thirdr.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      fourr.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
-      fiver.addEventListener("input", function () {
-        re1.innerHTML = inp1.value;
-        re2.innerHTML = inp2.value;
-        re3.innerHTML = inp3.value;
-        re4.innerHTML = inp4.value;
-        re5.innerHTML = inp5.value;
-        re6.innerHTML = inp6.value;
-        re7.innerHTML = inp7.value;
-        re8.innerHTML = inp8.value;
-        re9.innerHTML = inp9.value;
-        re10.innerHTML = inp10.value;
-      });
+      function updateResults() {
+  const inputs = [inp1, inp2, inp3, inp4, inp5, inp6, inp7, inp8, inp9, inp10];
+  const results = [re1, re2, re3, re4, re5, re6, re7, re8, re9, re10];
+
+  inputs.forEach((inp, i) => {
+    results[i].innerHTML = inp.value;
+  });
+}
+
+// Вешаем один и тот же обработчик на все три элемента
+[firstl, secondl, thirdl, fourl, fivel, firstr, secondr, thirdr, fourr, fiver].forEach(el => {
+  el.addEventListener("input", updateResults);
+});
+
 
       //РУЛЕТКА ИЗ КС ГО
 
@@ -506,137 +400,24 @@ wheelcolorchange.addEventListener("click", function(){
       */
       // ТЕКСТ В КОЛЕСЕ + ОТРИСОВКА
 
-      firstl.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      secondl.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      thirdl.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      fourl.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      fivel.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      firstr.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      secondr.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      thirdr.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      fourr.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
-      fiver.addEventListener("input", function () {
-        prizes[0].text = inp1.value;
-        prizes[1].text = inp2.value;
-        prizes[2].text = inp3.value;
-        prizes[3].text = inp4.value;
-        prizes[4].text = inp5.value;
-        prizes[5].text = inp6.value;
-        prizes[6].text = inp7.value;
-        prizes[7].text = inp8.value;
-        prizes[8].text = inp9.value;
-        prizes[9].text = inp10.value;
-        setupWheel();
-      });
+     function updatePrizes() {
+  const inputs = [inp1, inp2, inp3, inp4, inp5, inp6, inp7, inp8, inp9, inp10];
 
+  inputs.forEach((inp, i) => {
+    prizes[i].text = inp.value;
+  });
+
+  setupWheel();
+}
+
+// Список всех элементов, на которые нужен обработчик
+const listeners = [
+  firstl, secondl, thirdl, fourl, fivel,
+  firstr, secondr, thirdr, fourr, fiver
+];
+
+// Вешаем один и тот же обработчик на все
+listeners.forEach(el => el.addEventListener("input", updatePrizes));
       //ФУНКЦИЯ РАНДОМА
 
       function getRandomInt(max) {
