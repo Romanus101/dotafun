@@ -42,7 +42,6 @@ h1, h2, h3 {
 #languageswitch{   
     width:4%;
     height:8%;
-    background-color: black;
     color: white;
     opacity: 90%;
     text-align: center;
@@ -164,12 +163,15 @@ h1, h2, h3 {
           cursor: pointer;
       }
 */
-      #last{
-          visibility: hidden;
-          text-align: center;
-          margin-top: 10%;
-          height: 30px;
-
+      #last {
+        visibility: hidden;
+        text-align: center;
+        margin-top: 10%;
+        height: 30px;
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        gap: 20px;
       }
 
       .leftlast{
@@ -180,13 +182,42 @@ h1, h2, h3 {
           display: inline-grid;
           gap:30px;
       }
-      #fight{
-          background-color: #1C1C1C;
-          cursor: pointer;
-          color:white;
-          border: 2px solid black;
-          border-radius: 5px;
-      }
+      #fight {
+  background: linear-gradient(145deg, #2a2a2a, #1c1c1c);
+  color: white;
+  font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 8px 25px;
+  border: 2px solid #ff0000;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 10px rgba(255, 0, 0, 0.4),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+
+}
+
+/* Наведение — агрессивный красный */
+#fight:hover {
+  background: linear-gradient(145deg, #ff1a1a, #b30000);
+  box-shadow:
+    0 0 20px rgba(255, 0, 0, 0.8),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Нажатие — эффект удара */
+#fight:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 0 12px rgba(255, 0, 0, 0.6),
+    inset 0 0 6px rgba(255, 255, 255, 0.15);
+}
+
 #challenges {
   display: flex;
   flex-direction: column;
@@ -372,27 +403,44 @@ display: inline-block;
          
          /* РУЛЕТКА КАК В КСГО */
         
-         .start {
-	position: absolute;
-	top: calc(50% + 100px);
-	left: 50%;
-	background: black;
-	transform: translate(-50%, -50%);
-	width: 100px;
-	height: 25px;
-	border: 2px solid dimgray;
-	color: white;
-	font-weight: bold;
-	border-radius: 5px;
-	transition: 0.3s ease;
-	user-select: none;
-	cursor: pointer;
-	filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+.start {
+  position: absolute;
+  top: calc(50% + 100px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* Размеры и форма */
+  padding: 10px 25px;
+  min-width: 120px;
+  border-radius: 8px;
+  border: none;
+  
+  /* Фон и текст */
+  background: linear-gradient(180deg, #1a1a1a, #000000);
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  
+  /* Эффекты */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4), inset 0 0 5px rgba(255,255,255,0.1);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  user-select: none;
 }
 
 .start:hover {
-	opacity: 75%;
+  background: linear-gradient(180deg, #222, #111);
+  box-shadow: 0 0 15px rgba(228, 66, 66, 0.6), 0 4px 10px rgba(0,0,0,0.4);
+  transform: translate(-50%, -50%) scale(1.05);
 }
+
+.start:active {
+  transform: translate(-50%, -50%) scale(0.97);
+  box-shadow: 0 0 8px rgba(12, 238, 53, 0.4);
+}
+
 
 .shadow {
 	position: absolute;
@@ -420,31 +468,35 @@ display: inline-block;
 }
 
 .cards {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 2000px;
-	height: 100%;
-	transition: 5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  will-change: transform;
+  /* ВАЖНО: без transition здесь */
 }
 
-.cards > div {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	float: left;
-	font-family: sans-serif;
-	font-weight: bold;
-	font-size: 20px;
-	margin-top: 5px;
-	margin-left: 5px;
-	width: 100px;
-	height: 90px;
-	color: #6A6A6A;
-	background: white;
-	border-radius: 10px;
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 90px;
+  margin: 5px; /* шаг = width + margin-left + margin-right */
+  font-weight: bold;
+  font-size: 20px;
+  background: white;
+  color: #6A6A6A;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+    word-break: break-word;
+  white-space: normal;
 }
+
+
+
 
 .result {
 	position: absolute;
@@ -706,9 +758,9 @@ display: inline-block;
   bottom: 50px;
   width: 70px;
   height: 70px;
-  background-color: black;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a); /* спокойный тёмный фон */
   color: white;
-  border: 2px solid white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
   font-size: 32px;
@@ -717,14 +769,30 @@ display: inline-block;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.5),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
   z-index: 999;
 }
 
+/* При наведении — яркий красный с подсветкой */
 #helpbutton:hover {
-  background-color: #222;
-  transform: scale(1.05);
+  background: radial-gradient(circle at 30% 30%, #ff4d4d, #b30000);
+  box-shadow:
+    0 0 20px rgba(255, 0, 0, 0.8),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+  transform: scale(1.08);
 }
+
+/* При нажатии — эффект вдавливания */
+#helpbutton:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 0 12px rgba(255, 0, 0, 0.6),
+    inset 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
  
 /* ССЫЛКИ */
 a:link{
@@ -732,100 +800,77 @@ a:link{
 }
 /* СМЕНА ЯЗЫКА */
 .select-menu {
-width:100%;
+  position: relative;
+  width: 60px;
+  font-family: inherit;
 }
+
+/* Кнопка выбора */
 .select-menu .select-btn {
   display: flex;
-  background: none;
-  font-size: 18px;
-  font-weight: 400;
-  border-radius: 8px;
   align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 6px 10px;
   cursor: pointer;
-  justify-content: space-between;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
+
+.select-menu .select-btn:hover {
+  background: linear-gradient(145deg, #252d45, #1a2033);
+  box-shadow: 0 0 8px rgba(255, 106, 106, 0.4);
+}
+
+/* Текст текущего языка */
+.languagespan {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Выпадающий список */
 .select-menu .options {
   position: absolute;
-  z-index: 2;
-  width: 45px;
-  overflow-y: auto;
-  max-height: 295px;
-  margin-top: 10px;
-  border-radius: 8px;
-  padding-left: 0;
-  background: none;
-  animation-name: fadeInDown;
-  -webkit-animation-name: fadeInDown;
-  animation-duration: 0.35s;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 0.35s;
-  -webkit-animation-fill-mode: both;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(145deg, #1e253a, #141a2b);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
+
+/* Активное состояние */
+.select-menu.active .options {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Элементы списка */
 .select-menu .options .option {
   display: flex;
-  height: 55px;
-  cursor: pointer;
-  padding: 0;  
   align-items: center;
-  background: none;
-  z-index: 2;
+  justify-content: center;
+  height: 40px;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
+
 .select-menu .options .option:hover {
-  background: black;
+  background: rgba(255, 85, 85, 0.15);
 }
-.select-menu .options .option i {
-  margin-right: 12px;
-}
+
 .select-menu .options .option .option-text {
   color: white;
-}
-
-.select-btn i {
-  transition: 0.3s;
-}
-
-.select-menu.active .select-btn i {
-  transform: rotate(-180deg);
-}
-.select-menu.active .options {
-  display: block;
-  opacity: 0;
-  z-index: 10;
-  animation-name: fadeInUp;
-  -webkit-animation-name: fadeInUp;
-  animation-duration: 0.4s;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 0.4s;
-  -webkit-animation-fill-mode: both;
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translate3d(0, 30px, 0);
-  }
-  to {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
-}
-@keyframes fadeInDown {
-  from {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
-  to {
-    transform: translate3d(0, 20px, 0);
-    opacity: 0;
-  }
-}
-.languagespan{
-    background-color: black;
-    color: white;
-    opacity: 1;
-    text-align: left;
-    margin-left: 0;
-    padding-left: 0;
-    left:0;
-    display: inline-block;
-    border: 1px solid black
+  font-weight: bold;
+  font-size: 14px;
 }

@@ -42,7 +42,6 @@
         <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
           <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM101.63,168h52.74C149,186.34,140,202.87,128,215.89,116,202.87,107,186.34,101.63,168ZM98,152a145.72,145.72,0,0,1,0-48h60a145.72,145.72,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.79a161.79,161.79,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154.37,88H101.63C107,69.66,116,53.13,128,40.11,140,53.13,149,69.66,154.37,88Zm19.84,16h38.46a88.15,88.15,0,0,1,0,48H174.21a161.79,161.79,0,0,0,0-48Zm32.16-16H170.94a142.39,142.39,0,0,0-20.26-45A88.37,88.37,0,0,1,206.37,88ZM105.32,43A142.39,142.39,0,0,0,85.06,88H49.63A88.37,88.37,0,0,1,105.32,43ZM49.63,168H85.06a142.39,142.39,0,0,0,20.26,45A88.37,88.37,0,0,1,49.63,168Zm101.05,45a142.39,142.39,0,0,0,20.26-45h35.43A88.37,88.37,0,0,1,150.68,213Z"></path>
         </svg>
-             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
               <div id="languageswitch">
         <div class="select-menu">
           <div class="select-btn">
@@ -136,7 +135,7 @@
       </div>
       <button id="answer">GET CHALLENGE</button>
     </div>
-
+    <!-- БОЙ -->
     <div id="last">
       <div class="leftlast">
         <div id="lastfl">
@@ -188,16 +187,7 @@
       <div class="random">
         <div class="result"></div>
         <div class="cards">
-          <div id="re1"></div>
-          <div id="re2"></div>
-          <div id="re3"></div>
-          <div id="re4"></div>
-          <div id="re5"></div>
-          <div id="re6"></div>
-          <div id="re7"></div>
-          <div id="re8"></div>
-          <div id="re9"></div>
-          <div id="re10"></div>
+     
         </div>
       </div>
       <button class="start" onclick="start()" id="roulchl">START</button>
@@ -224,7 +214,22 @@
     <script type="text/javascript" src="./cookiework.js"></script>
        -->
     <script>
-
+      //Звук для рулетки
+      const tickSound = document.getElementById("tickSound"); 
+      function playTick() { 
+        tickSound.currentTime = 0;
+        tickSound.play(); 
+      }
+      //Звук при победе
+      const winSound = document.getElementById("winSound"); 
+      function playWin() { 
+        winSound.currentTime = 0;
+        winSound.play(); 
+      }
+      //Громкость звуков
+      tickSound.volume = 0.1;
+      winSound.volume = 0.3;
+      
       //ПЕРЕМЕННЫЕ ДЛЯ СМЕНЫ ЯЗЫКА
       const optionMenu = document.querySelector(".select-menu"),
         selectBtn = optionMenu.querySelector(".select-btn"),
@@ -256,22 +261,144 @@ function updateResults() {
 ].forEach(input => {
   input.addEventListener("input", updateResults);
 });
+let isRolling = false;
+let animationStart = null;
+let duration = 5000; // общая длительность
+let startOffset = 0;
+let targetOffset = 0;
+let currentOffset = 0;
+let winnerIndex = 0;
+let lastTickThreshold = 0; // порог для следующего тика
+let cardStep = 110; // измерим из DOM
+const visibleCards = 4;
+
+// Генерация карточек
+function generateCards() {
+  const inputs = [
+    inp1.value,
+    inp2.value,
+    inp3.value,
+    inp4.value,
+    inp5.value,
+    inp6.value,
+    inp7.value,
+    inp8.value,
+    inp9.value,
+    inp10.value,
+  ];
+
+  const cardsBlock = document.querySelector(".cards");
+  cardsBlock.innerHTML = "";
+
+  const totalCards = 150;
+  for (let i = 0; i < totalCards; i++) {
+    const text = inputs[Math.floor(Math.random() * inputs.length)];
+    const card = document.createElement("div");
+    card.className = "card";
+    card.textContent = text;
+    cardsBlock.appendChild(card);
+  }
+
+  // Сбрасываем визуальные стили победителя, если были
+  Array.from(cardsBlock.children).forEach(card => {
+    card.style.background = "white";
+    card.style.color = "#6A6A6A";
+  });
+
+  // Измеряем реальный шаг карточки: ширина + горизонтальные маргины
+  const first = cardsBlock.children[0];
+  if (first) {
+    const cs = getComputedStyle(first);
+    const ml = parseFloat(cs.marginLeft) || 0;
+    const mr = parseFloat(cs.marginRight) || 0;
+    cardStep = first.getBoundingClientRect().width + ml + mr;
+  }
+}
+
+// Кривая замедления
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+// Основной цикл анимации
+function animateScroll(timestamp) {
+  if (!animationStart) animationStart = timestamp;
+  const elapsed = timestamp - animationStart;
+  const progress = Math.min(elapsed / duration, 1);
+  const eased = easeOutCubic(progress);
+
+  currentOffset = startOffset + (targetOffset - startOffset) * eased;
+
+  const cardsBlock = document.querySelector(".cards");
+  // Никаких CSS-transition — только прямой transform
+  cardsBlock.style.transform = `translateX(-${currentOffset}px)`;
+
+  // Тики: каждый раз, когда пересекли следующий шаг
+  while (currentOffset >= lastTickThreshold + cardStep - 0.5) {
+    lastTickThreshold += cardStep;
+    playTick();
+  }
+
+  if (progress < 1) {
+    requestAnimationFrame(animateScroll);
+  } else {
+    // Гарантируем точное попадание в целевой offset (субпиксельное выравнивание)
+    cardsBlock.style.transform = `translateX(-${targetOffset}px)`;
+
+    // Подсветка победителя: winnerIndex — тот, кто должен быть строго в центре
+    const winnerCard = cardsBlock.children[winnerIndex-1];
+    if (winnerCard) {
+      winnerCard.style.background = "green";
+      winnerCard.style.color = "white";
+    }
+    playWin();
+
+    isRolling = false;
+  }
+}
+
+// Старт
+function start() {
+  if (isRolling) return;
+  isRolling = true;
+
+  generateCards();
+
+  const cardsBlock = document.querySelector(".cards");
+  const totalCards = cardsBlock.children.length;
+  const centerOffset = Math.floor(visibleCards / 2);
+
+  // Выбираем индекс, который окажется в центре окна
+  // Ограничиваем диапазон, чтобы центр не ушёл за край
+  const minIndex = centerOffset;
+  const maxIndex = totalCards - (visibleCards - centerOffset) - 1;
+  winnerIndex = Math.max(minIndex, Math.min(
+    minIndex + Math.floor(Math.random() * (totalCards - visibleCards)),
+    maxIndex
+  ));
+
+  // Целевой сдвиг так, чтобы winnerIndex оказался в центре
+  targetOffset = (winnerIndex - centerOffset) * cardStep;
+
+  // Сброс состояния анимации
+  animationStart = null;
+  startOffset = 0;
+  currentOffset = 0;
+  lastTickThreshold = 0;
+
+  // Убираем любые CSS transition на всякий
+  cardsBlock.style.transition = "none";
+  // Старт
+  requestAnimationFrame(animateScroll);
+}
+
+// Заполняем рулетку при загрузке
+window.addEventListener("DOMContentLoaded", () => {
+  generateCards();
+});
 
 
-      //РУЛЕТКА ИЗ КС ГО
 
-      var cards_block = document.querySelector(".cards");
-      var cards = document.querySelectorAll(".cards > div");
-
-      function start() {
-        var random = Math.floor(Math.random() * 9.5); // От 0 до 8
-        cards_block.style.left = -random * 100 + "px";
-        setTimeout(function () {
-          random++;
-          cards[random].style.background = "green";
-          cards[random].style.color = "white";
-        }, 5000);
-      }
 
       //КОЛЕСО УДАЧИ
       // надписи и цвета на секторах
@@ -305,21 +432,6 @@ function updateResults() {
       const selectedClass = "selected";
       // получаем все значения параметров стилей у секторов
       const spinnerStyles = window.getComputedStyle(spinner);
-      //Звук для рулетки
-      const tickSound = document.getElementById("tickSound"); 
-      function playTick() { 
-        tickSound.currentTime = 0;
-        tickSound.play(); 
-      }
-      //Звук при победе
-      const winSound = document.getElementById("winSound"); 
-      function playWin() { 
-        winSound.currentTime = 0;
-        winSound.play(); 
-      }
-      //Громкость звуков
-      tickSound.volume = 0.1;
-      winSound.volume = 0.3;
       // переменная для анимации
       let tickerAnim;
       // угол вращения
