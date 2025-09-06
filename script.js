@@ -34,7 +34,7 @@ let winnerIndex = 0;
 let lastTickThreshold = 0; // порог для следующего тика
 let cardStep = 110; // измерим из DOM
 const visibleCards = 4;
-
+const startBtn = document.querySelector(".start");
 // Генерация карточек
 function generateCards() {
   const inputs = [
@@ -111,25 +111,29 @@ function animateScroll(timestamp) {
     // Подсветка победителя: winnerIndex — тот, кто должен быть строго в центре
     const winnerCard = cardsBlock.children[winnerIndex-1];
     if (winnerCard) {
-      winnerCard.style.background = "green";
-      winnerCard.style.color = "white";
+        winnerCard.classList.add("winner");
+
     }
     playWin();
 
     isRolling = false;
+    startBtn.disabled = false;
   }
 }
 
 // Старт
 function start() {
-  if (isRolling) return;
-  isRolling = true;
-
-  generateCards();
-
   const cardsBlock = document.querySelector(".cards");
   const totalCards = cardsBlock.children.length;
   const centerOffset = Math.floor(visibleCards / 2);
+    
+  if (isRolling) return;
+  isRolling = true;
+  startBtn.disabled = true;
+  cardsBlock.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"));
+  generateCards();
+
+
 
   // Выбираем индекс, который окажется в центре окна
   // Ограничиваем диапазон, чтобы центр не ушёл за край
@@ -242,7 +246,7 @@ const setupWheel = () => {
   createConicGradient(); 
 
   // ОЧИЩАЕМ предыдущие текстовые элементы из спиннера
-  // Это ключевое изменение!
+  
   spinner.innerHTML = ''; 
 
   // потом снова создаем текст уже с новыми значениями из массива prizes
@@ -390,19 +394,21 @@ slotIds.forEach(id => {
       var mode = 0;
       classic.addEventListener("click", function () {
         mode = 0;
-        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-  btn.style.backgroundColor = "black";
-  btn.style.transition = "background-color 0.3s ease";
-});
-this.style.backgroundColor = "red";
-        document.getElementById("last").style.visibility = "hidden";
-        document.getElementById("roulette").style.visibility = "hidden";
-        document.getElementById("challenges").style.visibility = "hidden";
-        document.getElementById("wheelluck").style.visibility = "hidden";
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+    btn.classList.remove("active-mode");
+  });
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+
+        document.getElementById("last").style.display = "none";
+        document.getElementById("roulette").style.display = "none";
         document.getElementById("wheelluck").style.display = "none";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("center").style.display = "flex";
         document.getElementById("challenges").style.display = "none";
+        document.getElementById("downloadall").style.display = "none";
         slotIds.forEach(id => {
   const slot = document.querySelector(`[data-id="${id}"]`);
   if (slot) {
@@ -415,26 +421,25 @@ this.style.backgroundColor = "red";
     }
   }
         });
-        document.getElementById("downloadall").style.display = "none";
-        document.getElementById("downloadall").style.visibility = "hidden";
+        
       });
       rand.addEventListener("click", function () {
         mode = 1;
-        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-  btn.style.backgroundColor = "black";
-  btn.style.transition = "background-color 0.3s ease";
-});
-this.style.backgroundColor = "red";
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+    btn.classList.remove("active-mode");
+  });
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+
         document.getElementById("center").style.display = "flex";
         document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("last").style.visibility = "visible";
-        document.getElementById("roulette").style.visibility = "hidden";
-        document.getElementById("challenges").style.visibility = "hidden";
-        document.getElementById("wheelluck").style.visibility = "hidden";
+        document.getElementById("last").style.display = "flex";
+        document.getElementById("roulette").style.display = "none";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "none";
-        document.getElementById("downloadall").style.visibility = "hidden";
         slotIds.forEach(id => {
   const slot = document.querySelector(`[data-id="${id}"]`);
   if (slot) {
@@ -450,21 +455,21 @@ this.style.backgroundColor = "red";
       });
       frand.addEventListener("click", function () {
         mode = 2;
-        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-  btn.style.backgroundColor = "black";
-  btn.style.transition = "background-color 0.3s ease";
-});
-this.style.backgroundColor = "red";
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+    btn.classList.remove("active-mode");
+  });
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+
         document.getElementById("center").style.display = "flex";
         document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("last").style.visibility = "hidden";
-        document.getElementById("roulette").style.visibility = "hidden";
-        document.getElementById("challenges").style.visibility = "hidden";
-        document.getElementById("wheelluck").style.visibility = "hidden";
+        document.getElementById("last").style.display = "none";
+        document.getElementById("roulette").style.display = "none";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "none";
-        document.getElementById("downloadall").style.visibility = "hidden";
         slotIds.forEach(id => {
   const slot = document.querySelector(`[data-id="${id}"]`);
   if (slot) {
@@ -480,21 +485,21 @@ this.style.backgroundColor = "red";
       });
       roul.addEventListener("click", function () {
         mode = 3;
-        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-  btn.style.backgroundColor = "black";
-  btn.style.transition = "background-color 0.3s ease";
-});
-this.style.backgroundColor = "red";
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+    btn.classList.remove("active-mode");
+  });
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+
         document.getElementById("center").style.display = "flex";
         document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("roulette").style.visibility = "visible";
-        document.getElementById("last").style.visibility = "hidden";
-        document.getElementById("challenges").style.visibility = "hidden";
-        document.getElementById("wheelluck").style.visibility = "hidden";
+        document.getElementById("roulette").style.display = "flex";
+        document.getElementById("last").style.display = "none";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "none";
-        document.getElementById("downloadall").style.visibility = "hidden";
         slotIds.forEach(id => {
   const slot = document.querySelector(`[data-id="${id}"]`);
   if (slot) {
@@ -510,22 +515,22 @@ this.style.backgroundColor = "red";
       });
       whl.addEventListener("click", function () {
         mode = 4;
-        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-  btn.style.backgroundColor = "black";
-  btn.style.transition = "background-color 0.3s ease";
-});
-this.style.backgroundColor = "red";
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+    btn.classList.remove("active-mode");
+  });
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+
         document.getElementById("center").style.display = "flex";
         document.getElementById("wheelluck").style.display = "inline-block";
-        document.getElementById("roulette").style.visibility = "hidden";
-        document.getElementById("challenges").style.visibility = "hidden";
-        document.getElementById("last").style.visibility = "hidden";
-        document.getElementById("wheelluck").style.visibility = "visible";
+        document.getElementById("roulette").style.display = "none";
+        document.getElementById("last").style.display = "none";
         document.getElementById("wheelluck").style.display = "inline-block";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "none";
-        document.getElementById("downloadall").style.visibility = "hidden";
         slotIds.forEach(id => {
   const slot = document.querySelector(`[data-id="${id}"]`);
   if (slot) {
@@ -541,21 +546,21 @@ this.style.backgroundColor = "red";
       });
       chl.addEventListener("click", function () {
         mode = 5;
-        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-  btn.style.backgroundColor = "black";
-  btn.style.transition = "background-color 0.3s ease";
-});
-this.style.backgroundColor = "red";
+          // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+    btn.classList.remove("active-mode");
+  });
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+
         document.getElementById("center").style.display = "none";
         document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("roulette").style.visibility = "hidden";
-        document.getElementById("last").style.visibility = "hidden";
-        document.getElementById("wheelluck").style.visibility = "hidden";
-        document.getElementById("challenges").style.visibility = "visible";
+        document.getElementById("roulette").style.display = "none";
+        document.getElementById("last").style.display = "none";
         document.getElementById("center").style.visibility = "hidden";
-        document.getElementById("challenges").style.display = "inline-block";
+        document.getElementById("challenges").style.display = "flex";
         document.getElementById("downloadall").style.display = "none";
-        document.getElementById("downloadall").style.visibility = "hidden";
         slotIds.forEach(id => {
   const slot = document.querySelector(`[data-id="${id}"]`);
   if (slot) {
@@ -570,35 +575,36 @@ this.style.backgroundColor = "red";
         });
       });
       whatelse.addEventListener("click", function () {
-        mode = 6;
-        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-  btn.style.backgroundColor = "black";
-  btn.style.transition = "background-color 0.3s ease";
-});
-this.style.backgroundColor = "red";
-        document.getElementById("center").style.display = "none";
-        document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("roulette").style.visibility = "hidden";
-        document.getElementById("last").style.visibility = "hidden";
-        document.getElementById("wheelluck").style.visibility = "hidden";
-        document.getElementById("challenges").style.visibility = "hidden";
-        document.getElementById("center").style.visibility = "hidden";
-        document.getElementById("challenges").style.display = "none";
-        document.getElementById("downloadall").style.display = "inline-block";
-        document.getElementById("downloadall").style.visibility = "visible";
-        slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      
-      // Сброс бордера 
-      input.style.border = "1px solid transparent";
+  mode = 6;
 
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+    btn.classList.remove("active-mode");
+  });
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+
+ 
+  document.getElementById("center").style.display = "none";
+  document.getElementById("wheelluck").style.display = "none";
+  document.getElementById("roulette").style.display = "none";
+  document.getElementById("last").style.display = "none";
+  document.getElementById("center").style.visibility = "hidden";
+  document.getElementById("challenges").style.display = "none";
+  document.getElementById("downloadall").style.display = "inline-block";
+
+  slotIds.forEach(id => {
+    const slot = document.querySelector(`[data-id="${id}"]`);
+    if (slot) {
+      const input = slot.querySelector("input");
+      if (input) {
+        input.style.border = "1px solid transparent";
+      }
     }
-  }
-        });
-      });
+  });
+});
+
 
       //РЕЖИМ КЛАССИКИ + БОСС ФАЙТ + РАНДОМ С ЗАПРЕТАМИ
 
@@ -609,9 +615,7 @@ slotIds.forEach(id => {
   if (slot) {
     const input = slot.querySelector("input");
     slot.addEventListener("dblclick", () => {
-      const color = (mode === 0 || mode === 1)
-        ? "red"
-        : getRandomInt(2) === 1 ? "green" : "red";
+  const color = (mode === 0 || mode === 1) ? "red" : (getRandomInt(2) === 1 ? "green" : "red");
 
       if (input) {
         input.style.border = `1px solid ${color}`;

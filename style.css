@@ -12,38 +12,82 @@ h1, h2, h3 {
   font-weight: 700;
   letter-spacing: -0.5px;
 }
+.logo-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff4d4d, #ff1a75, #ff4d4d);
+  background-clip: text;              /* стандартное свойство */
+  -webkit-background-clip: text;      /* для WebKit-браузеров */
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  padding: 0.25em 0.5em;
+  text-shadow: 0 0 8px rgba(255, 77, 77, 0.6);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+.mode-btn {
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 0 4px rgba(255, 255, 255, 0.05);
+}
 
-.bstrip{
-    width:99.4%;
-    height:20%;
-    background-color: black;
-    color: white;
-    opacity: 90%;
-    text-align: center;
-    margin: 0;
-    padding: 5px;
-    margin-top:0;
-    position: sticky;
-    position: relative;
-    z-index: 2;
+.mode-btn:hover {
+  background: linear-gradient(145deg, #ff4d4d, #b30000);
+  border-color: #ff4d4d;
+  box-shadow:
+    0 0 10px rgba(255, 77, 77, 0.6),
+    inset 0 0 6px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
-.bstrip h1{
-    font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
-    width:94%;
-    height:8%;
-    background-color: black;
-    color: white;
-    opacity: 90%;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
+
+.mode-btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 0 6px rgba(255, 77, 77, 0.4),
+    inset 0 0 4px rgba(255, 255, 255, 0.1);
 }
+.mode-btn.active-mode {
+  background: linear-gradient(145deg, #ff4d4d, #b30000);
+  border-color: #ff4d4d;
+  box-shadow:
+    0 0 10px rgba(255, 77, 77, 0.6),
+    inset 0 0 6px rgba(255, 255, 255, 0.15);
+}
+
+
+.logo-title::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  top: -5px;
+  bottom: -5px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.logo-title:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 15px rgba(255, 77, 77, 0.9);
+}
+
+
 #languageswitch{   
     width:4%;
     height:8%;
     color: white;
-    opacity: 90%;
+    opacity: 0.9;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -53,7 +97,7 @@ h1, h2, h3 {
 .bstrip h2{
     background-color: black;
     color: white;
-    opacity: 90%;
+    opacity: 0.9;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -83,92 +127,13 @@ h1, h2, h3 {
           padding-right: 10rem;
           display: inline-grid;
       }
-/*              СТАРОЕ ОФОРМЛЕНИЕ
-      #rand{
-          padding-top: 0;
-          vertical-align: top;
-          height: 30px;
-          width: 15%;
-          background-color: black;
-          color:white;
-          opacity: 90%;
-          border: 2px solid slategray;
-          cursor: pointer;
-      }
 
-      #classic{
-          vertical-align: top;
-          height: 30px;
-          width: 15%;
-          background-color: black;
-          color:white;
-          opacity: 90%;
-          border: 2px solid slategray;
-          cursor: pointer;
-          position: sticky;
-      }
-
-      #whl{
-          vertical-align: top;
-          height: 30px;
-          width: 15%;
-          background-color: black;
-          color:white;
-          opacity: 90%;
-          border: 2px solid slategray;
-          cursor: pointer;
-      }
-    #chl{
-          vertical-align: top;
-          height: 30px;
-          width: 15%;
-          background-color: black;
-          color:white;
-          opacity: 90%;
-          border: 2px solid slategray;
-          cursor: pointer;
-      }
-    #whatelse{
-        vertical-align: top;
-          height: 30px;
-          width: 7%;
-          background-color: black;
-          color:white;
-          opacity: 90%;
-          border: 2px solid slategray;
-          cursor: pointer;
-          position: absolute;
-        z-index: 1;
-        }
-
-      #roul{
-          vertical-align: top;
-          height: 30px;
-          width: 16%;
-          background-color: black;
-          color:white;
-          opacity: 90%;
-          border: 2px solid slategray;
-          cursor: pointer;
-      }
-
-      #frand{
-          vertical-align: top;
-          height: 30px;
-          width: 17%;
-          background-color: black;
-          color:white;
-          opacity: 90%;
-          border: 2px solid slategray;
-          cursor: pointer;
-      }
-*/
       #last {
-        visibility: hidden;
+        
         text-align: center;
         margin-top: 10%;
         height: 30px;
-        display: flex;
+        display: none;
         align-items: center; 
         justify-content: center; 
         gap: 20px;
@@ -198,7 +163,6 @@ h1, h2, h3 {
     0 0 10px rgba(255, 0, 0, 0.4),
     inset 0 0 5px rgba(255, 255, 255, 0.1);
   transition: all 0.25s ease;
-
 }
 
 /* Наведение — агрессивный красный */
@@ -219,7 +183,7 @@ h1, h2, h3 {
 }
 
 #challenges {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -227,7 +191,6 @@ h1, h2, h3 {
   padding: 2rem;
   max-width: 800px;
   margin: 4rem auto;
-  visibility: hidden; 
   position: fixed;
   top: 30%;
   left: 50%;
@@ -255,8 +218,8 @@ h1, h2, h3 {
   border: 1px solid black;
 }
 #downloadall{
-flex-direction: column;
-      position: absolute;
+  flex-direction: column;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -268,8 +231,8 @@ flex-direction: column;
   max-width: 600px;
   margin: 2rem auto;
   color: white;
-    display: none;
-    visibility: hidden;
+  display: none;
+   
     
 }
 #downloadall > div {
@@ -286,11 +249,9 @@ flex-direction: column;
 
 
 .scriptblock {
-  display: flex;
+
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-      text-align: center;
+
 }
 
 
@@ -329,19 +290,7 @@ display: inline-block;
 }
 
 
-#chex {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #1C1C1C;
-  margin-bottom: 1rem;
-}
 
-#chex2 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 1rem;
-}
 .window_for_challenges {
   width: 100%;
   max-width: 600px;
@@ -387,7 +336,7 @@ display: inline-block;
   background-color: #333;
 }
       #roulette{
-          visibility: hidden;
+          display: none;
          }
          
 
@@ -440,6 +389,21 @@ display: inline-block;
   transform: translate(-50%, -50%) scale(0.97);
   box-shadow: 0 0 8px rgba(12, 238, 53, 0.4);
 }
+.start:disabled {
+  background: #555; /* более тусклый фон */
+  color: #aaa; /* блеклый текст */
+  cursor: not-allowed; /* курсор "запрещено" */
+  box-shadow: none; /* убираем тени */
+  transform: translate(-50%, -50%) scale(1); /* убираем анимацию */
+  opacity: 0.6; /* полупрозрачная */
+}
+
+.start:disabled:hover {
+  /* чтобы при наведении ничего не менялось */
+  background: #555;
+  box-shadow: none;
+  transform: translate(-50%, -50%) scale(1);
+}
 
 
 .shadow {
@@ -452,7 +416,7 @@ display: inline-block;
 	border: 2px solid white;
 	width: 400px;
 	height: 100px;
-	box-shadow: inset 0px 0px 20px 0px black;
+	box-shadow: inset 0 0 20px 0 black;
 }
 
 .random {
@@ -525,8 +489,33 @@ display: inline-block;
           top: 50%;
           transform: translate(-50%, -50%);
           padding: 2rem 0;
-          visibility: hidden;
+          display: none;
       }
+
+@keyframes bgFade {
+  0% { background-color: #00bc4b; }
+  50% { background-color: #009331; }
+  100% { background-color: #00bc4b; }
+}
+
+
+@keyframes winnerPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 255, 0, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.9);
+  }
+}
+
+.card.winner {
+  color: white;
+  animation: bgFade 2s linear infinite, winnerPulse 1s ease-in-out infinite;
+  border-radius: 10px;
+}
+
 
 
 
@@ -588,7 +577,7 @@ display: inline-block;
 }
 
 /* сам блок и кнопка будут находиться в области сетки с названием trigger и будут выровнены по центру */
-.deal-wheel .btn-spin {
+.deal-wheel {
     box-sizing: border-box;
   grid-area: trigger;
   justify-self: center;
@@ -661,27 +650,49 @@ display: inline-block;
 
 /* кнопка запуска колеса */
 .btn-spin {
-    box-sizing: border-box;
+  grid-area: trigger;
+  justify-self: center;
+  box-sizing: border-box;
   color: white;
-  background: black;
-  border: none;
-  /* берём размер шрифта такой же, как в колесе */
+  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+  border: 2px solid #ff4d4d;
   font-size: inherit;
-  /* добавляем отступы от текста внутри кнопки */
   padding: 0.9rem 2rem 1rem;
-  /* скругляем углы */
   border-radius: 0.5rem;
-  /* меняем внешний вид курсора над кнопкой на руку*/
   cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 10px rgba(255, 77, 77, 0.4),
+    inset 0 0 6px rgba(255, 255, 255, 0.05);
+  transition: all 0.25s ease;
 }
 
-/* если кнопка нажата и неактивна */
+/* Наведение — яркая подсветка */
+.btn-spin:hover:not(:disabled) {
+  background: linear-gradient(145deg, #ff4d4d, #b30000);
+  box-shadow:
+    0 0 20px rgba(255, 77, 77, 0.8),
+    inset 0 0 8px rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+/* Нажатие — эффект вдавливания */
+.btn-spin:active:not(:disabled) {
+  transform: scale(0.97);
+  box-shadow:
+    0 0 12px rgba(255, 77, 77, 0.6),
+    inset 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Неактивная кнопка */
 .btn-spin:disabled {
-    box-sizing: border-box;
-  /* меняем внешний вид курсора */
-  cursor: progress;
-  /* делаем кнопку полупрозрачной */
+  cursor: not-allowed; /* курсор "запрещено" */
   opacity: 0.25;
+  background: #333;
+  border-color: #666;
+  box-shadow: none;
 }
 
 /* анимация вращения */
