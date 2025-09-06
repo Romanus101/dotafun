@@ -26,6 +26,11 @@
 
   </head>
   <body>
+  <!-- ЗВУКИ -->
+  <audio id="tickSound" src="Sounds/click_wheel.mp3"></audio>
+  <audio id="winSound" src="Sounds/win_sound.mp3"></audio>
+  
+  
 <header class="relative flex items-center justify-center whitespace-nowrap border-b border-solid border-[var(--secondary-color)] px-10 py-4 shadow-lg">
   <div class="absolute left-1/2 -translate-x-1/2">
     <h1 class="text-2xl font-bold tracking-tighter text-[var(--text-primary)]">DOTAFUN</h1>
@@ -298,7 +303,21 @@ function updateResults() {
       const selectedClass = "selected";
       // получаем все значения параметров стилей у секторов
       const spinnerStyles = window.getComputedStyle(spinner);
-
+      //Звук для рулетки
+      const tickSound = document.getElementById("tickSound"); 
+      function playTick() { 
+        tickSound.currentTime = 0;
+        tickSound.play(); 
+      }
+      //Звук при победе
+      const winSound = document.getElementById("winSound"); 
+      function playWin() { 
+        winSound.currentTime = 0;
+        winSound.play(); 
+      }
+      //Громкость звуков
+      tickSound.volume = 0.1;
+      winSound.volume = 0.3;
       // переменная для анимации
       let tickerAnim;
       // угол вращения
@@ -386,6 +405,7 @@ const setupWheel = () => {
           setTimeout(() => (ticker.style.animation = null), 10);
           // после того, как язычок прошёл сектор - делаем его текущим
           currentSlice = slice;
+          playTick();
         }
         // запускаем анимацию
         tickerAnim = requestAnimationFrame(runTickerAnimation);
@@ -423,6 +443,8 @@ const setupWheel = () => {
         rotation %= 360;
         // выбираем приз
         selectPrize();
+        //Звук победы
+        playWin();
         // убираем класс, который отвечает за вращение
         wheel.classList.remove(spinClass);
         // отправляем в CSS новое положение поворота колеса
@@ -478,6 +500,8 @@ slotIds.forEach(id => {
   }
 });
 
+
+      
       //ФУНКЦИЯ РАНДОМА
 
       function getRandomInt(max) {
