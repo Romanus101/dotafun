@@ -3,14 +3,42 @@
   <head>
     <title>Dota Fun</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       rel="icon"
       href="https://steamuserimages-a.akamaihd.net/ugc/1776131096817091231/DBAC0893AA158D401C679EED0E62C29B605E15D9/?imw=512&amp;imh=512&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true" />
+  <style>
+  body {
+    font-family: "Space Grotesk", "Noto Sans", sans-serif;
+  }
+  :root {
+    --primary-color: #131315;
+    --secondary-color: #343437;
+    --text-primary: #ffffff;
+    --text-secondary: #acacaf;
+  }
+</style>
+
   </head>
   <body>
-    <header class="bstrip">
-      <h1>DOTAFUN</h1>
-      <div id="languageswitch">
+<header class="relative flex items-center justify-center whitespace-nowrap border-b border-solid border-[var(--secondary-color)] px-10 py-4 shadow-lg">
+  <div class="absolute left-1/2 -translate-x-1/2">
+    <h1 class="text-2xl font-bold tracking-tighter text-[var(--text-primary)]">DOTAFUN</h1>
+  </div>
+
+  <div class="ml-auto flex items-center gap-4">
+    <div class="relative">
+      <button class="flex items-center gap-2 rounded-md bg-[var(--secondary-color)] px-3 py-2 text-sm font-medium text-[var(--text-primary)] hover:bg-opacity-80 transition-colors">
+        <svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+          <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM101.63,168h52.74C149,186.34,140,202.87,128,215.89,116,202.87,107,186.34,101.63,168ZM98,152a145.72,145.72,0,0,1,0-48h60a145.72,145.72,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.79a161.79,161.79,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154.37,88H101.63C107,69.66,116,53.13,128,40.11,140,53.13,149,69.66,154.37,88Zm19.84,16h38.46a88.15,88.15,0,0,1,0,48H174.21a161.79,161.79,0,0,0,0-48Zm32.16-16H170.94a142.39,142.39,0,0,0-20.26-45A88.37,88.37,0,0,1,206.37,88ZM105.32,43A142.39,142.39,0,0,0,85.06,88H49.63A88.37,88.37,0,0,1,105.32,43ZM49.63,168H85.06a142.39,142.39,0,0,0,20.26,45A88.37,88.37,0,0,1,49.63,168Zm101.05,45a142.39,142.39,0,0,0,20.26-45h35.43A88.37,88.37,0,0,1,150.68,213Z"></path>
+        </svg>
+             <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+              <div id="languageswitch">
         <div class="select-menu">
           <div class="select-btn">
             <h2 class="languagespan"><span class="sBtn-text">EN</span></h2>
@@ -23,68 +51,96 @@
           </ul>
         </div>
       </div>
-    </header>
-    <button id="classic">Classic(defolt)</button><button id="rand">Boss fight</button><button id="frand">Random</button
-    ><button id="roul">Roulette</button><button id="whl">Wheel of luck</button><button id="chl">Challenges</button
-    ><button id="whatelse">Other</button>
-    <div id="center">
-      <div class="leftbox">
-        <button id="firstl">
-          <input list="Datalist1l" id="inp1" placeholder="Hero" onkeyup="saveValue(this);" /><datalist
-            id="Datalist1l"></datalist>
-        </button>
-        <button id="secondl">
-          <input list="Datalist2l" id="inp2" placeholder="Hero" /><datalist id="Datalist2l"></datalist>
-        </button>
-        <button id="thirdl">
-          <input list="Datalist3l" id="inp3" placeholder="Hero" /><datalist id="Datalist3l"></datalist>
-        </button>
-        <button id="fourl">
-          <input list="Datalist4l" id="inp4" placeholder="Hero" /><datalist id="Datalist4l"></datalist>
-        </button>
-        <button id="fivel">
-          <input list="Datalist5l" id="inp5" placeholder="Hero" /><datalist id="Datalist5l"></datalist>
-        </button>
-      </div>
-      <div class="rightbox">
-        <button id="firstr">
-          <input list="Datalist1r" id="inp6" placeholder="Hero" /><datalist id="Datalist1r"></datalist>
-        </button>
-        <button id="secondr">
-          <input list="Datalist2r" id="inp7" placeholder="Hero" /><datalist id="Datalist2r"></datalist>
-        </button>
-        <button id="thirdr">
-          <input list="Datalist3r" id="inp8" placeholder="Hero" /><datalist id="Datalist3r"></datalist>
-        </button>
-        <button id="fourr">
-          <input list="Datalist4r" id="inp9" placeholder="Hero" /><datalist id="Datalist4r"></datalist>
-        </button>
-        <button id="fiver">
-          <input list="Datalist5r" id="inp10" placeholder="Hero" /><datalist id="Datalist5r"></datalist>
-        </button>
-      </div>
+      </button>
     </div>
+  </div>
+</header>
+
+<div class="flex flex-wrap items-center justify-center gap-4 mb-8 mt-8">
+  <button id="classic" class="bg-black text-white py-2 px-4 rounded-md border border-gray-600 hover:bg-gray-800 transition-colors">Classic (default)</button>
+  <button id="rand" class="bg-black text-white py-2 px-4 rounded-md border border-gray-600 hover:bg-gray-800 transition-colors">Boss fight</button>
+  <button id="frand" class="bg-black text-white py-2 px-4 rounded-md border border-gray-600 hover:bg-gray-800 transition-colors">Random</button>
+  <button id="roul" class="bg-black text-white py-2 px-4 rounded-md border border-gray-600 hover:bg-gray-800 transition-colors">Roulette</button>
+  <button id="whl" class="bg-black text-white py-2 px-4 rounded-md border border-gray-600 hover:bg-gray-800 transition-colors">Wheel of luck</button>
+  <button id="chl" class="bg-black text-white py-2 px-4 rounded-md border border-gray-600 hover:bg-gray-800 transition-colors">Challenges</button>
+  <button id="whatelse" class="bg-black text-white py-2 px-4 rounded-md border border-gray-600 hover:bg-gray-800 transition-colors">Other</button>
+</div>
+
+    <main class="flex-1 px-4 sm:px-6 lg:px-8">
+    <div id="center" class="flex flex-wrap justify-between items-start gap-6">
+     
+      <div class="leftbox">
+      
+        <div class="hero-slot" data-id="firstl">
+          <input list="Datalist1l" id="inp1" placeholder="Hero" onkeyup="saveValue(this);" class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500"/>
+           <datalist id="Datalist1l"></datalist>
+        </div>
+         <div class="hero-slot" data-id="secondl">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist2l" id="inp2" placeholder="Hero" /><datalist id="Datalist2l"></datalist>
+        </div>
+        <div class="hero-slot" data-id="thirdl">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist3l" id="inp3" placeholder="Hero" /><datalist id="Datalist3l"></datalist>
+        </div>
+        <div class="hero-slot" data-id="fourl">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist4l" id="inp4" placeholder="Hero" /><datalist id="Datalist4l"></datalist>
+        </div>
+        <div class="hero-slot" data-id="fivel">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist5l" id="inp5" placeholder="Hero" /><datalist id="Datalist5l"></datalist>
+        </div>
+      </div>
+    
+    
+     
+     
+     
+     
+     
+      <div class="rightbox" >
+       
+        <div class="hero-slot" data-id="firstr">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist1r" id="inp6" placeholder="Hero" /><datalist id="Datalist1r"></datalist>
+        </div>
+        <div class="hero-slot" data-id="secondr">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist2r" id="inp7" placeholder="Hero" /><datalist id="Datalist2r"></datalist>
+        </div>
+        <div class="hero-slot" data-id="thirdr">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist3r" id="inp8" placeholder="Hero" /><datalist id="Datalist3r"></datalist>
+        </div>
+        <div class="hero-slot" data-id="fourr">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist4r" id="inp9" placeholder="Hero" /><datalist id="Datalist4r"></datalist>
+        </div>
+        <div class="hero-slot" data-id="fiver">
+          <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalist5r" id="inp10" placeholder="Hero" /><datalist id="Datalist5r"></datalist>
+        </div>
+      </div>
+    
+    </div>
+  
+     <!-- БЛОК С КОЛЕСОМ УДАЧИ -->
+ 
+  
+    
 
     <!-- Челленджы -->
     <div id="challenges">
       <div class="window_for_challenges">
-        <div id="chex"></div>
-        <br />
-        <div id="chex2"></div>
-        <br />
+        <div id="chex">Your Challenge </div>
+        
+        <div id="chex2">Will be right HERE</div>
+        
       </div>
       <button id="answer">GET CHALLENGE</button>
     </div>
 
     <div id="last">
       <div class="leftlast">
-        <button id="lastfl"><input id="inpfight" placeholder="Hero" /></button>
-        <button id="lastsl"><input id="inpfight1" placeholder="Hero" /></button>
+        <button id="lastfl"><input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" id="inpfight" placeholder="Hero" /></button>
+        <button id="lastsl"><input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" id="inpfight1" placeholder="Hero" /></button>
       </div>
       <button id="fight">FIGHT</button>
       <div class="rightlast">
-        <button id="lastfr"><input id="inpfight2" placeholder="Hero" /></button>
-        <button id="lastsr"><input id="inpfight3" placeholder="Hero" /></button>
+        <button id="lastfr"><input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" id="inpfight2" placeholder="Hero" /></button>
+        <button id="lastsr"><input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" id="inpfight3" placeholder="Hero" /></button>
       </div>
     </div>
     <!-- СКАЧИВАНИЕ -->
@@ -92,17 +148,21 @@
     <div id="random_number">
         <input placeholder="Min" id="minrandnumber"> <div id="resultrandnumber">?#1@$</div> <input placeholder="Max" id="maxrandnumber"> <button id="randnumberbutton">Check</button>
     </div>
-    <div id="script1">
+    <div id="scriptblock">
       <div class="scripttext" id="scriptchl">Random keystroke script</div>
+      <div class="button-wrapper">
       <button id="download1">
         <a class="links" href="Randbuttons\x64\Release\RandButtons.exe" target="_blank">Download</a>
       </button>
+      </div>
     </div>
-    <div id="script2">
+    <div id="scriptblock">
       <div class="scriptmessages" id="scriptmsg">Random alert script</div>
+      <div class="button-wrapper">
       <button id="download2">
         <a class="links" href="Messages\Messages\x64\Debug\Messages.exe" target="_blank">Download</a>
       </button>
+      </div>
     </div>
     </div>
     <!-- БЛОК С РУЛЕТКОЙ -->
@@ -126,19 +186,19 @@
       <button class="start" onclick="start()" id="roulchl">START</button>
     </div>
 
-    <!-- БЛОК С КОЛЕСОМ УДАЧИ -->
-
-    <div id="wheelluck">
+      <div id="wheelluck" >
       <div class="deal-wheel">
         <!-- блок с призами -->
         <ul class="spinner"></ul>
+         <div class="wheel-center"></div>
         <!-- язычок барабана -->
         <div class="ticker"></div>
         <!-- кнопка -->
         <button class="btn-spin" id="whlchl">Start</button> <!--<button id="wheelcolorchange">Change color</button>-->
       </div>
     </div>
-
+    
+</main>
     <!--ПОМОЩЬ -->
     <div id="helpbutton"><h1>?</h1></div>
     <!--КУКИ
@@ -155,18 +215,27 @@
 
       // ДОБАВЛЕНИЕ ТЕКСТА В РУЛЕТКУ КСГО
 
-      function updateResults() {
-  const inputs = [inp1, inp2, inp3, inp4, inp5, inp6, inp7, inp8, inp9, inp10];
-  const results = [re1, re2, re3, re4, re5, re6, re7, re8, re9, re10];
+function updateResults() {
+  const inputs = [
+    inp1, inp2, inp3, inp4, inp5,
+    inp6, inp7, inp8, inp9, inp10
+  ];
+  const results = [
+    re1, re2, re3, re4, re5,
+    re6, re7, re8, re9, re10
+  ];
 
   inputs.forEach((inp, i) => {
     results[i].innerHTML = inp.value;
   });
 }
 
-// Вешаем один и тот же обработчик на все три элемента
-[firstl, secondl, thirdl, fourl, fivel, firstr, secondr, thirdr, fourr, fiver].forEach(el => {
-  el.addEventListener("input", updateResults);
+// Вешаем обработчик на сами input-элементы
+[
+  inp1, inp2, inp3, inp4, inp5,
+  inp6, inp7, inp8, inp9, inp10
+].forEach(input => {
+  input.addEventListener("input", updateResults);
 });
 
 
@@ -187,48 +256,19 @@
 
       //КОЛЕСО УДАЧИ
       // надписи и цвета на секторах
-      const prizes = [
-        {
-          text: "",
-          color: "hsl(197 30% 43%)"
-        },
-        {
-          text: "",
-          color: "hsl(173 58% 39%)"
-        },
-        {
-          text: "",
-          color: "hsl(43 74% 66%)"
-        },
-        {
-          text: "",
-          color: "hsl(27 87% 67%)"
-        },
-        {
-          text: "",
-          color: "hsl(12 76% 61%)"
-        },
-        {
-          text: "",
-          color: "hsl(350 60% 52%)"
-        },
-        {
-          text: "",
-          color: "hsl(91 43% 54%)"
-        },
-        {
-          text: "",
-          color: "hsl(140 36% 74%)"
-        },
-        {
-          text: "",
-          color: "hsl(47 30% 43%)"
-        },
-        {
-          text: "",
-          color: "hsl(137 30% 43%)"
-        }
-      ];
+     const prizes = [
+  { text: "", color: "hsl(210, 60%, 60%)" }, // мягкий голубой
+  { text: "", color: "hsl(160, 55%, 55%)" }, // мятный зелёный
+  { text: "", color: "hsl(45, 85%, 65%)" },  // пастельный жёлтый
+  { text: "", color: "hsl(25, 70%, 60%)" },  // тёплый персиковый
+  { text: "", color: "hsl(0, 70%, 60%)" },   // нежный коралловый
+  { text: "", color: "hsl(340, 60%, 65%)" }, // розовый
+  { text: "", color: "hsl(95, 45%, 55%)" },  // мягкий салатовый
+  { text: "", color: "hsl(200, 40%, 70%)" }, // небесно-синий
+  { text: "", color: "hsl(280, 45%, 65%)" }, // сиреневый
+  { text: "", color: "hsl(180, 30%, 60%)" }  // бирюзовый
+];
+
       
         
       // создаём переменные для быстрого доступа ко всем объектам на странице — блоку в целом, колесу, кнопке и язычку
@@ -411,13 +451,21 @@ wheelcolorchange.addEventListener("click", function(){
 }
 
 // Список всех элементов, на которые нужен обработчик
-const listeners = [
-  firstl, secondl, thirdl, fourl, fivel,
-  firstr, secondr, thirdr, fourr, fiver
+const slotIds = [
+  "firstl", "secondl", "thirdl", "fourl", "fivel",
+  "firstr", "secondr", "thirdr", "fourr", "fiver"
 ];
 
-// Вешаем один и тот же обработчик на все
-listeners.forEach(el => el.addEventListener("input", updatePrizes));
+slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      input.addEventListener("input", updatePrizes);
+    }
+  }
+});
+
       //ФУНКЦИЯ РАНДОМА
 
       function getRandomInt(max) {
@@ -429,27 +477,43 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
       var mode = 0;
       classic.addEventListener("click", function () {
         mode = 0;
+        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  btn.style.backgroundColor = "black";
+  btn.style.transition = "background-color 0.3s ease";
+});
+this.style.backgroundColor = "red";
         document.getElementById("last").style.visibility = "hidden";
         document.getElementById("roulette").style.visibility = "hidden";
         document.getElementById("challenges").style.visibility = "hidden";
         document.getElementById("wheelluck").style.visibility = "hidden";
+        document.getElementById("wheelluck").style.display = "none";
         document.getElementById("center").style.visibility = "visible";
+        document.getElementById("center").style.display = "flex";
         document.getElementById("challenges").style.display = "none";
-        document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
-        document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      
+      // Сброс бордера 
+      input.style.border = "1px solid transparent";
+
+    }
+  }
+        });
         document.getElementById("downloadall").style.display = "none";
         document.getElementById("downloadall").style.visibility = "hidden";
       });
       rand.addEventListener("click", function () {
         mode = 1;
+        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  btn.style.backgroundColor = "black";
+  btn.style.transition = "background-color 0.3s ease";
+});
+this.style.backgroundColor = "red";
+        document.getElementById("center").style.display = "flex";
+        document.getElementById("wheelluck").style.display = "none";
         document.getElementById("last").style.visibility = "visible";
         document.getElementById("roulette").style.visibility = "hidden";
         document.getElementById("challenges").style.visibility = "hidden";
@@ -458,19 +522,28 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "none";
         document.getElementById("downloadall").style.visibility = "hidden";
-        document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
-        document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      
+      // Сброс бордера 
+      input.style.border = "1px solid transparent";
+
+    }
+  }
+        });
       });
       frand.addEventListener("click", function () {
         mode = 2;
+        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  btn.style.backgroundColor = "black";
+  btn.style.transition = "background-color 0.3s ease";
+});
+this.style.backgroundColor = "red";
+        document.getElementById("center").style.display = "flex";
+        document.getElementById("wheelluck").style.display = "none";
         document.getElementById("last").style.visibility = "hidden";
         document.getElementById("roulette").style.visibility = "hidden";
         document.getElementById("challenges").style.visibility = "hidden";
@@ -479,19 +552,28 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "none";
         document.getElementById("downloadall").style.visibility = "hidden";
-        document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
-        document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      
+      // Сброс бордера 
+      input.style.border = "1px solid transparent";
+
+    }
+  }
+        });
       });
       roul.addEventListener("click", function () {
         mode = 3;
+        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  btn.style.backgroundColor = "black";
+  btn.style.transition = "background-color 0.3s ease";
+});
+this.style.backgroundColor = "red";
+        document.getElementById("center").style.display = "flex";
+        document.getElementById("wheelluck").style.display = "none";
         document.getElementById("roulette").style.visibility = "visible";
         document.getElementById("last").style.visibility = "hidden";
         document.getElementById("challenges").style.visibility = "hidden";
@@ -500,40 +582,59 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "none";
         document.getElementById("downloadall").style.visibility = "hidden";
-        document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
-        document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      
+      // Сброс бордера 
+      input.style.border = "1px solid transparent";
+
+    }
+  }
+        });
       });
       whl.addEventListener("click", function () {
         mode = 4;
+        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  btn.style.backgroundColor = "black";
+  btn.style.transition = "background-color 0.3s ease";
+});
+this.style.backgroundColor = "red";
+        document.getElementById("center").style.display = "flex";
+        document.getElementById("wheelluck").style.display = "inline-block";
         document.getElementById("roulette").style.visibility = "hidden";
         document.getElementById("challenges").style.visibility = "hidden";
         document.getElementById("last").style.visibility = "hidden";
         document.getElementById("wheelluck").style.visibility = "visible";
+        document.getElementById("wheelluck").style.display = "inline-block";
         document.getElementById("center").style.visibility = "visible";
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "none";
         document.getElementById("downloadall").style.visibility = "hidden";
-        document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
-        document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      
+      // Сброс бордера 
+      input.style.border = "1px solid transparent";
+
+    }
+  }
+        });
       });
       chl.addEventListener("click", function () {
         mode = 5;
+        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  btn.style.backgroundColor = "black";
+  btn.style.transition = "background-color 0.3s ease";
+});
+this.style.backgroundColor = "red";
+        document.getElementById("center").style.display = "none";
+        document.getElementById("wheelluck").style.display = "none";
         document.getElementById("roulette").style.visibility = "hidden";
         document.getElementById("last").style.visibility = "hidden";
         document.getElementById("wheelluck").style.visibility = "hidden";
@@ -542,19 +643,28 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
         document.getElementById("challenges").style.display = "inline-block";
         document.getElementById("downloadall").style.display = "none";
         document.getElementById("downloadall").style.visibility = "hidden";
-        document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
-        document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      
+      // Сброс бордера 
+      input.style.border = "1px solid transparent";
+
+    }
+  }
+        });
       });
       whatelse.addEventListener("click", function () {
         mode = 6;
+        [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  btn.style.backgroundColor = "black";
+  btn.style.transition = "background-color 0.3s ease";
+});
+this.style.backgroundColor = "red";
+        document.getElementById("center").style.display = "none";
+        document.getElementById("wheelluck").style.display = "none";
         document.getElementById("roulette").style.visibility = "hidden";
         document.getElementById("last").style.visibility = "hidden";
         document.getElementById("wheelluck").style.visibility = "hidden";
@@ -563,152 +673,68 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
         document.getElementById("challenges").style.display = "none";
         document.getElementById("downloadall").style.display = "inline-block";
         document.getElementById("downloadall").style.visibility = "visible";
-        document.getElementById("firstl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourl").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fivel").style.backgroundColor = "#1C1C1C";
-        document.getElementById("firstr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("secondr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("thirdr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fourr").style.backgroundColor = "#1C1C1C";
-        document.getElementById("fiver").style.backgroundColor = "#1C1C1C";
+        slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      
+      // Сброс бордера 
+      input.style.border = "1px solid transparent";
+
+    }
+  }
+        });
       });
 
       //РЕЖИМ КЛАССИКИ + БОСС ФАЙТ + РАНДОМ С ЗАПРЕТАМИ
 
-      firstl.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("firstl").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("firstl").style.background = "green";
-          } else {
-            document.getElementById("firstl").style.background = "red";
-          }
-        }
-      });
-      secondl.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("secondl").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("secondl").style.background = "green";
-          } else {
-            document.getElementById("secondl").style.background = "red";
-          }
-        }
-      });
-      thirdl.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("thirdl").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("thirdl").style.background = "green";
-          } else {
-            document.getElementById("thirdl").style.background = "red";
-          }
-        }
-      });
-      fourl.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("fourl").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("fourl").style.background = "green";
-          } else {
-            document.getElementById("fourl").style.background = "red";
-          }
-        }
-      });
-      fivel.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("fivel").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("fivel").style.background = "green";
-          } else {
-            document.getElementById("fivel").style.background = "red";
-          }
-        }
-      });
 
-      firstr.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("firstr").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("firstr").style.background = "green";
-          } else {
-            document.getElementById("firstr").style.background = "red";
-          }
-        }
-      });
-      secondr.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("secondr").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("secondr").style.background = "green";
-          } else {
-            document.getElementById("secondr").style.background = "red";
-          }
-        }
-      });
-      thirdr.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("thirdr").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("thirdr").style.background = "green";
-          } else {
-            document.getElementById("thirdr").style.background = "red";
-          }
-        }
-      });
-      fourr.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("fourr").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("fourr").style.background = "green";
-          } else {
-            document.getElementById("fourr").style.background = "red";
-          }
-        }
-      });
-      fiver.addEventListener("dblclick", function () {
-        if (mode == 1 || mode == 0) {
-          document.getElementById("fiver").style.background = "red";
-        } else {
-          if (getRandomInt(2) == 1) {
-            document.getElementById("fiver").style.background = "green";
-          } else {
-            document.getElementById("fiver").style.background = "red";
-          }
-        }
-      });
+
+slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    slot.addEventListener("dblclick", () => {
+      const color = (mode === 0 || mode === 1)
+        ? "red"
+        : getRandomInt(2) === 1 ? "green" : "red";
+
+      if (input) {
+        input.style.border = `1px solid ${color}`;
+      }
+    });
+  }
+});
+
+
 
       //БОСС ФАЙТ ФИНАЛЬНЫЙ БОЙ
 
-      fight.addEventListener("click", function () {
-        let winl = getRandomInt(2);
-        if (winl == 0) {
-          document.getElementById("lastfl").style.background = "green";
-          document.getElementById("lastsl").style.background = "red";
-        } else {
-          document.getElementById("lastfl").style.background = "red";
-          document.getElementById("lastsl").style.background = "green";
-        }
-        let winr = getRandomInt(2);
-        if (winr == 0) {
-          document.getElementById("lastfr").style.background = "green";
-          document.getElementById("lastsr").style.background = "red";
-        } else {
-          document.getElementById("lastfr").style.background = "red";
-          document.getElementById("lastsr").style.background = "green";
-        }
-      });
+     fight.addEventListener("click", function () {
+  const left1 = document.querySelector("#lastfl input");
+  const left2 = document.querySelector("#lastsl input");
+  const right1 = document.querySelector("#lastfr input");
+  const right2 = document.querySelector("#lastsr input");
+
+  const winl = getRandomInt(2);
+  if (winl === 0) {
+    left1.style.border = `1px solid green`;
+    left2.style.border = `1px solid red`;
+  } else {
+    left1.style.border = `1px solid red`;
+    left2.style.border = `1px solid green`;
+  }
+
+  const winr = getRandomInt(2);
+  if (winr === 0) {
+    right1.style.border = `1px solid green`;
+    right2.style.border = `1px solid red`;
+  } else {
+    right1.style.border = `1px solid red`;
+    right2.style.border = `1px solid green`;
+  }
+});
 
       //ЧЕЛЛЕНДЖЫ
       let answersEN = {
@@ -741,7 +767,7 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
           description: "Buying stuff only for the team or the midas"
         },
         8: {
-          name: "Muslim",
+          name: "Peacefull",
           description: "Don't kill creeps"
         },
         9: {
@@ -946,7 +972,7 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
           description: "Покупаешь вещи только для тимы или мидасы"
         },
         8: {
-          name: "Мусульман",
+          name: "Мирный",
           description: "Не убивать крипов"
         },
         9: {
@@ -1808,6 +1834,7 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
       applyAutocompleteToInput("inp9", "Datalist4r");
       applyAutocompleteToInput("inp10", "Datalist5r");
 
+
           //рандомное число в другое
       
       const minInput = document.getElementById("minrandnumber");
@@ -1937,6 +1964,8 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
             scriptmsg.innerHTML = "Скрипт рандомных предупреждений";
             roulchl.innerHTML = "Старт";
             whlchl.innerHTML = "Старт";
+            document.getElementById("chex").innerHTML = "Твой Челлендж";
+            document.getElementById("chex2").innerHTML = "Будет прямо ЗДЕСЬ";
             document.getElementById("inp1").placeholder = "Введите имя героя";
             document.getElementById("inp2").placeholder = "Введите имя героя";
             document.getElementById("inp3").placeholder = "Введите имя героя";
@@ -1971,6 +2000,8 @@ listeners.forEach(el => el.addEventListener("input", updatePrizes));
             scriptmsg.innerHTML = "Random alert script";
             roulchl.innerHTML = "Start";
             whlchl.innerHTML = "Start";
+            document.getElementById("chex").innerHTML = "Your Challenge";
+            document.getElementById("chex2").innerHTML = "Will be right HERE";
             document.getElementById("inp1").placeholder = "Hero";
             document.getElementById("inp2").placeholder = "Hero";
             document.getElementById("inp3").placeholder = "Hero";

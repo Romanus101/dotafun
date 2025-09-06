@@ -3,10 +3,16 @@ input{
    } 
 body{
     margin: 0;
-    background: linear-gradient(135deg, #3D3D3D 0%, #101010 100%);
     min-height: 100vh;
-    
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #131315;
+    color: #ffffff;
 }
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
 .bstrip{
     width:99.4%;
     height:20%;
@@ -22,7 +28,7 @@ body{
     z-index: 2;
 }
 .bstrip h1{
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
     width:94%;
     height:8%;
     background-color: black;
@@ -54,19 +60,31 @@ body{
     padding: 0;
     display: inline-block;
 }
-
+.container{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+}
+.team-section, .roulette-section, .wheel-section {
+  margin-bottom: 40px;
+}
 #center{
           margin-top: 5%;
+    
       }
-      .leftbox{
+      .leftbox{ 
+          gap:20px;
           margin-left: 10%;
           display: inline-grid;
           
       }
       .rightbox{
+          gap:20px;
           margin-left: 50%;
+          padding-right: 10rem;
           display: inline-grid;
       }
+/*
       #rand{
           padding-top: 0;
           vertical-align: top;
@@ -78,6 +96,7 @@ body{
           border: 2px solid slategray;
           cursor: pointer;
       }
+
       #classic{
           vertical-align: top;
           height: 30px;
@@ -89,6 +108,7 @@ body{
           cursor: pointer;
           position: sticky;
       }
+
       #whl{
           vertical-align: top;
           height: 30px;
@@ -121,6 +141,7 @@ body{
           position: absolute;
         z-index: 1;
         }
+
       #roul{
           vertical-align: top;
           height: 30px;
@@ -131,6 +152,7 @@ body{
           border: 2px solid slategray;
           cursor: pointer;
       }
+
       #frand{
           vertical-align: top;
           height: 30px;
@@ -141,6 +163,7 @@ body{
           border: 2px solid slategray;
           cursor: pointer;
       }
+*/
       #last{
           visibility: hidden;
           text-align: center;
@@ -148,11 +171,14 @@ body{
           height: 30px;
 
       }
+
       .leftlast{
           display: inline-grid;
+          gap:30px;
       }
       .rightlast{
           display: inline-grid;
+          gap:30px;
       }
       #fight{
           background-color: #1C1C1C;
@@ -161,139 +187,179 @@ body{
           border: 2px solid black;
           border-radius: 5px;
       }
-    #challenges{
-          color:red;
-          text-align: center;
-          display: inline-block;
-          margin-left: 40%;    
-          visibility: hidden;
-          display: none; 
-    }
-#random_number{
-    height: auto;
-    width: auto;
-    position: absolute;
-    vertical-align: middle;
-    text-align: center;
-    margin-left:10%; 
-    
+#challenges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 4rem auto;
+  visibility: hidden; 
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
-#resultrandnumber{
-    display: inline-block;
-    text-align: center;
-    background-color: #1C1C1C;
-    color: white;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 10px;
+#random_number {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+#random_number input {
+  width: 80px;
+  padding: 0.3rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #343437;
+  color: white;
+}
+#resultrandnumber {
+  padding: 0.5rem 1rem;
+  background-color: #343437;
+  border-radius: 5px;
+  font-weight: bold;
+  border: 1px solid black;
 }
 #downloadall{
-    text-align: center;
-    vertical-align: middle;
+flex-direction: column;
+      position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #1C1C1C;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 2rem auto;
+  color: white;
     display: none;
     visibility: hidden;
     
 }
-#randnumberbutton{
-    margin-top: 0;
-    height: 30px;
-    background-color: #1C1C1C;
-    color:white;
-    opacity: 90%;
-    text-align: center;
-    cursor: pointer; 
-    position: absolute;
-    margin-left: 5px;
-    
+#downloadall > div {
+  margin-bottom: 1.5rem;
 }
-#script1{
-  
-    left:70%;
-    position: absolute;
+#randnumberbutton {
+  padding: 0.3rem 0.8rem;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-#script2{
 
-    left:50%;
+
+.scriptblock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+      text-align: center;
+}
+
+
+.scripttext,
+.scriptmessages {
+  font-weight: bold;
+  background-color: #343437;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#download1,
+#download2 {
+margin-left: 0;
+  margin-top: 1.5rem;
+display: inline-block;
+  padding: 0.4rem 1rem;
+  background-color: #343437;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #555;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#download1:hover,
+#download2:hover {
+  background-color: #555;
+}
+
+
+#chex {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1C1C1C;
+  margin-bottom: 1rem;
+}
+
+#chex2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1rem;
+}
+.window_for_challenges {
+  width: 100%;
+  max-width: 600px;
+  min-height: 300px;
+  padding: 2rem;
+  background-color: #f3f3f3;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+#chex {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #1C1C1C;
+  margin-bottom: 1rem;
+}
+
+#chex2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+#answer {
+  width: 220px;
+  height: 45px;
+  background-color: #1C1C1C;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
     position: absolute;
+  bottom: -60px; /* или сколько нужно */
+  left: 50%;
+  transform: translateX(-50%);
 }
-.scripttext{
-    text-align: center;
-    background-color: #1C1C1C;
-    color: white;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 10px;
+
+#answer:hover {
+  background-color: #333;
 }
-.scriptmessages{
-    text-align: center;
-    background-color: #1C1C1C;
-    color: white;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 10px;
-}
-#download1{
-          margin-top: 0;
-          height: 30px;
-          background-color: #1C1C1C;
-          color:white;
-          opacity: 90%;
-          text-align: center;
-          cursor: pointer; 
-          margin-left: 35%;
-}
-#download2{
-          margin-top: 0;
-          height: 30px;
-          background-color: #1C1C1C;
-          color:white;
-          opacity: 90%;
-          text-align: center;
-          cursor: pointer; 
-          margin-left: 35%;
-}
-    #chex{
-    color: black;
-    padding-top:15%;
-    font-size:50px;
-    font-weight: bold;
-    }
-    #chex2{
-    padding-top:15%;
-    color: black;
-    font-size:20px;
-    font-weight:500;
-    padding:2%;
-    }
-    .window_for_challenges{
-    width:400px;
-    height:450px;
-    border: 3px solid black;
-    background-color: lightgray; 
-    }
-    
-    #answer{
-    width:200px;
-    height: 30px;
-    margin: 1px;
-    background-color: #1C1C1C;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    }
       #roulette{
           visibility: hidden;
          }
          
-         #wheelluck{
-             position: absolute;
-             margin-top: -15%;
-             visibility: hidden;
-             display: grid;
-             place-items: center;
-             overflow: hidden;
-             left:30%;
-         }
+
     
          
 #firstl, #secondl, #thirdl, #fourl, #fivel, #firstr, #secondr, #thirdr, #fourr, #fiver,#lastfl,#lastsl,#lastfr,#lastsr{
@@ -395,19 +461,53 @@ body{
          
          
          /* КОЛЕСО УДАЧИ */
-         
+      #wheelluck {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          padding: 2rem 0;
+          visibility: hidden;
+      }
+
+
+
+         .text {
+             font-weight: bold;
+             font-size: 0.8em;
+             color: white;
+             text-shadow: 1px 1px 2px black;
+         }
+
+.wheel-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    border: 5px solid var(--text-primary);
+    z-index: 5;
+}
+
          .deal-wheel {
+             
+             margin: auto;
+             max-width: 100%;
              box-sizing: border-box;
   /* задаём переменные блока */
   /* размеры колеса */
-  --size: clamp(200px, 60vmin, 600px);
+  --size: clamp(200px, 40vmin, 500px);
+
   /* настройки яркости и заливки фона секторов */
-  --lg-hs: 0 3%;
+ --lg-hs: 0 0%; /* hue 0, saturation 0% → grayscale */
   --lg-stop: 50%;
   --lg: linear-gradient(
-      hsl(var(--lg-hs) 0%) 0 var(--lg-stop),
-      hsl(var(--lg-hs) 20%) var(--lg-stop) 100%
-    );
+    hsl(var(--lg-hs) 100%) 0 var(--lg-stop),   /* white */
+    hsl(var(--lg-hs) 50%) var(--lg-stop) 100%  /* gray */
+  );
   /* добавляем позиционирование относительно других элементов */
   position: relative;
   /* подключаем сетку */
@@ -435,27 +535,10 @@ body{
   grid-area: trigger;
   justify-self: center;
 }
-/*
-#wheelcolorchange{
-    
 
-    margin-top: 500px;
-    box-sizing: border-box;
-  color: white;
-  background: black;
-  border: none;
- 
-  font-size: inherit;
-
-  padding: 0.9rem 2rem 1rem;
-
-  border-radius: 0.5rem;
-
-  cursor: pointer;
-}
-*/
 /* сектор колеса */
 .spinner {
+    border: 5px solid #303034;
     box-sizing: border-box;
   /* добавляем относительное позиционирование */
   position: relative;
@@ -572,6 +655,7 @@ body{
   animation: selected 800ms ease;
 }
 
+
 /* настраиваем анимацию текста на выпавшем секторе по кадрам */
 @keyframes selected {
   /* что происходит на 25% от начала анимации */
@@ -596,21 +680,52 @@ body{
     transform: scale(1);
   }
 }
+/*
+#wheelcolorchange{
+    
+
+    margin-top: 500px;
+    box-sizing: border-box;
+  color: white;
+  background: black;
+  border: none;
+ 
+  font-size: inherit;
+
+  padding: 0.9rem 2rem 1rem;
+
+  border-radius: 0.5rem;
+
+  cursor: pointer;
+}
+*/
 /* КНОПКА ПОМОЩИ */
-#helpbutton{
-    border-radius: 100px;
-    border: 1px solid black;
-    background-color: black;
-    color:white;
-    height: 70px;
-    width:70px;
-    text-align: center;
-    position: absolute;
-    right: 50px;
-    bottom: 50px;
-    font-family:sans-serif;
-    cursor: pointer;
-}   
+#helpbutton {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  width: 70px;
+  height: 70px;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  font-family: 'Space Grotesk', 'Noto Sans', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 999;
+}
+
+#helpbutton:hover {
+  background-color: #222;
+  transform: scale(1.05);
+}
+ 
 /* ССЫЛКИ */
 a:link{
     color:white;
