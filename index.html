@@ -134,13 +134,25 @@
 
     <div id="last">
       <div class="leftlast">
-        <button id="lastfl"><input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" id="inpfight" placeholder="Hero" /></button>
-        <button id="lastsl"><input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" id="inpfight1" placeholder="Hero" /></button>
+        <div id="lastfl">
+        <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalistfightl1" id="inpfight" placeholder="Hero" />
+        <datalist id="Datalistfightl1"></datalist>
+        </div>
+        <div id="lastsl">
+        <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalistfightl2" id="inpfight1" placeholder="Hero" />
+        <datalist id="Datalistfightl2"></datalist>
+        </div>
       </div>
       <button id="fight">FIGHT</button>
       <div class="rightlast">
-        <button id="lastfr"><input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" id="inpfight2" placeholder="Hero" /></button>
-        <button id="lastsr"><input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" id="inpfight3" placeholder="Hero" /></button>
+        <div id="lastfr">
+        <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalistfightr1" id="inpfight2" placeholder="Hero" />
+        <datalist id="Datalistfightr1"></datalist>
+        </div>
+        <div id="lastsr">
+        <input class="form-input w-full rounded-md text-[var(--text-primary)] bg-[var(--secondary-color)] border-transparent focus:border-gray-500 focus:ring-gray-500" list="Datalistfightr2" id="inpfight3" placeholder="Hero" />
+        <datalist id="Datalistfightr2"></datalist>
+        </div>
       </div>
     </div>
     <!-- СКАЧИВАНИЕ -->
@@ -1833,6 +1845,10 @@ slotIds.forEach(id => {
       applyAutocompleteToInput("inp8", "Datalist3r");
       applyAutocompleteToInput("inp9", "Datalist4r");
       applyAutocompleteToInput("inp10", "Datalist5r");
+      applyAutocompleteToInput("inpfight", "Datalistfightl1");
+      applyAutocompleteToInput("inpfight1", "Datalistfightl2");
+      applyAutocompleteToInput("inpfight2", "Datalistfightr1");
+      applyAutocompleteToInput("inpfight3", "Datalistfightr2");
 
 
           //рандомное число в другое
