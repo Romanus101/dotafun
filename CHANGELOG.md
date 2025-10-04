@@ -24,6 +24,10 @@ This way we don’t list all 130+ deployments, but only highlight the important 
 - Added bilingual README and CONTRIBUTING.
 - Releasing code
 
-
+## [2.3.62] - 2025-10-04
+- Sword sound for fight
+- Sword cursor
+- New fight animations
+## This functions still in work
 
 
