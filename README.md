@@ -9,6 +9,10 @@ It includes a roulette, a wheel of luck, challenges, randomizers, and even a min
 
 ---
 
+## 🚀 [Live Demo](https://romanus101.github.io/dotafun/)
+
+---
+
 ## ✨ Features
 
 - 🎲 **Classic / Random / Boss fight / Roulette / Wheel of luck / Challenges / Other** — multiple game modes.
