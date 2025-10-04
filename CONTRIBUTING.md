@@ -21,7 +21,7 @@ Push to your fork and open a Pull Request.
 
 ---
 
-##📌 Guidelines
+## 📌 Guidelines
 Keep code clean and readable.
 
 Use English for commit messages and PR titles.
@@ -32,14 +32,14 @@ If you add a new feature, update the README if necessary.
 
 --
 
-##🐛 Reporting Issues
+## 🐛 Reporting Issues
 Use the Issues tab to report bugs or suggest features.
 
 Provide as much detail as possible (steps to reproduce, screenshots, etc.).
 
 ---
 
-###🤝 Code of Conduct
+## 🤝 Code of Conduct
 Please be respectful and constructive. We want DOTAFUN to be a fun and welcoming project for everyone.
 
 ---
