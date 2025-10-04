@@ -42,6 +42,14 @@ Have fun 🎉
 📸 Screenshots
 ![Wheel of Luck screenshot](Screenshots/wheelofluck.png)
 
+---
+
+## 🤝 Help with project
+You can read about it here:
+[CONTRIBUTING](https://github.com/yourusername/dotafun/blob/main/CONTRIBUTING.md) 
+
+---
+
 ## 📜 License
 Project is under license [GNU GPL v3](LICENSE).
 
