@@ -41,6 +41,12 @@
 
 ---
 
+## 🤝 Помощь проекту
+Ниже подробнее:
+[Участие](https://github.com/Romanus101/dotafun/blob/main/CONTRIBUTING.ru.md) 
+
+---
+
 ## 📸 Скриншоты
 ![Wheel of Luck screenshot](Screenshots/wheelofluck.png)
 
