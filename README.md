@@ -46,7 +46,7 @@ Have fun 🎉
 
 ## 🤝 Help with project
 You can read about it here:
-[CONTRIBUTING](https://github.com/yourusername/dotafun/blob/main/CONTRIBUTING.md) 
+[CONTRIBUTING](https://github.com/Romanus101/dotafun/blob/main/CONTRIBUTING.md) 
 
 ---
 
