@@ -40,7 +40,7 @@ Open index.html in your browser.
 Have fun 🎉
 
 📸 Screenshots
-(Add GIFs or PNGs from your /screenshots folder here)
+![Wheel of Luck screenshot](Screenshots/wheelofluck.png)
 
 ## 📜 License
 Project is under license [GNU GPL v3](LICENSE).
