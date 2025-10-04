@@ -42,15 +42,6 @@ Have fun 🎉
 📸 Screenshots
 (Add GIFs or PNGs from your /screenshots folder here)
 
-🤝 Contributing
-Contributions are welcome!
-
-Fork the repository
-
-Create a feature branch
-
-Submit a pull request
-
 ## 📜 License
 Project is under license [GNU GPL v3](LICENSE).
 
