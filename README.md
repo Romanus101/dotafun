@@ -51,7 +51,7 @@ Create a feature branch
 
 Submit a pull request
 
-📜 License
-This project is licensed under the MIT License.
+## 📜 License
+Project is under license [GNU GPL v3](LICENSE).
 
 ---
