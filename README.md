@@ -1,6 +1,6 @@
 🌐 Available languages: 
-[English](https://github.com/yourusername/dotafun/blob/main/README.md) | 
-[Русский](https://github.com/yourusername/dotafun/blob/main/README.ru.md)
+[English](https://github.com/Romanus101/dotafun/blob/main/README.md) | 
+[Русский](https://github.com/Romanus101/dotafun/blob/main/README.ru.md)
 
 # DOTAFUN 🎮
 
