@@ -1,6 +1,7 @@
-```markdown
-🌐 Available languages: [English](README.md) | [Русский](README.ru.md)
-```
+🌐 Available languages: 
+[English](https://github.com/yourusername/dotafun/blob/main/README.md) | 
+[Русский](https://github.com/yourusername/dotafun/blob/main/README.ru.md)
+
 # DOTAFUN 🎮
 
 **DOTAFUN** is a fun web app with a set of mini‑modes for **Dota 2** that adds excitement to the hero selection process and games with friends.  
