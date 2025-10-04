@@ -891,3 +891,31 @@ a:link{
   font-weight: bold;
   font-size: 14px;
 }
+/* Cursor */
+.battle-mode {
+  cursor: url("Screenshots/sword.png") 0 0, auto;
+}
+
+/* Animation fighting */
+.hit-red {
+  border: 2px solid red !important;
+  animation: shake 0.3s ease;
+}
+.hit-green {
+  border: 2px solid lime !important;
+  animation: glow 0.6s ease;
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 0); }
+  50% { transform: translate(2px, 0); }
+  75% { transform: translate(-2px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px lime; }
+  50% { box-shadow: 0 0 20px lime; }
+  100% { box-shadow: 0 0 5px lime; }
+}

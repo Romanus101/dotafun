@@ -1,4 +1,4 @@
- //Звук для рулетки
+//Звук для рулетки
       const tickSound = document.getElementById("tickSound"); 
       function playTick() { 
         tickSound.currentTime = 0;
@@ -10,10 +10,14 @@
         winSound.currentTime = 0;
         winSound.play(); 
       }
+      // Звуки меча
+      const bladeSound = document.getElementById("blade-sound");
+      const reflectSound = document.getElementById("reflect-sound");
       //Громкость звуков
       tickSound.volume = 0.1;
       winSound.volume = 0.3;
-      
+      bladeSound.volume = 0.2;
+      reflectSound.volume = 0.2;
       //ПЕРЕМЕННЫЕ ДЛЯ СМЕНЫ ЯЗЫКА
       const optionMenu = document.querySelector(".select-menu"),
         selectBtn = optionMenu.querySelector(".select-btn"),
@@ -390,10 +394,17 @@ slotIds.forEach(id => {
       }
 
       //ПЕРЕКЛЮЧЕНИЕ РЕЖИМОВ
-
+function enableBattleMode() {
+  document.body.classList.add("battle-mode");
+}
+function disableBattleMode() {
+  document.body.classList.remove("battle-mode");
+}
       var mode = 0;
+enableBattleMode();
       classic.addEventListener("click", function () {
         mode = 0;
+        enableBattleMode();
   // Сбрасываем активный класс у всех кнопок
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
@@ -416,7 +427,19 @@ slotIds.forEach(id => {
     if (input) {
       
       // Сброс бордера 
+    slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      // Сброс классов удара
+      input.classList.remove("hit-red", "hit-green");
+      // Можно ещё явно убрать рамку
       input.style.border = "1px solid transparent";
+    }
+  }
+});
+
 
     }
   }
@@ -425,6 +448,7 @@ slotIds.forEach(id => {
       });
       rand.addEventListener("click", function () {
         mode = 1;
+        enableBattleMode();
   // Сбрасываем активный класс у всех кнопок
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
@@ -447,7 +471,19 @@ slotIds.forEach(id => {
     if (input) {
       
       // Сброс бордера 
+   slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      // Сброс классов удара
+      input.classList.remove("hit-red", "hit-green");
+      // Можно ещё явно убрать рамку
       input.style.border = "1px solid transparent";
+    }
+  }
+});
+
 
     }
   }
@@ -455,6 +491,7 @@ slotIds.forEach(id => {
       });
       frand.addEventListener("click", function () {
         mode = 2;
+        enableBattleMode();
   // Сбрасываем активный класс у всех кнопок
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
@@ -477,7 +514,19 @@ slotIds.forEach(id => {
     if (input) {
       
       // Сброс бордера 
+      slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      // Сброс классов удара
+      input.classList.remove("hit-red", "hit-green");
+      // Можно ещё явно убрать рамку
       input.style.border = "1px solid transparent";
+    }
+  }
+});
+
 
     }
   }
@@ -485,6 +534,7 @@ slotIds.forEach(id => {
       });
       roul.addEventListener("click", function () {
         mode = 3;
+        disableBattleMode();
   // Сбрасываем активный класс у всех кнопок
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
@@ -506,8 +556,19 @@ slotIds.forEach(id => {
     const input = slot.querySelector("input");
     if (input) {
       
-      // Сброс бордера 
+      slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      // Сброс классов удара
+      input.classList.remove("hit-red", "hit-green");
+      // Можно ещё явно убрать рамку
       input.style.border = "1px solid transparent";
+    }
+  }
+});
+
 
     }
   }
@@ -515,6 +576,7 @@ slotIds.forEach(id => {
       });
       whl.addEventListener("click", function () {
         mode = 4;
+        disableBattleMode();
   // Сбрасываем активный класс у всех кнопок
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
@@ -537,8 +599,19 @@ slotIds.forEach(id => {
     const input = slot.querySelector("input");
     if (input) {
       
-      // Сброс бордера 
+      slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      // Сброс классов удара
+      input.classList.remove("hit-red", "hit-green");
+      // Можно ещё явно убрать рамку
       input.style.border = "1px solid transparent";
+    }
+  }
+});
+
 
     }
   }
@@ -546,6 +619,7 @@ slotIds.forEach(id => {
       });
       chl.addEventListener("click", function () {
         mode = 5;
+        disableBattleMode();
           // Сбрасываем активный класс у всех кнопок
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
@@ -568,7 +642,19 @@ slotIds.forEach(id => {
     if (input) {
       
       // Сброс бордера 
+     slotIds.forEach(id => {
+  const slot = document.querySelector(`[data-id="${id}"]`);
+  if (slot) {
+    const input = slot.querySelector("input");
+    if (input) {
+      // Сброс классов удара
+      input.classList.remove("hit-red", "hit-green");
+      // Можно ещё явно убрать рамку
       input.style.border = "1px solid transparent";
+    }
+  }
+});
+
 
     }
   }
@@ -576,7 +662,7 @@ slotIds.forEach(id => {
       });
       whatelse.addEventListener("click", function () {
   mode = 6;
-
+disableBattleMode();
   // Сбрасываем активный класс у всех кнопок
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
@@ -614,13 +700,24 @@ slotIds.forEach(id => {
   const slot = document.querySelector(`[data-id="${id}"]`);
   if (slot) {
     const input = slot.querySelector("input");
-    slot.addEventListener("dblclick", () => {
-  const color = (mode === 0 || mode === 1) ? "red" : (getRandomInt(2) === 1 ? "green" : "red");
+slot.addEventListener("dblclick", () => {
+  const isClassicOrBoss = (mode === 0 || mode === 1);
+  const colorClass = isClassicOrBoss ? "hit-red" : (getRandomInt(2) === 1 ? "hit-green" : "hit-red");
 
-      if (input) {
-        input.style.border = `1px solid ${color}`;
-      }
-    });
+  if (input) {
+    input.classList.remove("hit-red", "hit-green"); // сброс
+    void input.offsetWidth; // хак для перезапуска анимации
+    input.classList.add(colorClass);
+  }
+    if (colorClass === "hit-red") {
+    bladeSound.currentTime = 0;
+    bladeSound.play().catch(err => console.log("play blocked:", err));
+  } else if (colorClass === "hit-green") {
+    reflectSound.currentTime = 0;
+    reflectSound.play().catch(err => console.log("play blocked:", err));
+  }
+});
+
   }
 });
 
@@ -634,23 +731,29 @@ slotIds.forEach(id => {
   const right1 = document.querySelector("#lastfr input");
   const right2 = document.querySelector("#lastsr input");
 
-  const winl = getRandomInt(2);
-  if (winl === 0) {
-    left1.style.border = `1px solid green`;
-    left2.style.border = `1px solid red`;
-  } else {
-    left1.style.border = `1px solid red`;
-    left2.style.border = `1px solid green`;
+  function applyResult(input, isWin) {
+    input.classList.remove("hit-red", "hit-green");
+    void input.offsetWidth; // перезапуск анимации
+    if (isWin) {
+      input.classList.add("hit-green");
+      reflectSound.currentTime = 0;
+      reflectSound.play().catch(()=>{});
+    } else {
+      input.classList.add("hit-red");
+      bladeSound.currentTime = 0;
+      bladeSound.play().catch(()=>{});
+    }
   }
 
+  // Левая пара
+  const winl = getRandomInt(2);
+  applyResult(left1, winl === 0);
+  applyResult(left2, winl !== 0);
+
+  // Правая пара
   const winr = getRandomInt(2);
-  if (winr === 0) {
-    right1.style.border = `1px solid green`;
-    right2.style.border = `1px solid red`;
-  } else {
-    right1.style.border = `1px solid red`;
-    right2.style.border = `1px solid green`;
-  }
+  applyResult(right1, winr === 0);
+  applyResult(right2, winr !== 0);
 });
 
       //ЧЕЛЛЕНДЖЫ
