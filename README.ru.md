@@ -42,7 +42,7 @@
 ---
 
 ## 📸 Скриншоты
-(сюда можно вставить GIF или PNG из твоего /screenshots)
+![Wheel of Luck screenshot](Screenshots/wheelofluck.png)
 
 ---
 
