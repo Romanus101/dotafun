@@ -9,6 +9,10 @@
 
 ---
 
+## 🚀 [Перейти на сайт](https://romanus101.github.io/dotafun/)
+
+---
+
 ## ✨ Возможности
 
 - 🎲 **Classic / Random / Boss fight / Roulette / Wheel of luck / Challenges / Other** — разные игровые режимы.  
