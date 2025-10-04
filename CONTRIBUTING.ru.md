@@ -1,6 +1,6 @@
 🌐 Доступные языки: 
-[English](https://github.com/yourusername/dotafun/blob/main/CONTRIBUTING.md) | 
-[Русский](https://github.com/yourusername/dotafun/blob/main/CONTRIBUTING.ru.md)
+[English](https://github.com/Romanus101/dotafun/blob/main/CONTRIBUTING.md) | 
+[Русский](https://github.com/Romanus101/dotafun/blob/main/CONTRIBUTING.ru.md)
 
 # Участие в развитии DOTAFUN
 
