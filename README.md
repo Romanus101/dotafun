@@ -9,7 +9,7 @@ It includes a roulette, a wheel of luck, challenges, randomizers, and even a min
 
 ---
 
-## 🚀 [Live Demo](https://romanus101.github.io/dotafun/)
+## 🚀 [Open DOTAFUN](https://romanus101.github.io/dotafun/)
 
 ---
 
