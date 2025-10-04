@@ -39,7 +39,9 @@ Open index.html in your browser.
 
 Have fun 🎉
 
-📸 Screenshots
+---
+
+## 📸 Screenshots
 ![Wheel of Luck screenshot](Screenshots/wheelofluck.png)
 
 ---
