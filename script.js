@@ -171,173 +171,239 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-      //КОЛЕСО УДАЧИ
-      // надписи и цвета на секторах
-     const prizes = [
-  { text: "", color: "hsl(210, 60%, 60%)" }, // мягкий голубой
-  { text: "", color: "hsl(160, 55%, 55%)" }, // мятный зелёный
-  { text: "", color: "hsl(45, 85%, 65%)" },  // пастельный жёлтый
-  { text: "", color: "hsl(25, 70%, 60%)" },  // тёплый персиковый
-  { text: "", color: "hsl(0, 70%, 60%)" },   // нежный коралловый
-  { text: "", color: "hsl(340, 60%, 65%)" }, // розовый
-  { text: "", color: "hsl(95, 45%, 55%)" },  // мягкий салатовый
-  { text: "", color: "hsl(200, 40%, 70%)" }, // небесно-синий
-  { text: "", color: "hsl(280, 45%, 65%)" }, // сиреневый
-  { text: "", color: "hsl(180, 30%, 60%)" }  // бирюзовый
-];
+       const prizes = [
+    { text: "", color: "hsl(210, 60%, 60%)" },
+    { text: "", color: "hsl(160, 55%, 55%)" },
+    { text: "", color: "hsl(45, 85%, 65%)" },
+    { text: "", color: "hsl(25, 70%, 60%)" },
+    { text: "", color: "hsl(0, 70%, 60%)" },
+    { text: "", color: "hsl(340, 60%, 65%)" },
+    { text: "", color: "hsl(95, 45%, 55%)" },
+    { text: "", color: "hsl(200, 40%, 70%)" },
+    { text: "", color: "hsl(280, 45%, 65%)" },
+    { text: "", color: "hsl(180, 30%, 60%)" }
+  ];
 
-      
-        
-      // создаём переменные для быстрого доступа ко всем объектам на странице — блоку в целом, колесу, кнопке и язычку
+  // Селекторы
+  const wheel   = document.querySelector('.deal-wheel');
+  const spinner = wheel.querySelector('.spinner');
+  const trigger = wheel.querySelector('.btn-spin');
+  const ticker  = wheel.querySelector('.ticker');
 
-      const wheel = document.querySelector(".deal-wheel");
-      const spinner = wheel.querySelector(".spinner");
-      const trigger = wheel.querySelector(".btn-spin");
-      const ticker = wheel.querySelector(".ticker");
-      // на сколько секторов нарезаем круг
-      const prizeSlice = 360 / prizes.length;
-      // на какое расстояние смещаем сектора друг относительно друга
-      const prizeOffset = Math.floor(180 / prizes.length);
-      // прописываем CSS-классы, которые будем добавлять и убирать из стилей
-      const spinClass = "is-spinning";
-      const selectedClass = "selected";
-      // получаем все значения параметров стилей у секторов
-      const spinnerStyles = window.getComputedStyle(spinner);
-      // переменная для анимации
-      let tickerAnim;
-      // угол вращения
-      let rotation = 0;
-      // текущий сектор
-      let currentSlice = 0;
-      // переменная для текстовых подписей
-      let prizeNodes;
+  // Звуки
+  function playTick() {
+    const tickSound = document.getElementById('tickSound');
+    if (tickSound) {
+      tickSound.currentTime = 0;
+      tickSound.play().catch(()=>{});
+    }
+  }
+  function playWin() {
+    const winSound = document.getElementById('winSound');
+    if (winSound) {
+      winSound.currentTime = 0;
+      winSound.play().catch(()=>{});
+    }
+  }
+  function stopTickSound() {
+    const tickSound = document.getElementById('tickSound');
+    if (tickSound) {
+      tickSound.pause();
+      tickSound.currentTime = 0;
+    }
+  }
 
-      // расставляем текст по секторам
-      const createPrizeNodes = () => {
-        // обрабатываем каждую подпись
-        prizes.forEach(({ text, color, reaction }, i) => {
-          // каждой из них назначаем свой угол поворота
-          const rotation = prizeSlice * i * -1 - prizeOffset;
-          // добавляем код с размещением текста на страницу в конец блока spinner
-          spinner.insertAdjacentHTML(
-            "beforeend",
-            // текст при этом уже оформлен нужными стилями
-            `<li class="prize" data-reaction=${reaction} style="--rotate: ${rotation}deg">
-        <span class="text">${text}</span>
-      </li>`
-          );
-        });
-      };
+  // Геометрия
+  const prizeSlice  = 360 / prizes.length;
+  const prizeOffset = Math.floor(180 / prizes.length);
 
-      // рисуем разноцветные секторы
-      const createConicGradient = () => {
-        // устанавливаем нужное значение стиля у элемента spinner
-        spinner.setAttribute(
-          "style",
-          `background: conic-gradient(
+  // Классы
+  const spinClass     = 'is-spinning';
+  const selectedClass = 'selected';
+
+  // Состояния
+  let tickerAnim = null;
+  let rotation   = 0;
+  let currentSlice = 0;
+  let prizeNodes = [];
+
+  // Фон через conic-gradient — НЕ перезаписываем весь атрибут style!
+  function createConicGradient() {
+    spinner.style.background = `conic-gradient(
       from -90deg,
       ${prizes
-        // получаем цвет текущего сектора
         .map(({ color }, i) => `${color} 0 ${(100 / prizes.length) * (prizes.length - i)}%`)
         .reverse()}
-    );`
-        );
-      };
-        
-      // создаём функцию, которая нарисует колесо в сборе
-const setupWheel = () => {
-  // сначала секторы (это обновляет фон, так что это нормально)
-  createConicGradient(); 
+    )`;
+  }
 
-  // ОЧИЩАЕМ предыдущие текстовые элементы из спиннера
-  
-  spinner.innerHTML = ''; 
+  // Текстовые подписи для каждого сектора
+  function createPrizeNodes() {
+    prizes.forEach(({ text }, i) => {
+      const rot = prizeSlice * i * -1 - prizeOffset;
+      spinner.insertAdjacentHTML(
+        'beforeend',
+        `<li class="prize" style="--rotate: ${rot}deg">
+          <span class="text">${text}</span>
+        </li>`
+      );
+    });
+  }
 
-  // потом снова создаем текст уже с новыми значениями из массива prizes
-  createPrizeNodes(); 
+  // Сборка колеса: фон + текст + список нод
+  function setupWheel() {
+    spinner.innerHTML = '';          // очистить прошлые подписи
+    createConicGradient();           // обновить фон
+    createPrizeNodes();              // создать подписи заново
+    prizeNodes = wheel.querySelectorAll('.prize');
+    // Сброс начального угла через CSS-переменную
+    spinner.style.setProperty('--rotate', rotation % 360);
+  }
 
-  // а потом мы получим список всех СНОВА СОЗДАННЫХ призов на странице, 
-  // чтобы работать с ними как с объектами
-  prizeNodes = wheel.querySelectorAll(".prize");
-};
+  // Случайная инерция
+  function spinertia(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
-      // определяем количество оборотов, которое сделает наше колесо
-      const spinertia = (min, max) => {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      };
+  // Безопасное получение угла из transform; если transform = 'none' — вернуть 0
+  function getSpinnerAngleDeg() {
+    const transform = window.getComputedStyle(spinner).transform;
+    if (!transform || transform === 'none') return 0;
+    const values = transform.split('(')[1].split(')')[0].split(',');
+    const a = parseFloat(values[0]);
+    const b = parseFloat(values[1]);
+    let rad = Math.atan2(b, a);
+    if (rad < 0) rad += 2 * Math.PI;
+    return Math.round(rad * (180 / Math.PI));
+  }
 
-      // функция запуска вращения с плавной остановкой
-      const runTickerAnimation = () => {
-        // взяли код анимации отсюда: https://css-tricks.com/get-value-of-css-rotation-through-javascript/
-        const values = spinnerStyles.transform.split("(")[1].split(")")[0].split(",");
-        const a = values[0];
-        const b = values[1];
-        let rad = Math.atan2(b, a);
+  // Анимация тика язычка: дергаем при смене сектора
+  function runTickerAnimation() {
+    const angle = getSpinnerAngleDeg();
+    const slice = Math.floor(angle / prizeSlice);
 
-        if (rad < 0) rad += 2 * Math.PI;
+    if (currentSlice !== slice) {
+      ticker.style.animation = 'none';
+      setTimeout(() => (ticker.style.animation = null), 10);
+      currentSlice = slice;
+      playTick();
+    }
 
-        const angle = Math.round(rad * (180 / Math.PI));
-        const slice = Math.floor(angle / prizeSlice);
+    tickerAnim = requestAnimationFrame(runTickerAnimation);
+  }
 
-        // анимация язычка, когда его задевает колесо при вращении
-        // если появился новый сектор
-        if (currentSlice !== slice) {
-          // убираем анимацию язычка
-          ticker.style.animation = "none";
-          // и через 10 миллисекунд отменяем это, чтобы он вернулся в первоначальное положение
-          setTimeout(() => (ticker.style.animation = null), 10);
-          // после того, как язычок прошёл сектор - делаем его текущим
-          currentSlice = slice;
-          playTick();
-        }
-        // запускаем анимацию
-        tickerAnim = requestAnimationFrame(runTickerAnimation);
-      };
+  // Выбор призового сектора по финальному rotation
+let lastWinnerIndex = null;
 
-      // функция выбора призового сектора
-      const selectPrize = () => {
-        const selected = Math.floor(rotation / prizeSlice);
-        prizeNodes[selected].classList.add(selectedClass);
-      };
+  function selectPrize() {
+    const selected = Math.floor((rotation % 360) / prizeSlice);
+    if (prizeNodes && prizeNodes[selected]) {
+      prizeNodes[selected].classList.add(selectedClass);
+      lastWinnerIndex = selected;
+    }
+  }
 
-      // отслеживаем нажатие на кнопку
-      trigger.addEventListener("click", () => {
-        // делаем её недоступной для нажатия
-        trigger.disabled = true;
-        // задаём начальное вращение колеса
-        rotation = Math.floor(Math.random() * 360 + spinertia(2000, 5000));
-        // убираем прошлый приз
-        prizeNodes.forEach((prize) => prize.classList.remove(selectedClass));
-        // добавляем колесу класс is-spinning, с помощью которого реализуем нужную отрисовку
-        wheel.classList.add(spinClass);
-        // через CSS говорим секторам, как им повернуться
-        spinner.style.setProperty("--rotate", rotation);
-        // возвращаем язычок в горизонтальную позицию
-        ticker.style.animation = "none";
-        // запускаем анимацию вращение
-        runTickerAnimation();
-      });
+  // Сброс состояния колеса: нужен при переключении режимов
+  function resetWheel() {
+    // Остановка тикера
+    if (tickerAnim) {
+      cancelAnimationFrame(tickerAnim);
+      tickerAnim = null;
+    }
 
-      // отслеживаем, когда закончилась анимация вращения колеса
-      spinner.addEventListener("transitionend", () => {
-        // останавливаем отрисовку вращения
-        cancelAnimationFrame(tickerAnim);
-        // получаем текущее значение поворота колеса
-        rotation %= 360;
-        // выбираем приз
-        selectPrize();
-        //Звук победы
-        playWin();
-        // убираем класс, который отвечает за вращение
-        wheel.classList.remove(spinClass);
-        // отправляем в CSS новое положение поворота колеса
-        spinner.style.setProperty("--rotate", rotation);
-        // делаем кнопку снова активной
-        trigger.disabled = false;
-      });
-      setupWheel();
+    // Визуальные сбросы
+    wheel.classList.remove(spinClass);
+    trigger.disabled = false;
+
+    // Снять выделения
+    if (prizeNodes && prizeNodes.length) {
+      prizeNodes.forEach(prize => prize.classList.remove(selectedClass));
+    }
+
+    // Сброс угла (оставляем корректный 0..359)
+    rotation = rotation % 360;
+    spinner.style.setProperty('--rotate', rotation);
+
+    // Остановить звук
+    stopTickSound();
+  }
+
+  // Запуск
+  setupWheel();
+
+  // Кнопка "Крутить"
+  trigger.addEventListener('click', () => {
+    if (trigger.disabled) return;
+    if (!prizeNodes || prizeNodes.length === 0) {
+      setupWheel(); // если вдруг очистилось, пересобрать
+    }
+
+    trigger.disabled = true;
+    rotation = Math.floor(Math.random() * 360 + spinertia(2000, 5000));
+
+    prizeNodes.forEach(prize => prize.classList.remove(selectedClass));
+    wheel.classList.add(spinClass);
+
+    // через CSS-переменную меняем поворот — transform всегда валиден
+    spinner.style.setProperty('--rotate', rotation);
+
+    // запуск тикера
+    ticker.style.animation = 'none';
+    runTickerAnimation();
+  });
+
+  // Окончание анимации вращения (CSS transition)
+  spinner.addEventListener('transitionend', () => {
+    if (tickerAnim) {
+      cancelAnimationFrame(tickerAnim);
+      tickerAnim = null;
+    }
+
+    rotation = rotation % 360;
+    selectPrize();
+    playWin();
+
+    wheel.classList.remove(spinClass);
+    spinner.style.setProperty('--rotate', rotation);
+    trigger.disabled = false;
+  });
+
+  // --- Интеграция с твоими режимами ---
+
+  // Пример: при входе в режим "Колесо удачи"
+  function enterWheelMode() {
+  resetAllModes();
+  document.getElementById('wheelluck').style.display = 'block';
+
+  // если есть прошлый победитель — подсветим его
+  if (lastWinnerIndex !== null && prizeNodes && prizeNodes[lastWinnerIndex]) {
+    prizeNodes[lastWinnerIndex].classList.add(selectedClass);
+    playWin();
+  }
+}
+
+
+  // Пример: при выходе из режима "Колесо удачи" — ОЧЕНЬ ВАЖНО сбросить колесо
+ function leaveWheelMode() {
+  cancelAnimationFrame(tickerAnim);
+  tickerAnim = null;
+  wheel.classList.remove('is-spinning');
+  rotation = rotation % 360;
+  spinner.style.setProperty('--rotate', rotation);
+  selectPrize(); // ← назначаем победителя даже без transitionend
+  trigger.disabled = false;
+  stopTickSound();
+   
+}
+
+
+  // Универсальный сброс проекта (заполни своими очистками)
+  function resetAllModes() {
+    // Остановить любые звуки рулеток/тикеров
+    stopTickSound();
+}
       /*
       //смена цветов в рулетке
 wheelcolorchange.addEventListener("click", function(){
@@ -409,10 +475,10 @@ enableBattleMode();
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
   });
-
+        tickSound.volume = 0;
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-
+        
         document.getElementById("last").style.display = "none";
         document.getElementById("roulette").style.display = "none";
         document.getElementById("wheelluck").style.display = "none";
@@ -425,6 +491,7 @@ enableBattleMode();
   if (slot) {
     const input = slot.querySelector("input");
     if (input) {
+      leaveWheelMode();
       
       // Сброс бордера 
     slotIds.forEach(id => {
@@ -446,6 +513,10 @@ enableBattleMode();
         });
         
       });
+
+
+
+
       rand.addEventListener("click", function () {
         mode = 1;
         enableBattleMode();
@@ -456,7 +527,7 @@ enableBattleMode();
 
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-
+tickSound.volume = 0;
         document.getElementById("center").style.display = "flex";
         document.getElementById("wheelluck").style.display = "none";
         document.getElementById("last").style.display = "flex";
@@ -469,6 +540,7 @@ enableBattleMode();
   if (slot) {
     const input = slot.querySelector("input");
     if (input) {
+      leaveWheelMode();
       
       // Сброс бордера 
    slotIds.forEach(id => {
@@ -499,7 +571,7 @@ enableBattleMode();
 
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-
+tickSound.volume = 0;
         document.getElementById("center").style.display = "flex";
         document.getElementById("wheelluck").style.display = "none";
         document.getElementById("last").style.display = "none";
@@ -512,7 +584,7 @@ enableBattleMode();
   if (slot) {
     const input = slot.querySelector("input");
     if (input) {
-      
+      leaveWheelMode();
       // Сброс бордера 
       slotIds.forEach(id => {
   const slot = document.querySelector(`[data-id="${id}"]`);
@@ -539,10 +611,10 @@ enableBattleMode();
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
   });
-
+        leaveWheelMode();
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-
+tickSound.volume = 0.1;
         document.getElementById("center").style.display = "flex";
         document.getElementById("wheelluck").style.display = "none";
         document.getElementById("roulette").style.display = "flex";
@@ -581,10 +653,10 @@ enableBattleMode();
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
   });
-
+enterWheelMode();
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-
+tickSound.volume = 0.1;
         document.getElementById("center").style.display = "flex";
         document.getElementById("wheelluck").style.display = "inline-block";
         document.getElementById("roulette").style.display = "none";
@@ -624,10 +696,11 @@ enableBattleMode();
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
   });
+      leaveWheelMode();
 
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-
+tickSound.volume = 0;
         document.getElementById("center").style.display = "none";
         document.getElementById("wheelluck").style.display = "none";
         document.getElementById("roulette").style.display = "none";
@@ -667,10 +740,11 @@ disableBattleMode();
   [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
     btn.classList.remove("active-mode");
   });
+      leaveWheelMode();
 
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-
+tickSound.volume = 0;
  
   document.getElementById("center").style.display = "none";
   document.getElementById("wheelluck").style.display = "none";
