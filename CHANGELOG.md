@@ -38,3 +38,8 @@ This way we don’t list all 130+ deployments, but only highlight the important 
 - Fixed a text display bug in "Roulette" mode
 - Added tooltips when hovering over buttons
 - Minor performance improvements
+
+## [2.3.65] - 2025-10-07
+- Minor performance improvements
+
+  
