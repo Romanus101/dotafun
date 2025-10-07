@@ -34,3 +34,7 @@ This way we don’t list all 130+ deployments, but only highlight the important 
 - Fixed bug when spining sound play even if you leave active tab
 - Fixed bug when wheel of luck stop working after you leave active tab
 
+## [2.3.64] - 2025-10-07
+- Fixed a text display bug in "Roulette" mode
+- Added tooltips when hovering over buttons
+- Minor performance improvements
