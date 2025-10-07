@@ -2067,6 +2067,8 @@ slotIds.forEach((id) => {
             document.getElementById("minrandnumber").placeholder = "Мин.";
             document.getElementById("maxrandnumber").placeholder = "Макс."; 
             randnumberbutton.innerHTML = "Готово";
+            document.getElementById("section-title").innerText = "Генератор случайных чисел (задайте диапазон)";
+
           }
           if (sBtn_text.innerHTML == "EN" || sBtn_text.innerHTML == "<h2> EN</h2>") {
             classic.innerHTML = "Classic(defolt)";
@@ -2103,6 +2105,7 @@ slotIds.forEach((id) => {
             document.getElementById("minrandnumber").placeholder = "Min";
             document.getElementById("maxrandnumber").placeholder = "Max";
             randnumberbutton.innerHTML = "Check";
+            document.getElementById("section-title").innerText = "Random number generator (choose a range)";
           }
         });
       });
@@ -2187,6 +2190,7 @@ function activateEasterEgg() {
             document.getElementById("minrandnumber").placeholder = "@#!#$#@!@$@!";
             document.getElementById("maxrandnumber").placeholder = "@#!#$#@!@$@!";
             randnumberbutton.innerHTML = "@#!#$#@!@$@!";
+            document.getElementById("section-title").innerText = "@#!#$#@!@$@!";
   
   
             // Добавить класс
@@ -2251,6 +2255,7 @@ chaosSound.play();
             document.getElementById("minrandnumber").placeholder = "Мин.";
             document.getElementById("maxrandnumber").placeholder = "Макс."; 
             randnumberbutton.innerHTML = "Готово";
+            document.getElementById("section-title").innerText = "Генератор случайных чисел (задайте диапазон)";
           }
           if (sBtn_text.innerHTML == "EN" || sBtn_text.innerHTML == "<h2> EN</h2>") {
             classic.innerHTML = "Classic(defolt)";
@@ -2287,6 +2292,7 @@ chaosSound.play();
             document.getElementById("minrandnumber").placeholder = "Min";
             document.getElementById("maxrandnumber").placeholder = "Max";
             randnumberbutton.innerHTML = "Check";
+            document.getElementById("section-title").innerText = "Random number generator (choose a range)";
           }
   }
 }
