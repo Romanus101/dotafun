@@ -30,4 +30,7 @@ This way we don’t list all 130+ deployments, but only highlight the important 
 - New fight animations
 ## This functions still in work
 
+## [2.3.63] - 2025-10-07
+- Fixed bug when spining sound play even if you leave active tab
+- Fixed bug when wheel of luck stop working after you leave active tab
 
