@@ -1,9 +1,11 @@
-//Звук для рулетки
+      //ЗВУКИ
+      //Звук прокрутки
       const tickSound = document.getElementById("tickSound"); 
       function playTick() { 
         tickSound.currentTime = 0;
         tickSound.play(); 
       }
+
       //Звук при победе
       const winSound = document.getElementById("winSound"); 
       function playWin() { 
@@ -13,16 +15,19 @@
       // Звуки меча
       const bladeSound = document.getElementById("blade-sound");
       const reflectSound = document.getElementById("reflect-sound");
+      //Звуки Хаоса
+      const chaosSound = document.getElementById("chaose");
       //Громкость звуков
       tickSound.volume = 0.1;
+      chaosSound.volume = 0.3;
       winSound.volume = 0.3;
       bladeSound.volume = 0.2;
       reflectSound.volume = 0.2;
       //ПЕРЕМЕННЫЕ ДЛЯ СМЕНЫ ЯЗЫКА
       const optionMenu = document.querySelector(".select-menu"),
-        selectBtn = optionMenu.querySelector(".select-btn"),
-        options = optionMenu.querySelectorAll(".option"),
-        sBtn_text = optionMenu.querySelector(".sBtn-text");
+      selectBtn = optionMenu.querySelector(".select-btn"),
+      options = optionMenu.querySelectorAll(".option"),
+      sBtn_text = optionMenu.querySelector(".sBtn-text");
       option_text = optionMenu.querySelector(".option-text");
 
       // ДОБАВЛЕНИЕ ТЕКСТА В РУЛЕТКУ КСГО
@@ -51,7 +56,7 @@ function generateCards() {
     inp7.value,
     inp8.value,
     inp9.value,
-    inp10.value,
+    inp10.value
   ];
 
   const cardsBlock = document.querySelector(".cards");
@@ -67,7 +72,7 @@ function generateCards() {
   }
 
   // Сбрасываем визуальные стили победителя, если были
-  Array.from(cardsBlock.children).forEach(card => {
+  Array.from(cardsBlock.children).forEach((card) => {
     card.style.background = "white";
     card.style.color = "#6A6A6A";
   });
@@ -86,7 +91,6 @@ function generateCards() {
 function easeOutCubic(t) {
   return 1 - Math.pow(1 - t, 3);
 }
-
 // Основной цикл анимации
 function animateScroll(timestamp) {
   if (!animationStart) animationStart = timestamp;
@@ -113,10 +117,9 @@ function animateScroll(timestamp) {
     cardsBlock.style.transform = `translateX(-${targetOffset}px)`;
 
     // Подсветка победителя: winnerIndex — тот, кто должен быть строго в центре
-    const winnerCard = cardsBlock.children[winnerIndex-1];
+    const winnerCard = cardsBlock.children[winnerIndex - 1];
     if (winnerCard) {
-        winnerCard.classList.add("winner");
-
+      winnerCard.classList.add("winner");
     }
     playWin();
 
@@ -130,23 +133,21 @@ function start() {
   const cardsBlock = document.querySelector(".cards");
   const totalCards = cardsBlock.children.length;
   const centerOffset = Math.floor(visibleCards / 2);
-    
+
   if (isRolling) return;
   isRolling = true;
   startBtn.disabled = true;
-  cardsBlock.querySelectorAll(".winner").forEach(el => el.classList.remove("winner"));
+  cardsBlock.querySelectorAll(".winner").forEach((el) => el.classList.remove("winner"));
   generateCards();
-
-
 
   // Выбираем индекс, который окажется в центре окна
   // Ограничиваем диапазон, чтобы центр не ушёл за край
   const minIndex = centerOffset;
   const maxIndex = totalCards - (visibleCards - centerOffset) - 1;
-  winnerIndex = Math.max(minIndex, Math.min(
-    minIndex + Math.floor(Math.random() * (totalCards - visibleCards)),
-    maxIndex
-  ));
+  winnerIndex = Math.max(
+    minIndex,
+    Math.min(minIndex + Math.floor(Math.random() * (totalCards - visibleCards)), maxIndex)
+  );
 
   // Целевой сдвиг так, чтобы winnerIndex оказался в центре
   targetOffset = (winnerIndex - centerOffset) * cardStep;
@@ -167,585 +168,569 @@ function start() {
 window.addEventListener("DOMContentLoaded", () => {
   generateCards();
 });
+const prizes = [
+  { text: "", color: "hsl(210, 60%, 60%)" },
+  { text: "", color: "hsl(160, 55%, 55%)" },
+  { text: "", color: "hsl(45, 85%, 65%)" },
+  { text: "", color: "hsl(25, 70%, 60%)" },
+  { text: "", color: "hsl(0, 70%, 60%)" },
+  { text: "", color: "hsl(340, 60%, 65%)" },
+  { text: "", color: "hsl(95, 45%, 55%)" },
+  { text: "", color: "hsl(200, 40%, 70%)" },
+  { text: "", color: "hsl(280, 45%, 65%)" },
+  { text: "", color: "hsl(180, 30%, 60%)" }
+];
 
+// Селекторы
+const wheel = document.querySelector(".deal-wheel");
+const spinner = wheel.querySelector(".spinner");
+const trigger = wheel.querySelector(".btn-spin");
+const ticker = wheel.querySelector(".ticker");
 
-
-
-       const prizes = [
-    { text: "", color: "hsl(210, 60%, 60%)" },
-    { text: "", color: "hsl(160, 55%, 55%)" },
-    { text: "", color: "hsl(45, 85%, 65%)" },
-    { text: "", color: "hsl(25, 70%, 60%)" },
-    { text: "", color: "hsl(0, 70%, 60%)" },
-    { text: "", color: "hsl(340, 60%, 65%)" },
-    { text: "", color: "hsl(95, 45%, 55%)" },
-    { text: "", color: "hsl(200, 40%, 70%)" },
-    { text: "", color: "hsl(280, 45%, 65%)" },
-    { text: "", color: "hsl(180, 30%, 60%)" }
-  ];
-
-  // Селекторы
-  const wheel   = document.querySelector('.deal-wheel');
-  const spinner = wheel.querySelector('.spinner');
-  const trigger = wheel.querySelector('.btn-spin');
-  const ticker  = wheel.querySelector('.ticker');
-
-  // Звуки
-  function playTick() {
-    const tickSound = document.getElementById('tickSound');
-    if (tickSound) {
-      tickSound.currentTime = 0;
-      tickSound.play().catch(()=>{});
-    }
+// Звуки
+function playTick() {
+  const tickSound = document.getElementById("tickSound");
+  if (tickSound) {
+    tickSound.currentTime = 0;
+    tickSound.play().catch(() => {});
   }
-  function playWin() {
-    const winSound = document.getElementById('winSound');
-    if (winSound) {
-      winSound.currentTime = 0;
-      winSound.play().catch(()=>{});
-    }
+}
+function playWin() {
+  const winSound = document.getElementById("winSound");
+  if (winSound) {
+    winSound.currentTime = 0;
+    winSound.play().catch(() => {});
   }
-  function stopTickSound() {
-    const tickSound = document.getElementById('tickSound');
-    if (tickSound) {
-      tickSound.pause();
-      tickSound.currentTime = 0;
-    }
+}
+function stopTickSound() {
+  const tickSound = document.getElementById("tickSound");
+  if (tickSound) {
+    tickSound.pause();
+    tickSound.currentTime = 0;
   }
+}
 
-  // Геометрия
-  const prizeSlice  = 360 / prizes.length;
-  const prizeOffset = Math.floor(180 / prizes.length);
+// Геометрия
+const prizeSlice = 360 / prizes.length;
+const prizeOffset = Math.floor(180 / prizes.length);
 
-  // Классы
-  const spinClass     = 'is-spinning';
-  const selectedClass = 'selected';
+// Классы
+const spinClass = "is-spinning";
+const selectedClass = "selected";
 
-  // Состояния
-  let tickerAnim = null;
-  let rotation   = 0;
-  let currentSlice = 0;
-  let prizeNodes = [];
+// Состояния
+let tickerAnim = null;
+let rotation = 0;
+let currentSlice = 0;
+let prizeNodes = [];
 
-  // Фон через conic-gradient — НЕ перезаписываем весь атрибут style!
-  function createConicGradient() {
-    spinner.style.background = `conic-gradient(
+// Фон через conic-gradient — НЕ перезаписываем весь атрибут style!
+function createConicGradient() {
+  spinner.style.background = `conic-gradient(
       from -90deg,
-      ${prizes
-        .map(({ color }, i) => `${color} 0 ${(100 / prizes.length) * (prizes.length - i)}%`)
-        .reverse()}
+      ${prizes.map(({ color }, i) => `${color} 0 ${(100 / prizes.length) * (prizes.length - i)}%`).reverse()}
     )`;
-  }
+}
 
-  // Текстовые подписи для каждого сектора
-  function createPrizeNodes() {
-    prizes.forEach(({ text }, i) => {
-      const rot = prizeSlice * i * -1 - prizeOffset;
-      spinner.insertAdjacentHTML(
-        'beforeend',
-        `<li class="prize" style="--rotate: ${rot}deg">
+// Текстовые подписи для каждого сектора
+function createPrizeNodes() {
+  prizes.forEach(({ text }, i) => {
+    const rot = prizeSlice * i * -1 - prizeOffset;
+    spinner.insertAdjacentHTML(
+      "beforeend",
+      `<li class="prize" style="--rotate: ${rot}deg">
           <span class="text">${text}</span>
         </li>`
-      );
-    });
+    );
+  });
+}
+
+// Сборка колеса: фон + текст + список нод
+function setupWheel() {
+  spinner.innerHTML = ""; // очистить прошлые подписи
+  createConicGradient(); // обновить фон
+  createPrizeNodes(); // создать подписи заново
+  prizeNodes = wheel.querySelectorAll(".prize");
+  // Сброс начального угла через CSS-переменную
+  spinner.style.setProperty("--rotate", rotation % 360);
+}
+
+// Случайная инерция
+function spinertia(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Безопасное получение угла из transform; если transform = 'none' — вернуть 0
+function getSpinnerAngleDeg() {
+  const transform = window.getComputedStyle(spinner).transform;
+  if (!transform || transform === "none") return 0;
+  const values = transform.split("(")[1].split(")")[0].split(",");
+  const a = parseFloat(values[0]);
+  const b = parseFloat(values[1]);
+  let rad = Math.atan2(b, a);
+  if (rad < 0) rad += 2 * Math.PI;
+  return Math.round(rad * (180 / Math.PI));
+}
+
+// Анимация тика язычка: дергаем при смене сектора
+function runTickerAnimation() {
+  const angle = getSpinnerAngleDeg();
+  const slice = Math.floor(angle / prizeSlice);
+
+  if (currentSlice !== slice) {
+    ticker.style.animation = "none";
+    setTimeout(() => (ticker.style.animation = null), 10);
+    currentSlice = slice;
+    playTick();
   }
 
-  // Сборка колеса: фон + текст + список нод
-  function setupWheel() {
-    spinner.innerHTML = '';          // очистить прошлые подписи
-    createConicGradient();           // обновить фон
-    createPrizeNodes();              // создать подписи заново
-    prizeNodes = wheel.querySelectorAll('.prize');
-    // Сброс начального угла через CSS-переменную
-    spinner.style.setProperty('--rotate', rotation % 360);
-  }
+  tickerAnim = requestAnimationFrame(runTickerAnimation);
+}
 
-  // Случайная инерция
-  function spinertia(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  // Безопасное получение угла из transform; если transform = 'none' — вернуть 0
-  function getSpinnerAngleDeg() {
-    const transform = window.getComputedStyle(spinner).transform;
-    if (!transform || transform === 'none') return 0;
-    const values = transform.split('(')[1].split(')')[0].split(',');
-    const a = parseFloat(values[0]);
-    const b = parseFloat(values[1]);
-    let rad = Math.atan2(b, a);
-    if (rad < 0) rad += 2 * Math.PI;
-    return Math.round(rad * (180 / Math.PI));
-  }
-
-  // Анимация тика язычка: дергаем при смене сектора
-  function runTickerAnimation() {
-    const angle = getSpinnerAngleDeg();
-    const slice = Math.floor(angle / prizeSlice);
-
-    if (currentSlice !== slice) {
-      ticker.style.animation = 'none';
-      setTimeout(() => (ticker.style.animation = null), 10);
-      currentSlice = slice;
-      playTick();
-    }
-
-    tickerAnim = requestAnimationFrame(runTickerAnimation);
-  }
-
-  // Выбор призового сектора по финальному rotation
+// Выбор призового сектора по финальному rotation
 let lastWinnerIndex = null;
 
-  function selectPrize() {
-    const selected = Math.floor((rotation % 360) / prizeSlice);
-    if (prizeNodes && prizeNodes[selected]) {
-      prizeNodes[selected].classList.add(selectedClass);
-      lastWinnerIndex = selected;
-    }
+function selectPrize() {
+  const selected = Math.floor((rotation % 360) / prizeSlice);
+  if (prizeNodes && prizeNodes[selected]) {
+    prizeNodes[selected].classList.add(selectedClass);
+    lastWinnerIndex = selected;
+  }
+}
+
+// Сброс состояния колеса: нужен при переключении режимов
+function resetWheel() {
+  // Остановка тикера
+  if (tickerAnim) {
+    cancelAnimationFrame(tickerAnim);
+    tickerAnim = null;
   }
 
-  // Сброс состояния колеса: нужен при переключении режимов
-  function resetWheel() {
-    // Остановка тикера
-    if (tickerAnim) {
-      cancelAnimationFrame(tickerAnim);
-      tickerAnim = null;
-    }
+  // Визуальные сбросы
+  wheel.classList.remove(spinClass);
+  trigger.disabled = false;
 
-    // Визуальные сбросы
-    wheel.classList.remove(spinClass);
-    trigger.disabled = false;
-
-    // Снять выделения
-    if (prizeNodes && prizeNodes.length) {
-      prizeNodes.forEach(prize => prize.classList.remove(selectedClass));
-    }
-
-    // Сброс угла (оставляем корректный 0..359)
-    rotation = rotation % 360;
-    spinner.style.setProperty('--rotate', rotation);
-
-    // Остановить звук
-    stopTickSound();
+  // Снять выделения
+  if (prizeNodes && prizeNodes.length) {
+    prizeNodes.forEach((prize) => prize.classList.remove(selectedClass));
   }
 
-  // Запуск
-  setupWheel();
+  // Сброс угла (оставляем корректный 0..359)
+  rotation = rotation % 360;
+  spinner.style.setProperty("--rotate", rotation);
 
-  // Кнопка "Крутить"
-  trigger.addEventListener('click', () => {
-    if (trigger.disabled) return;
-    if (!prizeNodes || prizeNodes.length === 0) {
-      setupWheel(); // если вдруг очистилось, пересобрать
-    }
+  // Остановить звук
+  stopTickSound();
+}
 
-    trigger.disabled = true;
-    rotation = Math.floor(Math.random() * 360 + spinertia(2000, 5000));
+// Запуск
+setupWheel();
 
-    prizeNodes.forEach(prize => prize.classList.remove(selectedClass));
-    wheel.classList.add(spinClass);
+// Кнопка "Крутить"
+trigger.addEventListener("click", () => {
+  if (trigger.disabled) return;
+  if (!prizeNodes || prizeNodes.length === 0) {
+    setupWheel(); // если вдруг очистилось, пересобрать
+  }
 
-    // через CSS-переменную меняем поворот — transform всегда валиден
-    spinner.style.setProperty('--rotate', rotation);
+  trigger.disabled = true;
+  rotation = Math.floor(Math.random() * 360 + spinertia(2000, 5000));
 
-    // запуск тикера
-    ticker.style.animation = 'none';
-    runTickerAnimation();
-  });
+  prizeNodes.forEach((prize) => prize.classList.remove(selectedClass));
+  wheel.classList.add(spinClass);
 
-  // Окончание анимации вращения (CSS transition)
-  spinner.addEventListener('transitionend', () => {
-    if (tickerAnim) {
-      cancelAnimationFrame(tickerAnim);
-      tickerAnim = null;
-    }
+  // через CSS-переменную меняем поворот — transform всегда валиден
+  spinner.style.setProperty("--rotate", rotation);
 
-    rotation = rotation % 360;
-    selectPrize();
-    playWin();
+  // запуск тикера
+  ticker.style.animation = "none";
+  runTickerAnimation();
+});
 
-    wheel.classList.remove(spinClass);
-    spinner.style.setProperty('--rotate', rotation);
-    trigger.disabled = false;
-  });
+// Окончание анимации вращения (CSS transition)
+spinner.addEventListener("transitionend", () => {
+  if (tickerAnim) {
+    cancelAnimationFrame(tickerAnim);
+    tickerAnim = null;
+  }
 
-  // --- Интеграция с твоими режимами ---
+  rotation = rotation % 360;
+  selectPrize();
+  playWin();
 
-  // Пример: при входе в режим "Колесо удачи"
-  function enterWheelMode() {
+  wheel.classList.remove(spinClass);
+  spinner.style.setProperty("--rotate", rotation);
+  trigger.disabled = false;
+});
+
+
+
+// При входе в режим "Колесо удачи"
+function enterWheelMode() {
   resetAllModes();
-  document.getElementById('wheelluck').style.display = 'block';
+  document.getElementById("wheelluck").style.display = "block";
 
   // если есть прошлый победитель — подсветим его
   if (lastWinnerIndex !== null && prizeNodes && prizeNodes[lastWinnerIndex]) {
     prizeNodes[lastWinnerIndex].classList.add(selectedClass);
-    playWin();
   }
 }
 
 
-  // Пример: при выходе из режима "Колесо удачи" — ОЧЕНЬ ВАЖНО сбросить колесо
+  // При выходе из режима "Колесо удачи" — ОЧЕНЬ ВАЖНО сбросить колесо
  function leaveWheelMode() {
   cancelAnimationFrame(tickerAnim);
   tickerAnim = null;
   wheel.classList.remove('is-spinning');
   rotation = rotation % 360;
   spinner.style.setProperty('--rotate', rotation);
-  selectPrize(); // ← назначаем победителя даже без transitionend
+  selectPrize(); // ← назначаем победителя
   trigger.disabled = false;
   stopTickSound();
    
 }
-
-
-  // Универсальный сброс проекта (заполни своими очистками)
+// Универсальный сброс проекта (заполни своими очистками)
   function resetAllModes() {
     // Остановить любые звуки рулеток/тикеров
     stopTickSound();
-}
-      /*
-      //смена цветов в рулетке
-wheelcolorchange.addEventListener("click", function(){
-        prizes[0].color = "hsl(0,100%,27.3%)";
-        prizes[1].color = "hsl(0,0%,0%)";
-        prizes[2].color = "hsl(0,100%,27.3%)";
-        prizes[3].color = "hsl(0,0%,0%)";
-        prizes[4].color = "hsl(0,100%,27.3%)";
-        prizes[5].color = "hsl(0,0%,0%)";
-        prizes[6].color = "hsl(0,100%,27.3%)";
-        prizes[7].color = "hsl(0,0%,0%)";
-        prizes[8].color = "hsl(120,100%,25.1%)";
-        prizes[9].color = "hsl(0,0%,0%)";
-      
-      document.getElementById("wheelluck").style.color = "white";
+  }
 
-        setupWheel();
-      });
-      */
       // ТЕКСТ В КОЛЕСЕ + ОТРИСОВКА
 
-     function updatePrizes() {
-  const inputs = [inp1, inp2, inp3, inp4, inp5, inp6, inp7, inp8, inp9, inp10];
+      function updatePrizes() {
+        const inputs = [inp1, inp2, inp3, inp4, inp5, inp6, inp7, inp8, inp9, inp10];
 
-  inputs.forEach((inp, i) => {
-    prizes[i].text = inp.value;
-  });
+        inputs.forEach((inp, i) => {
+          prizes[i].text = inp.value;
+        });
 
-  setupWheel();
-}
-
-// Список всех элементов, на которые нужен обработчик
-const slotIds = [
-  "firstl", "secondl", "thirdl", "fourl", "fivel",
-  "firstr", "secondr", "thirdr", "fourr", "fiver"
-];
-
-slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      input.addEventListener("input", updatePrizes);
-    }
-  }
-});
-
-
-      
-      //ФУНКЦИЯ РАНДОМА
-
-      function getRandomInt(max) {
-        return Math.round(Math.random() * max);
+        setupWheel();
       }
 
-      //ПЕРЕКЛЮЧЕНИЕ РЕЖИМОВ
+      // Список всех элементов, на которые нужен обработчик
+      const slotIds = [
+        "firstl",
+        "secondl",
+        "thirdl",
+        "fourl",
+        "fivel",
+        "firstr",
+        "secondr",
+        "thirdr",
+        "fourr",
+        "fiver"
+      ];
+
+      slotIds.forEach((id) => {
+        const slot = document.querySelector(`[data-id="${id}"]`);
+        if (slot) {
+          const input = slot.querySelector("input");
+          if (input) {
+            input.addEventListener("input", updatePrizes);
+          }
+        }
+      });
+
+//ФУНКЦИЯ РАНДОМА
+
+function getRandomInt(max) {
+  return Math.round(Math.random() * max);
+}  
+
+
+//ПЕРЕКЛЮЧЕНИЕ РЕЖИМОВ
+//Функции для режима боя
 function enableBattleMode() {
   document.body.classList.add("battle-mode");
 }
 function disableBattleMode() {
   document.body.classList.remove("battle-mode");
 }
-      var mode = 0;
+
+
+// Дефолтные настройки
+var mode = 0;
 enableBattleMode();
-      classic.addEventListener("click", function () {
-        mode = 0;
-        enableBattleMode();
+
+// Первый режим
+classic.addEventListener("click", function () {
+  mode = 0;
+  enableBattleMode();
   // Сбрасываем активный класс у всех кнопок
-  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach((btn) => {
     btn.classList.remove("active-mode");
   });
-        tickSound.volume = 0;
+  tickSound.volume = 0;
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-        
-        document.getElementById("last").style.display = "none";
-        document.getElementById("roulette").style.display = "none";
-        document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("center").style.visibility = "visible";
-        document.getElementById("center").style.display = "flex";
-        document.getElementById("challenges").style.display = "none";
-        document.getElementById("downloadall").style.display = "none";
-        slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      leaveWheelMode();
-      
-      // Сброс бордера 
-    slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      // Сброс классов удара
-      input.classList.remove("hit-red", "hit-green");
-      // Можно ещё явно убрать рамку
-      input.style.border = "1px solid transparent";
-    }
-  }
-});
 
-
-    }
-  }
-        });
-        
-      });
-
-
-
-
-      rand.addEventListener("click", function () {
-        mode = 1;
-        enableBattleMode();
-  // Сбрасываем активный класс у всех кнопок
-  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-    btn.classList.remove("active-mode");
-  });
-
-  // Добавляем активный класс на текущую
-  this.classList.add("active-mode");
-tickSound.volume = 0;
-        document.getElementById("center").style.display = "flex";
-        document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("last").style.display = "flex";
-        document.getElementById("roulette").style.display = "none";
-        document.getElementById("center").style.visibility = "visible";
-        document.getElementById("challenges").style.display = "none";
-        document.getElementById("downloadall").style.display = "none";
-        slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      leaveWheelMode();
-      
-      // Сброс бордера 
-   slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      // Сброс классов удара
-      input.classList.remove("hit-red", "hit-green");
-      // Можно ещё явно убрать рамку
-      input.style.border = "1px solid transparent";
-    }
-  }
-});
-
-
-    }
-  }
-        });
-      });
-      frand.addEventListener("click", function () {
-        mode = 2;
-        enableBattleMode();
-  // Сбрасываем активный класс у всех кнопок
-  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-    btn.classList.remove("active-mode");
-  });
-
-  // Добавляем активный класс на текущую
-  this.classList.add("active-mode");
-tickSound.volume = 0;
-        document.getElementById("center").style.display = "flex";
-        document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("last").style.display = "none";
-        document.getElementById("roulette").style.display = "none";
-        document.getElementById("center").style.visibility = "visible";
-        document.getElementById("challenges").style.display = "none";
-        document.getElementById("downloadall").style.display = "none";
-        slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      leaveWheelMode();
-      // Сброс бордера 
-      slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      // Сброс классов удара
-      input.classList.remove("hit-red", "hit-green");
-      // Можно ещё явно убрать рамку
-      input.style.border = "1px solid transparent";
-    }
-  }
-});
-
-
-    }
-  }
-        });
-      });
-      roul.addEventListener("click", function () {
-        mode = 3;
-        disableBattleMode();
-  // Сбрасываем активный класс у всех кнопок
-  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-    btn.classList.remove("active-mode");
-  });
+  document.getElementById("last").style.display = "none";
+  document.getElementById("roulette").style.display = "none";
+  document.getElementById("wheelluck").style.display = "none";
+  document.getElementById("center").style.visibility = "visible";
+  document.getElementById("center").style.display = "flex";
+  document.getElementById("challenges").style.display = "none";
+  document.getElementById("downloadall").style.display = "none";
+  slotIds.forEach((id) => {
+    const slot = document.querySelector(`[data-id="${id}"]`);
+    if (slot) {
+      const input = slot.querySelector("input");
+      if (input) {
         leaveWheelMode();
-  // Добавляем активный класс на текущую
-  this.classList.add("active-mode");
-tickSound.volume = 0.1;
-        document.getElementById("center").style.display = "flex";
-        document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("roulette").style.display = "flex";
-        document.getElementById("last").style.display = "none";
-        document.getElementById("center").style.visibility = "visible";
-        document.getElementById("challenges").style.display = "none";
-        document.getElementById("downloadall").style.display = "none";
-        slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      
-      slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      // Сброс классов удара
-      input.classList.remove("hit-red", "hit-green");
-      // Можно ещё явно убрать рамку
-      input.style.border = "1px solid transparent";
+
+        // Сброс бордера
+        slotIds.forEach((id) => {
+          const slot = document.querySelector(`[data-id="${id}"]`);
+          if (slot) {
+            const input = slot.querySelector("input");
+            if (input) {
+              // Сброс классов удара
+              input.classList.remove("hit-red", "hit-green");
+              // Можно ещё явно убрать рамку
+              input.style.border = "1px solid transparent";
+            }
+          }
+        });
+      }
     }
-  }
+  });
 });
 
+//Режим босс файта
 
-    }
-  }
-        });
-      });
-      whl.addEventListener("click", function () {
-        mode = 4;
-        disableBattleMode();
+rand.addEventListener("click", function () {
+  mode = 1;
+  enableBattleMode();
   // Сбрасываем активный класс у всех кнопок
-  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach((btn) => {
     btn.classList.remove("active-mode");
   });
-enterWheelMode();
-  // Добавляем активный класс на текущую
-  this.classList.add("active-mode");
-tickSound.volume = 0.1;
-        document.getElementById("center").style.display = "flex";
-        document.getElementById("wheelluck").style.display = "inline-block";
-        document.getElementById("roulette").style.display = "none";
-        document.getElementById("last").style.display = "none";
-        document.getElementById("wheelluck").style.display = "inline-block";
-        document.getElementById("center").style.visibility = "visible";
-        document.getElementById("challenges").style.display = "none";
-        document.getElementById("downloadall").style.display = "none";
-        slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      
-      slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      // Сброс классов удара
-      input.classList.remove("hit-red", "hit-green");
-      // Можно ещё явно убрать рамку
-      input.style.border = "1px solid transparent";
-    }
-  }
-});
-
-
-    }
-  }
-        });
-      });
-      chl.addEventListener("click", function () {
-        mode = 5;
-        disableBattleMode();
-          // Сбрасываем активный класс у всех кнопок
-  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
-    btn.classList.remove("active-mode");
-  });
-      leaveWheelMode();
 
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-tickSound.volume = 0;
-        document.getElementById("center").style.display = "none";
-        document.getElementById("wheelluck").style.display = "none";
-        document.getElementById("roulette").style.display = "none";
-        document.getElementById("last").style.display = "none";
-        document.getElementById("center").style.visibility = "hidden";
-        document.getElementById("challenges").style.display = "flex";
-        document.getElementById("downloadall").style.display = "none";
-        slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      
-      // Сброс бордера 
-     slotIds.forEach(id => {
-  const slot = document.querySelector(`[data-id="${id}"]`);
-  if (slot) {
-    const input = slot.querySelector("input");
-    if (input) {
-      // Сброс классов удара
-      input.classList.remove("hit-red", "hit-green");
-      // Можно ещё явно убрать рамку
-      input.style.border = "1px solid transparent";
+  tickSound.volume = 0;
+  document.getElementById("center").style.display = "flex";
+  document.getElementById("wheelluck").style.display = "none";
+  document.getElementById("last").style.display = "flex";
+  document.getElementById("roulette").style.display = "none";
+  document.getElementById("center").style.visibility = "visible";
+  document.getElementById("challenges").style.display = "none";
+  document.getElementById("downloadall").style.display = "none";
+  slotIds.forEach((id) => {
+    const slot = document.querySelector(`[data-id="${id}"]`);
+    if (slot) {
+      const input = slot.querySelector("input");
+      if (input) {
+        leaveWheelMode();
+
+        // Сброс бордера
+        slotIds.forEach((id) => {
+          const slot = document.querySelector(`[data-id="${id}"]`);
+          if (slot) {
+            const input = slot.querySelector("input");
+            if (input) {
+              // Сброс классов удара
+              input.classList.remove("hit-red", "hit-green");
+              // Можно ещё явно убрать рамку
+              input.style.border = "1px solid transparent";
+            }
+          }
+        });
+      }
     }
-  }
+  });
 });
 
+//Режим рандома
 
-    }
-  }
+frand.addEventListener("click", function () {
+  mode = 2;
+  enableBattleMode();
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach((btn) => {
+    btn.classList.remove("active-mode");
+  });
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+  tickSound.volume = 0;
+  document.getElementById("center").style.display = "flex";
+  document.getElementById("wheelluck").style.display = "none";
+  document.getElementById("last").style.display = "none";
+  document.getElementById("roulette").style.display = "none";
+  document.getElementById("center").style.visibility = "visible";
+  document.getElementById("challenges").style.display = "none";
+  document.getElementById("downloadall").style.display = "none";
+  slotIds.forEach((id) => {
+    const slot = document.querySelector(`[data-id="${id}"]`);
+    if (slot) {
+      const input = slot.querySelector("input");
+      if (input) {
+        leaveWheelMode();
+        // Сброс бордера
+        slotIds.forEach((id) => {
+          const slot = document.querySelector(`[data-id="${id}"]`);
+          if (slot) {
+            const input = slot.querySelector("input");
+            if (input) {
+              // Сброс классов удара
+              input.classList.remove("hit-red", "hit-green");
+              // Можно ещё явно убрать рамку
+              input.style.border = "1px solid transparent";
+            }
+          }
         });
-      });
-      whatelse.addEventListener("click", function () {
+      }
+    }
+  });
+});
+
+//Режим рулетка ксго
+
+roul.addEventListener("click", function () {
+  mode = 3;
+  disableBattleMode();
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach((btn) => {
+    btn.classList.remove("active-mode");
+  });
+  leaveWheelMode();
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+  tickSound.volume = 0.1;
+  document.getElementById("center").style.display = "flex";
+  document.getElementById("wheelluck").style.display = "none";
+  document.getElementById("roulette").style.display = "flex";
+  document.getElementById("last").style.display = "none";
+  document.getElementById("center").style.visibility = "visible";
+  document.getElementById("challenges").style.display = "none";
+  document.getElementById("downloadall").style.display = "none";
+  slotIds.forEach((id) => {
+    const slot = document.querySelector(`[data-id="${id}"]`);
+    if (slot) {
+      const input = slot.querySelector("input");
+      if (input) {
+        slotIds.forEach((id) => {
+          const slot = document.querySelector(`[data-id="${id}"]`);
+          if (slot) {
+            const input = slot.querySelector("input");
+            if (input) {
+              // Сброс классов удара
+              input.classList.remove("hit-red", "hit-green");
+              // Можно ещё явно убрать рамку
+              input.style.border = "1px solid transparent";
+            }
+          }
+        });
+      }
+    }
+  });
+});
+
+//Режим колесо удачи
+
+whl.addEventListener("click", function () {
+  mode = 4;
+  disableBattleMode();
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach((btn) => {
+    btn.classList.remove("active-mode");
+  });
+  enterWheelMode();
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+  tickSound.volume = 0.1;
+  document.getElementById("center").style.display = "flex";
+  document.getElementById("wheelluck").style.display = "inline-block";
+  document.getElementById("roulette").style.display = "none";
+  document.getElementById("last").style.display = "none";
+  document.getElementById("wheelluck").style.display = "inline-block";
+  document.getElementById("center").style.visibility = "visible";
+  document.getElementById("challenges").style.display = "none";
+  document.getElementById("downloadall").style.display = "none";
+  slotIds.forEach((id) => {
+    const slot = document.querySelector(`[data-id="${id}"]`);
+    if (slot) {
+      const input = slot.querySelector("input");
+      if (input) {
+        slotIds.forEach((id) => {
+          const slot = document.querySelector(`[data-id="${id}"]`);
+          if (slot) {
+            const input = slot.querySelector("input");
+            if (input) {
+              // Сброс классов удара
+              input.classList.remove("hit-red", "hit-green");
+              // Можно ещё явно убрать рамку
+              input.style.border = "1px solid transparent";
+            }
+          }
+        });
+      }
+    }
+  });
+});
+
+//Челленджы
+
+chl.addEventListener("click", function () {
+  mode = 5;
+  disableBattleMode();
+  // Сбрасываем активный класс у всех кнопок
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach((btn) => {
+    btn.classList.remove("active-mode");
+  });
+  leaveWheelMode();
+
+  // Добавляем активный класс на текущую
+  this.classList.add("active-mode");
+  tickSound.volume = 0;
+  document.getElementById("center").style.display = "none";
+  document.getElementById("wheelluck").style.display = "none";
+  document.getElementById("roulette").style.display = "none";
+  document.getElementById("last").style.display = "none";
+  document.getElementById("center").style.visibility = "hidden";
+  document.getElementById("challenges").style.display = "flex";
+  document.getElementById("downloadall").style.display = "none";
+  slotIds.forEach((id) => {
+    const slot = document.querySelector(`[data-id="${id}"]`);
+    if (slot) {
+      const input = slot.querySelector("input");
+      if (input) {
+        // Сброс бордера
+        slotIds.forEach((id) => {
+          const slot = document.querySelector(`[data-id="${id}"]`);
+          if (slot) {
+            const input = slot.querySelector("input");
+            if (input) {
+              // Сброс классов удара
+              input.classList.remove("hit-red", "hit-green");
+              // Можно ещё явно убрать рамку
+              input.style.border = "1px solid transparent";
+            }
+          }
+        });
+      }
+    }
+  });
+});
+
+//Другое
+
+whatelse.addEventListener("click", function () {
   mode = 6;
-disableBattleMode();
+  disableBattleMode();
   // Сбрасываем активный класс у всех кнопок
-  [classic, rand, frand, roul, whl, chl, whatelse].forEach(btn => {
+  [classic, rand, frand, roul, whl, chl, whatelse].forEach((btn) => {
     btn.classList.remove("active-mode");
   });
-      leaveWheelMode();
+  leaveWheelMode();
 
   // Добавляем активный класс на текущую
   this.classList.add("active-mode");
-tickSound.volume = 0;
- 
+  tickSound.volume = 0;
+
   document.getElementById("center").style.display = "none";
   document.getElementById("wheelluck").style.display = "none";
   document.getElementById("roulette").style.display = "none";
@@ -754,7 +739,7 @@ tickSound.volume = 0;
   document.getElementById("challenges").style.display = "none";
   document.getElementById("downloadall").style.display = "inline-block";
 
-  slotIds.forEach(id => {
+  slotIds.forEach((id) => {
     const slot = document.querySelector(`[data-id="${id}"]`);
     if (slot) {
       const input = slot.querySelector("input");
@@ -770,28 +755,27 @@ tickSound.volume = 0;
 
 
 
-slotIds.forEach(id => {
+slotIds.forEach((id) => {
   const slot = document.querySelector(`[data-id="${id}"]`);
   if (slot) {
     const input = slot.querySelector("input");
-slot.addEventListener("dblclick", () => {
-  const isClassicOrBoss = (mode === 0 || mode === 1);
-  const colorClass = isClassicOrBoss ? "hit-red" : (getRandomInt(2) === 1 ? "hit-green" : "hit-red");
+    slot.addEventListener("dblclick", () => {
+      const isClassicOrBoss = mode === 0 || mode === 1;
+      const colorClass = isClassicOrBoss ? "hit-red" : getRandomInt(2) === 1 ? "hit-green" : "hit-red";
 
-  if (input) {
-    input.classList.remove("hit-red", "hit-green"); // сброс
-    void input.offsetWidth; // хак для перезапуска анимации
-    input.classList.add(colorClass);
-  }
-    if (colorClass === "hit-red") {
-    bladeSound.currentTime = 0;
-    bladeSound.play().catch(err => console.log("play blocked:", err));
-  } else if (colorClass === "hit-green") {
-    reflectSound.currentTime = 0;
-    reflectSound.play().catch(err => console.log("play blocked:", err));
-  }
-});
-
+      if (input) {
+        input.classList.remove("hit-red", "hit-green"); // сброс
+        void input.offsetWidth; // хак для перезапуска анимации
+        input.classList.add(colorClass);
+      }
+      if (colorClass === "hit-red") {
+        bladeSound.currentTime = 0;
+        bladeSound.play().catch((err) => console.log("play blocked:", err));
+      } else if (colorClass === "hit-green") {
+        reflectSound.currentTime = 0;
+        reflectSound.play().catch((err) => console.log("play blocked:", err));
+      }
+    });
   }
 });
 
@@ -799,38 +783,39 @@ slot.addEventListener("dblclick", () => {
 
       //БОСС ФАЙТ ФИНАЛЬНЫЙ БОЙ
 
-     fight.addEventListener("click", function () {
-  const left1 = document.querySelector("#lastfl input");
-  const left2 = document.querySelector("#lastsl input");
-  const right1 = document.querySelector("#lastfr input");
-  const right2 = document.querySelector("#lastsr input");
+      fight.addEventListener("click", function () {
+        const left1 = document.querySelector("#lastfl input");
+        const left2 = document.querySelector("#lastsl input");
+        const right1 = document.querySelector("#lastfr input");
+        const right2 = document.querySelector("#lastsr input");
 
-  function applyResult(input, isWin) {
-    input.classList.remove("hit-red", "hit-green");
-    void input.offsetWidth; // перезапуск анимации
-    if (isWin) {
-      input.classList.add("hit-green");
-      reflectSound.currentTime = 0;
-      reflectSound.play().catch(()=>{});
-    } else {
-      input.classList.add("hit-red");
-      bladeSound.currentTime = 0;
-      bladeSound.play().catch(()=>{});
-    }
-  }
+        function applyResult(input, isWin) {
+          input.classList.remove("hit-red", "hit-green");
+          void input.offsetWidth; // перезапуск анимации
+          if (isWin) {
+            input.classList.add("hit-green");
+            reflectSound.currentTime = 0;
+            reflectSound.play().catch(() => {});
+          } else {
+            input.classList.add("hit-red");
+            bladeSound.currentTime = 0;
+            bladeSound.play().catch(() => {});
+          }
+        }
 
-  // Левая пара
-  const winl = getRandomInt(2);
-  applyResult(left1, winl === 0);
-  applyResult(left2, winl !== 0);
+        // Левая пара
+        const winl = getRandomInt(2);
+        applyResult(left1, winl === 0);
+        applyResult(left2, winl !== 0);
 
-  // Правая пара
-  const winr = getRandomInt(2);
-  applyResult(right1, winr === 0);
-  applyResult(right2, winr !== 0);
-});
+        // Правая пара
+        const winr = getRandomInt(2);
+        applyResult(right1, winr === 0);
+        applyResult(right2, winr !== 0);
+      });
 
       //ЧЕЛЛЕНДЖЫ
+
       let answersEN = {
         1: {
           name: "Pos6",
@@ -1934,26 +1919,27 @@ slot.addEventListener("dblclick", () => {
 
 
           //рандомное число в другое
-      
-      const minInput = document.getElementById("minrandnumber");
-      const maxInput = document.getElementById("maxrandnumber");
-      const result = document.getElementById("resultrandnumber");
-      const randBtn = document.getElementById("randnumberbutton");
-  
-      randnumberbutton.addEventListener("click", function(){
-         const min = parseInt(minInput.value, 10);
-         const max = parseInt(maxInput.value, 10);
-         if (isNaN(min) || isNaN(max) || min > max) {
-           if (sBtn_text.innerHTML == "EN" || sBtn_text.innerHTML == "<h2> EN</h2>"){
-        result.textContent = "Please enter valid numbers";
-             }else{
-               result.textContent = "Введите корректные числа";
-             }
-        return;
-    }
-        const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-        result.textContent = randomNum;
-      });
+
+          const minInput = document.getElementById("minrandnumber");
+          const maxInput = document.getElementById("maxrandnumber");
+          const result = document.getElementById("resultrandnumber");
+          const randBtn = document.getElementById("randnumberbutton");
+
+          randnumberbutton.addEventListener("click", function () {
+            const min = parseInt(minInput.value, 10);
+            const max = parseInt(maxInput.value, 10);
+            if (isNaN(min) || isNaN(max) || min > max) {
+              if (sBtn_text.innerHTML == "EN" || sBtn_text.innerHTML == "<h2> EN</h2>") {
+                result.textContent = "Please enter valid numbers";
+              } else {
+                result.textContent = "Введите корректные числа";
+              }
+              return;
+            }
+            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            result.textContent = randomNum;
+          });
+
       //кнопка помощи
 
       helpbutton.addEventListener("click", () => {
@@ -2120,3 +2106,187 @@ slot.addEventListener("dblclick", () => {
           }
         });
       });
+
+//Пасхалка
+
+// Пасхалка: 5 кликов по логотипу DOTAFUN
+let easterClickCount = 0;
+let easterTimeout;
+
+const logo = document.querySelector(".logo-title");
+
+logo.addEventListener("click", () => {
+  easterClickCount++;
+
+  // сбросить счётчик, если пауза между кликами > 2 сек
+  clearTimeout(easterTimeout);
+  easterTimeout = setTimeout(() => {
+    easterClickCount = 0;
+  }, 200);
+
+  if (easterClickCount >= 5) {
+    easterClickCount = 0;
+    activateEasterEgg(); // твоя функция пасхалки
+  }
+});
+
+let chaosActive = false;
+function activateEasterEgg() {
+  chaosActive = !chaosActive;
+  if (chaosActive) {
+    document.body.classList.add("chaos-mode");
+    
+
+  console.log("🥚 Пасхалка активирована!");
+              prizes[0].color = "hsl(0,100%,27.3%)";
+              prizes[1].color = "hsl(0,0%,0%)";
+              prizes[2].color = "hsl(0,100%,27.3%)";
+              prizes[3].color = "hsl(0,0%,0%)";
+              prizes[4].color = "hsl(0,100%,27.3%)";
+              prizes[5].color = "hsl(0,0%,0%)";
+              prizes[6].color = "hsl(0,100%,27.3%)";
+              prizes[7].color = "hsl(0,0%,0%)";
+              prizes[8].color = "hsl(120,100%,25.1%)";
+              prizes[9].color = "hsl(0,0%,0%)";
+      
+            document.getElementById("wheelluck").style.color = "white";
+
+              setupWheel();
+  
+            classic.innerHTML = "WHY";
+            rand.innerHTML = "ARE";
+            frand.innerHTML = "YOU";
+            roul.innerHTML = "CLICKING";
+            whl.innerHTML = "@#!#$#@!@$@!";
+            chl.innerHTML = "@#!#$#@!@$@!";
+            whatelse.innerHTML = "@#!#$#@!@$@!";
+            fight.innerHTML = "@#!#$#@!@$@!";
+            answer.innerHTML = "@#!#$#@!@$@!";
+            download1.innerHTML = "@#!#$#@!@$@!";
+            download2.innerHTML = "@#!#$#@!@$@!";
+            scriptchl.innerHTML = "@#!#$#@!@$@!";
+            scriptmsg.innerHTML = "@#!#$#@!@$@!";
+            roulchl.innerHTML = "@#!#$#@!@$@!";
+            whlchl.innerHTML = "@#!#$#@!@$@!";
+            document.getElementById("chex").innerHTML = "@#!#$#@!@$@!";
+            document.getElementById("chex2").innerHTML = "@#!#$#@!@$@!";
+            document.getElementById("inp1").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp2").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp3").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp4").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp5").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp6").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp7").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp8").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp9").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inp10").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inpfight").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inpfight1").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inpfight2").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("inpfight3").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("minrandnumber").placeholder = "@#!#$#@!@$@!";
+            document.getElementById("maxrandnumber").placeholder = "@#!#$#@!@$@!";
+            randnumberbutton.innerHTML = "@#!#$#@!@$@!";
+  
+  
+            // Добавить класс
+document.body.classList.add("chaos-mode");
+
+// Убрать класс
+document.body.classList.remove("chaos-mode");
+
+// Переключать (toggle) — если класса нет, добавит; если есть, уберёт
+document.body.classList.toggle("chaos-mode");
+
+
+chaosSound.play();
+
+}else {
+    document.body.classList.remove("chaos-mode");
+              prizes[0].color = "hsl(210, 60%, 60%)";
+              prizes[1].color = "hsl(160, 55%, 55%)";
+              prizes[2].color = "hsl(45, 85%, 65%)";
+              prizes[3].color = "hsl(25, 70%, 60%)";
+              prizes[4].color = "hsl(0, 70%, 60%)";
+              prizes[5].color = "hsl(340, 60%, 65%)";
+              prizes[6].color = "hsl(95, 45%, 55%)";
+              prizes[7].color = "hsl(200, 40%, 70%)";
+              prizes[8].color = "hsl(280, 45%, 65%)";
+              prizes[9].color = "hsl(180, 30%, 60%)";
+    setupWheel(); // вернуть нормальные цвета
+    chaosSound.pause();
+    chaosSound.currentTime = 0;
+   if (sBtn_text.innerHTML == "RU") {
+            classic.innerHTML = "Классический(По умолчанию)";
+            rand.innerHTML = "Сражение";
+            frand.innerHTML = "Рандом с выбором";
+            roul.innerHTML = "Рулетка";
+            whl.innerHTML = "Колесо удачи";
+            chl.innerHTML = "Челленджы";
+            whatelse.innerHTML = "Другое";
+            fight.innerHTML = "БОЙ";
+            answer.innerHTML = "Получить челлендж";
+            download1.innerHTML = "Скачать";
+            download2.innerHTML = "Скачать";
+            scriptchl.innerHTML = "Скрипт рандомного нажатия клавиш";
+            scriptmsg.innerHTML = "Скрипт рандомных предупреждений";
+            roulchl.innerHTML = "Старт";
+            whlchl.innerHTML = "Старт";
+            document.getElementById("chex").innerHTML = "Твой Челлендж";
+            document.getElementById("chex2").innerHTML = "Будет прямо ЗДЕСЬ";
+            document.getElementById("inp1").placeholder = "Введите имя героя";
+            document.getElementById("inp2").placeholder = "Введите имя героя";
+            document.getElementById("inp3").placeholder = "Введите имя героя";
+            document.getElementById("inp4").placeholder = "Введите имя героя";
+            document.getElementById("inp5").placeholder = "Введите имя героя";
+            document.getElementById("inp6").placeholder = "Введите имя героя";
+            document.getElementById("inp7").placeholder = "Введите имя героя";
+            document.getElementById("inp8").placeholder = "Введите имя героя";
+            document.getElementById("inp9").placeholder = "Введите имя героя";
+            document.getElementById("inp10").placeholder = "Введите имя героя";
+            document.getElementById("inpfight").placeholder = "Введите имя героя";
+            document.getElementById("inpfight1").placeholder = "Введите имя героя";
+            document.getElementById("inpfight2").placeholder = "Введите имя героя";
+            document.getElementById("inpfight3").placeholder = "Введите имя героя";
+            document.getElementById("minrandnumber").placeholder = "Мин.";
+            document.getElementById("maxrandnumber").placeholder = "Макс."; 
+            randnumberbutton.innerHTML = "Готово";
+          }
+          if (sBtn_text.innerHTML == "EN" || sBtn_text.innerHTML == "<h2> EN</h2>") {
+            classic.innerHTML = "Classic(defolt)";
+            rand.innerHTML = "Boss fight";
+            frand.innerHTML = "Random";
+            roul.innerHTML = "Roulette";
+            whl.innerHTML = "Wheel of luck";
+            chl.innerHTML = "Challenges";
+            whatelse.innerHTML = "Other";
+            fight.innerHTML = "FIGHT";
+            answer.innerHTML = "GET CHALLENGE";
+            download1.innerHTML = "Download";
+            download2.innerHTML = "Download";
+            scriptchl.innerHTML = "Random keystroke script";
+            scriptmsg.innerHTML = "Random alert script";
+            roulchl.innerHTML = "Start";
+            whlchl.innerHTML = "Start";
+            document.getElementById("chex").innerHTML = "Your Challenge";
+            document.getElementById("chex2").innerHTML = "Will be right HERE";
+            document.getElementById("inp1").placeholder = "Hero";
+            document.getElementById("inp2").placeholder = "Hero";
+            document.getElementById("inp3").placeholder = "Hero";
+            document.getElementById("inp4").placeholder = "Hero";
+            document.getElementById("inp5").placeholder = "Hero";
+            document.getElementById("inp6").placeholder = "Hero";
+            document.getElementById("inp7").placeholder = "Hero";
+            document.getElementById("inp8").placeholder = "Hero";
+            document.getElementById("inp9").placeholder = "Hero";
+            document.getElementById("inp10").placeholder = "Hero";
+            document.getElementById("inpfight").placeholder = "Hero";
+            document.getElementById("inpfight1").placeholder = "Hero";
+            document.getElementById("inpfight2").placeholder = "Hero";
+            document.getElementById("inpfight3").placeholder = "Hero";
+            document.getElementById("minrandnumber").placeholder = "Min";
+            document.getElementById("maxrandnumber").placeholder = "Max";
+            randnumberbutton.innerHTML = "Check";
+          }
+  }
+}

@@ -919,3 +919,13 @@ a:link{
   50% { box-shadow: 0 0 20px lime; }
   100% { box-shadow: 0 0 5px lime; }
 }
+
+/* Пасхалка */
+.chaos-mode {
+  animation: hue-rotate 2s infinite linear;
+}
+@keyframes hue-rotate {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
+}
+
