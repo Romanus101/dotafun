@@ -1019,7 +1019,208 @@ slotIds.forEach((id) => {
           name: "One Spell Wonder",
           description:
             "You are only allowed to level up and use your hero's first spell (Q). Other spells and ultimate remain unleveled."
-        }
+        },
+        51: {
+  name: "Watermelon Warrior",
+  description: "You may only buy green-colored items. If it's not green, it's illegal."
+},
+52: {
+  name: "Budget Terrorblade",
+  description: "You can only buy items that cost less than 1000 gold for the entire match."
+},
+53: {
+  name: "Courier Abuser",
+  description: "Your courier must ALWAYS be moving. Even if it's flying in circles for no reason."
+},
+54: {
+  name: "Skill Issue",
+  description: "Every time you die, you must switch to a different lane."
+},
+55: {
+  name: "No Mouse Challenge",
+  description: "You may only move using the minimap. No clicking on the ground."
+},
+56: {
+  name: "Mushroom Hunter",
+  description: "Every time you find a rune, you must type 'Oh, a mushroom!' in chat and pick it up instantly."
+},
+57: {
+  name: "Bounty Collector",
+  description: "You must collect EVERY bounty rune that appears on the map, even if it costs your life."
+},
+58: {
+  name: "The Backpacker",
+  description: "Keep 3 useless items in your backpack at all times."
+},
+59: {
+  name: "The Drunk Driver",
+  description: "Every 2 minutes, you must run a full lap around the Roshan pit."
+},
+60: {
+  name: "Shopaholic",
+  description: "Every 3 minutes you must buy ANY item, even if it's completely useless."
+},
+61: {
+  name: "The Minimalist",
+  description: "You may only have 3 items in your inventory at any time."
+},
+62: {
+  name: "The Maximalist",
+  description: "Your inventory must ALWAYS be full, even if it's filled with trash."
+},
+63: {
+  name: "The Prophet",
+  description: "Write a prophecy in chat every 5 minutes predicting the future of the match."
+},
+64: {
+  name: "The Toxicologist",
+  description: "After every kill or death, type 'ez' in chat. Even if it was a creep."
+},
+65: {
+  name: "The Babysitter",
+  description: "Pick one ally and follow them everywhere like a loyal NPC."
+},
+66: {
+  name: "The Marathon Runner",
+  description: "You are forbidden from using TP scrolls for the entire game."
+},
+67: {
+  name: "The Teleporter",
+  description: "You may ONLY move using TP scrolls."
+},
+68: {
+  name: "The Collector 2.0",
+  description: "Fill your inventory with 6 copies of the same item."
+},
+69: {
+  name: "The Economist",
+  description: "Do not spend any gold until you reach 6000 total."
+},
+70: {
+  name: "The Poor Guy",
+  description: "Keep your gold below 200 at all times. Spend instantly."
+},
+71: {
+  name: "The Meteorologist",
+  description: "Comment on the in-game weather in chat every few minutes."
+},
+72: {
+  name: "The Ninja",
+  description: "You may not stand still for more than 1 second at any time."
+},
+73: {
+  name: "The Statue",
+  description: "After every kill, you must stand still for 10 seconds."
+},
+74: {
+  name: "The Pacman",
+  description: "Move only in circular paths around the map whenever possible."
+},
+75: {
+  name: "The Reverse Carry",
+  description: "Buy only support items, even if you're the hard carry."
+},
+76: {
+  name: "The Reverse Support",
+  description: "Buy only carry items, even if you're position 5."
+},
+77: {
+  name: "The Fisherman",
+  description: "Collect runes as if you're fishing. Narrate your 'catch' in chat."
+},
+78: {
+  name: "The Speedrunner",
+  description: "Try to end the game before 20 minutes, no matter your role."
+},
+79: {
+  name: "The Slowrunner",
+  description: "You may not enter the enemy high ground before minute 40."
+},
+80: {
+  name: "The Translator",
+  description: "Write in chat every 2 minutes only in a language nobody in the match understands."
+},
+81: {
+  name: "The DJ",
+  description: "Spam voice lines on cooldown. You are now the team entertainer."
+},
+82: {
+  name: "Cartographer",
+  description: "You must run from spawn to spawn one time."
+},
+83: {
+  name: "The Birdwatcher",
+  description: "Place wards only in weird, useless, or artistic locations. 8 wards min"
+},
+84: {
+  name: "The Jumper",
+  description: "You must use any mobility item (blink, force) off cooldown, even if it sends you into danger."
+},
+85: {
+  name: "The Flash",
+  description: "Buy only items that increase movement speed."
+},
+86: {
+  name: "The Tank That Shouldn’t Be",
+  description: "Build full tank items on any hero, even Sniper."
+},
+87: {
+  name: "The Glass Cannon",
+  description: "Buy only pure damage items. Zero defense allowed."
+},
+88: {
+  name: "The Healer",
+  description: "Heal allies whenever possible."
+},
+89: {
+  name: "The Pyromaniac",
+  description: "Buy only items that deal magical or burn damage."
+},
+90: {
+  name: "The Electrician",
+  description: "Buy only items that give mana or mana regeneration."
+},
+91: {
+  name: "The Farmer’s Curse",
+  description: "You are forbidden from farming the jungle."
+},
+92: {
+  name: "The Lumberjack",
+  description: "You may ONLY farm the jungle. Lanes are lava."
+},
+93: {
+  name: "The Tourist 2.0",
+  description: "Visit every rune spawn location within the first 10 minutes."
+},
+94: {
+  name: "F*** *ff",
+  description: "Pick an ally at the start. You must ruin their game up to 10 minutes."
+},
+95: {
+  name: "The Terminator",
+  description: "If you see an enemy hero, you MUST fight them. No exceptions."
+},
+96: {
+  name: "The Chicken",
+  description: "If you see an enemy hero, you MUST run away. No exceptions."
+},
+97: {
+  name: "The Randomizer",
+  description: "Roll a number 1–6 for every item slot. Buy the item that matches the roll."
+},
+98: {
+  name: "The One Punch Man",
+  description: "You may only deal damage using one chosen ability."
+},
+99: {
+  name: "The Vegetarian 2.0",
+  description: "Always keep at least 3 stacks of Tango in your inventory."
+},
+100: {
+  name: "The Homeless 2.0",
+  description: "You may never return to base for the entire match."
+}
+
       };
       let answersRU = {
         1: {
@@ -1228,10 +1429,211 @@ slotIds.forEach((id) => {
           name: "Чудо Одного Заклинания",
           description:
             "Вам разрешено прокачивать и использовать только первую способность вашего героя (Q). Остальные способности и ультимейт остаются непрокачанными."
-        }
+        },
+        51: {
+  name: "Арбузный Воин",
+  description: "Можно покупать только зелёные предметы. Если предмет не зелёный — он вне закона."
+},
+52: {
+  name: "Бюджетный Террорблейд",
+  description: "Разрешено покупать только предметы дешевле 1000 золота на протяжении всей игры."
+},
+53: {
+  name: "Абьюзер Курицы",
+  description: "Твой курьер должен ВСЕГДА быть в движении. Даже если он просто летает кругами."
+},
+54: {
+  name: "Скилл Ишью",
+  description: "Каждый раз после смерти ты обязан сменить линию."
+},
+55: {
+  name: "Без Мыши",
+  description: "Передвигаться можно только через миникарту. Никаких кликов по земле."
+},
+                                                                56: {
+  name: "Грибник",
+  description: "Каждый раз, когда находишь руну, обязан сказать в чат: 'О, грибочек!' и сразу её подобрать."
+},
+                                                                57: {
+  name: "Коллекционер Баунти",
+  description: "Ты обязан собирать ВСЕ баунти-руны, которые появляются на карте. Даже если ради этого нужно умереть."
+},
+58: {
+  name: "ОНО ПРИГОДИТСЯ!!!",
+  description: "Держи в рюкзаке 3 бесполезных предмета всегда."
+},
+59: {
+  name: "Пьяный Водитель",
+  description: "Каждые 2 минуты делай круг вокруг Рошпита."
+},
+                                                                      60: {
+  name: "Шопоголик",
+  description: "Каждые 3 минуты ты обязан купить ЛЮБОЙ предмет, даже если он тебе не нужен."
+},
+61: {
+  name: "Минималист",
+  description: "Можно иметь только 3 предмета в инвентаре."
+},
+62: {
+  name: "Максималист",
+  description: "Инвентарь должен быть ВСЕГДА полностью забит, даже мусором."
+},
+63: {
+  name: "Пророк",
+  description: "Пиши пророчества в чат каждые 5 минут."
+},
+64: {
+  name: "Токсиколог",
+  description: "После каждого килла или смерти пиши 'ez' в чат. Даже если это был крип."
+},
+65: {
+  name: "Няня",
+  description: "Выбери союзника и следуй за ним как NPC."
+},
+66: {
+  name: "Марафонец",
+  description: "Запрещено использовать свитки телепорта всю игру."
+},
+    67: {
+            name: "Телепортер",
+        description: "Передвигаться можно ТОЛЬКО через ТП."
+                },
+68: {
+  name: "Коллекционер 2.0",
+  description: "Заполни инвентарь 6 одинаковыми предметами."
+},
+69: {
+  name: "Экономист",
+  description: "Не трать золото, пока не накопишь 6000."
+},
+70: {
+  name: "Бедолага",
+  description: "Держи золото ниже 200 всегда. Трать мгновенно."
+},
+71: {
+  name: "Метеоролог",
+  description: "Комментируй погоду в игре каждые несколько минут."
+},
+72: {
+  name: "Ниндзя",
+  description: "Нельзя стоять на месте дольше 1 секунды."
+},
+73: {
+  name: "Статуя",
+  description: "После каждого убийства стой неподвижно 10 секунд."
+},
+74: {
+  name: "Пакман",
+  description: "Передвигайся по возможности только по круговым маршрутам."
+},
+75: {
+  name: "Реверс-Керри",
+  description: "Покупай только предметы для саппортов, даже если ты керри."
+},
+76: {
+  name: "Реверс-Саппорт",
+  description: "Покупай только предметы для керри, даже если ты позиция 5."
+},
+77: {
+  name: "Рыбак",
+  description: "Собирай руны как будто рыбачишь. Комментируй 'улов' в чат."
+},
+78: {
+  name: "Спидраннер",
+  description: "Пытайся закончить игру до 20 минуты, независимо от роли."
+},
+79: {
+  name: "Слоурайннер",
+  description: "Нельзя заходить на хайграунд врага до 40 минуты."
+},
+                      80: {
+            name: "Переводчик",
+                   description: "Пиши в чат каждые 2 минуты только на языке, которого никто не понимает."
+                    },
+81: {
+  name: "Диджей",
+  description: "Спамь голосовые реплики на кулдауне."
+},
+                                                      82: {
+  name: "Картограф",
+  description: "Ты обязан пройти от фонтана до фонтана один раз за игру."
+},
+                      83: {
+               name: "Орнитолог",
+                   description: "Ставь варды только в странных, бесполезных местах. Минимум 8 вардов за игру"
+                      },
+                                                      84: {
+  name: "Прыгун",
+  description: "Ты обязан использовать любое перемещение (блинк, форс) по кулдауну, даже если это в пропасть."
+},
+85: {
+  name: "Флэш",
+  description: "Покупай только предметы, увеличивающие скорость передвижения."
+},
+86: {
+  name: "Танк-Не-Должен-Быть",
+  description: "Собирайся в фулл-танка на любом герое, даже на Снайпере."
+},
+87: {
+  name: "Стеклянная Пушка",
+  description: "Покупай только предметы на урон. Никакой защиты."
+},
+                             88: {
+                      name: "Целитель",
+                               description: "Лечи союзников при любой возможности."
+                                },
+89: {
+  name: "Пироман",
+  description: "Покупай только предметы, наносящие магический или горящий урон."
+},
+90: {
+  name: "Электрик",
+  description: "Покупай только предметы, дающие ману или манареген."
+},
+91: {
+  name: "Проклятие Фармера",
+  description: "Запрещено фармить лес."
+},
+92: {
+  name: "Лесоруб",
+  description: "Можно фармить ТОЛЬКО лес."
+},
+93: {
+  name: "Турист 2.0",
+  description: "Посети все точки появления рун за первые 10 минут."
+},
+                                                                  94: {
+  name: "Руина",
+  description: "Выбери союзника в начале игры. Ты обязан руинить ему игру до 10 минуты."
+},
+95: {
+  name: "Терминатор",
+  description: "Если видишь врага — обязан драться. Без исключений."
+},
+96: {
+  name: "Курица",
+  description: "Если видишь врага — обязан убегать. Без исключений."
+},
+97: {
+  name: "Рандомайзер",
+  description: "Каждый предмет выбирай броском кубика (1–6)."
+},
+98: {
+  name: "Ванпанчмэн",
+  description: "Можно наносить урон только одной выбранной способностью."
+},
+99: {
+  name: "Вегетарианец 2.0",
+  description: "Всегда держи минимум 3 стака танго в инвентаре."
+},
+100: {
+  name: "Бездомный 2.0",
+  description: "Нельзя возвращаться на базу всю игру."
+}
+
       };
       answer.addEventListener("click", () => {
-        let n = getRandomInt(50);
+        let n = getRandomInt(100);
         if (sBtn_text.innerHTML == "EN" || sBtn_text.innerHTML == "<h2> EN</h2>") {
           chex.innerHTML = answersEN[n].name;
           chex2.innerHTML = answersEN[n].description;
@@ -1872,6 +2274,11 @@ slotIds.forEach((id) => {
           name: "primal_beast",
           id: 135,
           localized_name: "Primal Beast"
+        },
+        {
+          name: "largo",
+          id: 136,
+          localized_name: "Largo"
         }
       ];
       
@@ -2140,7 +2547,7 @@ function activateEasterEgg() {
     document.body.classList.add("chaos-mode");
     
 
-  console.log("🥚 Пасхалка активирована!");
+  console.log("Пасхалка активирована!");
               prizes[0].color = "hsl(0,100%,27.3%)";
               prizes[1].color = "hsl(0,0%,0%)";
               prizes[2].color = "hsl(0,100%,27.3%)";
@@ -2191,7 +2598,6 @@ function activateEasterEgg() {
             document.getElementById("maxrandnumber").placeholder = "@#!#$#@!@$@!";
             randnumberbutton.innerHTML = "@#!#$#@!@$@!";
             document.getElementById("section-title").innerText = "@#!#$#@!@$@!";
-  
   
             // Добавить класс
 document.body.classList.add("chaos-mode");
