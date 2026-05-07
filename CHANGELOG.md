@@ -42,4 +42,7 @@ This way we don’t list all 130+ deployments, but only highlight the important 
 ## [2.3.65] - 2025-10-07
 - Minor performance improvements
 
-  
+## [2.3.66] - 2026-05-07
+- Added more challenges
+- Code optimization
+- Wheel of luck was tested to be 100% random ( it is )
